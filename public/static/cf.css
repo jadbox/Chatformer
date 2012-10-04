@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-color: #0CF;
+	font: normal x-small Verdana, Geneva, sans-serif;
+}
+a{
+	text-decoration:none;
+	color:#369;
+}
+a img{border:0 none}
+#apProfile {
+	position: absolute;
+	top: 4px;
+	width: 56px;
+	height: 24px;
+	z-index: 1;
+	right: 10px;
+}
+#chatlog, #chatinput {
+	font-size: 11pt;
+}
+#chatlog {
+	width:98%;
+	min-height: 250px;
+}
+#chatinput {
+	width: 80%;
+}
+#header-links {
+	text-transform: uppercase;
+	white-space: nowrap;
+	line-height: 20px;
+	position: relative;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	
+}
+#inner-chatlayout, #inner-applayout {
+	border: thin solid #333;
+	padding: 5px;	
+}
+#inner-applayout iframe {
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+#inner-chatlayout {
+	width: 100%;
+	background-color: #FFF;
+	
+}
+#inner-applayout {
+	width:100%;
+	background-color: #FFF;
+	/* white-space: nowrap; */
+}
+#chat-submit-btn {
+	width: 15%;
+}
+#footer {
+	width:100%;
+	text-align:center;
+	margin-top:34px;
+}

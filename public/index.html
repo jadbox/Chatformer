@@ -1,0 +1,68 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chatformer-> Jonathan</title>
+<link href="static/boilerplate.css" rel="stylesheet" type="text/css">
+<link href="static/dw.css" rel="stylesheet" type="text/css">
+<link href="static/cf.css" rel="stylesheet" type="text/css">
+<!-- 
+To learn more about the conditional comments around the html tags at the top of the file:
+paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
+Do the following if you're using your customized build of modernizr (http://www.modernizr.com/):
+* insert the link to your js here
+* remove the link below to the html5shiv
+* add the "no-js" class to the html tags at the top
+* you can also remove the link to respond.min.js if you included the MQ Polyfill in your modernizr build 
+-->
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+
+<script src="static/respond.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+<script src="static/jquery.ba-postmessage.min.js"></script>
+<script src="static/site.js"></script>
+<script src="static/chat.js"></script>
+
+</head>
+<body onload="onLoad()">
+
+<div class="gridContainer">
+<div id="header-links">
+<div id="HeaderSection"><img src="imgs/phlogo.jpg"> <a href="/">Chatformer</a> | <a href="/">science</a> | <a href="/">politics</a> | <a href="/">WTF</a><div id="apProfile"><a href="/profile" alt="profile">my profile</a></div></div></div>
+<div id="ChatLayout">
+  <div id="inner-chatlayout">
+	Welcome to &lt;SCIENCE&gt;
+    <div>
+     <a id="connect" href="#">Connect</a>&nbsp;|&nbsp;Status: <span id="status">disconnected</span>
+	| <a id="reset" href="#">reset chat</a></div>
+    <form name="unused" method="get" action="#" id="chatform">
+     
+    <input name="chatinput" type="text" id="chatinput" size="56" maxlength="244">
+    <input type="submit" name="ChatSubmitBtn" id="chat-submit-btn" value="Say">
+</form>
+    <div id="chatlog"></div>
+
+  
+</div></div>
+<div id="AppSection"><div id="inner-applayout">
+  
+</div></div>
+<div id="footer-layout"><div id="footer">Use of this site constitutes acceptance of our User Agreement and Privacy Policy. © 2012 chatformer inc. All rights reserved.
+    <br>CHATFORMER Logo are registered trademarks of chatformer inc.</div></div>
+</div>
+</body>
+</html>

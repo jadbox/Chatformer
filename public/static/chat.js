@@ -1,6 +1,7 @@
 var conn = null;
 
 function connect() {
+	if(isAuth()==false) return;
 	disconnect();
 	flog_navStart("socket");
 	var transports = ['websocket', 'xhr-streaming', 'xhr-polling', 'jsonp-polling', 'xdr-streaming', 'xdr-polling', 'iframe-eventsource','iframe-htmlfile']; 
@@ -40,10 +41,12 @@ function update_ui() {
 
 	if (conn == null || conn.readyState != SockJS.OPEN) {
 		$('#status').text('disconnected');
-		$('#connect').text('Connect');
+		//$('#connect').text('Connect');
+		$("#inner-chatlayout").find("input").prop('disabled', true);
 	} else {
 		$('#status').text('connected (' + conn.protocol + ')');
-		$('#connect').text('Disconnect');
+		//$('#connect').text('Disconnect');
+		$("#inner-chatlayout").find("input").prop('disabled', false);
 	}
 }
 
@@ -51,6 +54,7 @@ $(function() {
 	$('#reset').click(function() {
 		$('#chatlog').html('');
 	});
+	/*
 	$('#connect').click(function() {
 		if (conn == null) {
 			connect();
@@ -61,7 +65,7 @@ $(function() {
 		update_ui();
 		return false;
 	});
-
+	*/
 	$('#chatform').submit(function() {
 		var msg = $('#chatinput').val();
 		if(isSysMsg(msg) == true) {

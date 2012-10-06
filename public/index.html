@@ -34,6 +34,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
 <script src="static/jquery.ba-postmessage.min.js"></script>
+<script src="static/auth/auth.js"></script>
 <script src="static/site.js"></script>
 <script src="apps/chatformer_shared.js"></script>
 <script src="static/chat-window.js"></script>
@@ -45,17 +46,17 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 <div class="gridContainer">
 <div id="header-links">
-<div id="HeaderSection"><img src="imgs/phlogo.jpg"> <a href="/">Chatformer</a> | <a href="/">science</a> | <a href="/">politics</a> | <a href="/">WTF</a><div id="apProfile"><a href="/profile" alt="profile">my profile</a></div></div></div>
+<div id="HeaderSection"><img src="imgs/phlogo.jpg"> <a href="/">Chatformer</a><span class="authed"> | <a href="/">science</a> | <a href="/">politics</a> | <a href="/">WTF</a><div id="apProfile"><a href="/profile" alt="profile">my profile</a></div></span></div></div>
 <div id="ChatLayout">
   <div id="inner-chatlayout">
 	Welcome to &lt;SCIENCE&gt;
-    <div>
-     <a id="connect" href="#">Connect</a>&nbsp;|&nbsp;Status: <span id="status">disconnected</span>
+    <div class="authed">
+    Status: <span id="status">disconnected</span>
 	| <a id="reset" href="#">reset chat</a></div>
     <form name="unused" method="get" action="#" id="chatform">
      
-    <input name="chatinput" type="text" id="chatinput" size="56" maxlength="244">
-    <input type="submit" name="ChatSubmitBtn" id="chat-submit-btn" value="Say">
+    <input name="chatinput" type="text" disabled id="chatinput" size="56" maxlength="244">
+    <input name="ChatSubmitBtn" type="submit" disabled id="chat-submit-btn" value="Say">
 </form>
     <div id="chatlog"></div>
 

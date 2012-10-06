@@ -1,8 +1,22 @@
 function onLoad() {
-  flog_navStart("html");
-  connect(); update_ui();
-  addApp("http://jadders.dyndns.org:81/apps/appvote.html");
+	flog_navStart("html");
+	if(isAuth()) authed(); 
+	else notAuthed();
+	update_ui();
 }
+function authed() {
+	connect();
+	addApp("http://jadders.dyndns.org:81/apps/appvote.html");
+}
+function notAuthed() {
+	$('.authed').remove();
+	$('#chatinput').val("Use login form to start chatting!");
+	addApp("http://jadders.dyndns.org:81/apps/appauth.html");
+	$.getJSON('static/auth/authchat.json', function(data) {
+		delayed_convo(data);
+	});
+}
+
 function flog(msg) {
   var ft = $('#footer');
   ft.html(ft.html() + msg);

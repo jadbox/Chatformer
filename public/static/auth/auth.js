@@ -1,5 +1,8 @@
 // JavaScript Document
-function onLoad() {
+function isAuth() {
+	return false;
+}
+function temp() {
 	var chatter = [
 	"hello there",
 	"so welcome!"

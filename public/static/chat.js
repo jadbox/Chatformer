@@ -1,11 +1,5 @@
 var conn = null;
 
-function log(msg) {
-	var control = $('#chatlog');
-	control.html(msg + '<br/>'+control.html());
-	control.scrollTop(control.scrollTop() + 1000);
-}
-
 function connect() {
 	disconnect();
 	flog_navStart("socket");
@@ -20,7 +14,7 @@ function connect() {
 	};
 
 	conn.onmessage = function(e) {
-		handleCommand(e.data, msgToApp, 0, log)
+		handleCommand(e.data, msgToApp, 0, delayed_stream)
 	};
 
 	conn.onclose = function() {

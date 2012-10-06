@@ -47,13 +47,6 @@ function handleCommand(msg, appMsg, sysMsg, regMsg) {
 	}
 }
 
-function ssplice(msg, start, end) {
-	//if(typeof(msg) != typeof(String) || msg.length < 2) return msg;
-	var arr=msg.split("");
-	arr.splice(start, end);
-	return arr.join("");
-}
-
 function isAppMsg(msg){
 	if(msg.indexOf(BAD_TOKEN) == 0) return false;
 	return msg.indexOf(APP_TOKEN)== 0 && msg.indexOf(SYS_TOKEN) != 0 && msg.length > APP_TOKEN.length;
@@ -62,4 +55,13 @@ function isSysMsg(msg) {
 	if(msg.indexOf(BAD_TOKEN) == 0) return false;
 	return msg.indexOf(SYS_TOKEN)== 0 && msg.length > SYS_TOKEN.length;
 }
-	
+//===============
+function ssplice(msg, start, end) {
+	//if(typeof(msg) != typeof(String) || msg.length < 2) return msg;
+	var arr=msg.split("");
+	arr.splice(start, end);
+	return arr.join("");
+}
+function cb(func) {
+	if(typeof(func)==typeof(Function)) func();
+} 

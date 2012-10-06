@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chatformer-> Jonathan</title>
+<title>Chatformer-> Auth</title>
 <link href="static/boilerplate.css" rel="stylesheet" type="text/css">
 <link href="static/dw.css" rel="stylesheet" type="text/css">
 <link href="static/cf.css" rel="stylesheet" type="text/css">
@@ -34,34 +34,28 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
 <script src="static/jquery.ba-postmessage.min.js"></script>
-<script src="static/site.js"></script>
 <script src="apps/chatformer_shared.js"></script>
 <script src="static/chat-window.js"></script>
-<script src="static/chat.js"></script>
-<script src="static/apps.js"></script>
-<script src="static/sys_commands.js"></script>
+<script src="static/auth/auth.js"></script>
 </head>
 <body onload="onLoad()">
 
 <div class="gridContainer">
 <div id="header-links">
-<div id="HeaderSection"><img src="imgs/phlogo.jpg"> <a href="/">Chatformer</a> | <a href="/">science</a> | <a href="/">politics</a> | <a href="/">WTF</a><div id="apProfile"><a href="/profile" alt="profile">my profile</a></div></div></div>
+<div id="HeaderSection"><img src="imgs/phlogo.jpg"> <a href="/">Chatformer</a></div></div>
 <div id="ChatLayout">
   <div id="inner-chatlayout">
 	Welcome to &lt;SCIENCE&gt;
-    <div>
-     <a id="connect" href="#">Connect</a>&nbsp;|&nbsp;Status: <span id="status">disconnected</span>
-	| <a id="reset" href="#">reset chat</a></div>
-    <form name="unused" method="get" action="#" id="chatform">
-     
-    <input name="chatinput" type="text" id="chatinput" size="56" maxlength="244">
-    <input type="submit" name="ChatSubmitBtn" id="chat-submit-btn" value="Say">
+	<form name="unused" method="get" action="#" id="chatform">
+	  
+	  <input name="chatinput" type="text" disabled id="chatinput" placeholder="Please register first before chatting!" size="56" maxlength="244">
+    <input name="ChatSubmitBtn" type="submit" disabled id="chat-submit-btn" value="Say">
 </form>
     <div id="chatlog"></div>
 
   
 </div></div>
-<div id="AppSection"><div id="inner-applayout">
+<div id="AppSection"><div id="inner-applayout">aa
   
 </div></div>
 <div id="footer-layout"><div id="footer">Use of this site constitutes acceptance of our User Agreement and Privacy Policy. © 2012 chatformer inc. All rights reserved.

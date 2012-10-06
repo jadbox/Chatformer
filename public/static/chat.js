@@ -1,14 +1,9 @@
-
 var conn = null;
 
 function log(msg) {
 	var control = $('#chatlog');
 	control.html(msg + '<br/>'+control.html());
 	control.scrollTop(control.scrollTop() + 1000);
-}
-
-function isAppMsg(msg) {
-return msg.charAt(0)=="!" && msg.length > 1;
 }
 
 function connect() {
@@ -25,12 +20,7 @@ function connect() {
 	};
 
 	conn.onmessage = function(e) {
-		var msg = e.data;
-		if(isAppMsg(msg)) {
-			msgToApp(msg);
-		} else {
-			log('Received: ' + msg);
-		}
+		handleCommand(e.data, msgToApp, 0, log)
 	};
 
 	conn.onclose = function() {
@@ -80,8 +70,11 @@ $(function() {
 
 	$('#chatform').submit(function() {
 		var msg = $('#chatinput').val();
-		if(isAppMsg(msg)==false) {
-			log('Sending: ' + msg);
+		if(isSysMsg(msg) == true) {
+			return; // no sys msgs allowed
+		}
+		else if(isAppMsg(msg)==true) {
+			log('>> ' + msg);
 		}
 		conn.send(msg);
 		
@@ -89,48 +82,3 @@ $(function() {
 		return false;
 	});
 });
-// =========== apps ==============
-function msgToApp(msg) {
-	if(activeIFrames.length==0) return;
-	for(i in activeIFrames) { 
-		var _iwin = activeIFrames[i].get(0).contentWindow;
-		var _isrc = activeIFrames[i].attr('src');
-		//log("sending msg to iframe: #"+_iwin); // can only be used on same domain
-		$.postMessage(msg, get_domain(_isrc), _iwin);
-	}
-}
-
-var numApps = 0;
-var activeIFrames = [];
-function addApp(src) {
-	numApps++;
-	var id = "app"+numApps;
-	var isrc = src+'#' + encodeURIComponent( document.location.href );
-	var frameCode = '<iframe " src="' + isrc + '" scrolling="no" id="'+id+'" frameborder="0">Loading...<\/iframe>';
-	var _frame = $(frameCode).appendTo( '#inner-applayout' );
-	activeIFrames.push( _frame );
-	addAppListener(src, _frame);
-}
-
-function addAppListener(src, frameObject) {
-	src = get_domain(src);
-$.receiveMessage(
-  function(e){
- //  alert( e.data.indexOf("!!resize") );
-   	if(e.data.indexOf("!!resize") == 0) { resizeIFrameMsg(e.data, frameObject); return; }
-	$('#chatinput').val(''+e.data);
-	$('#chatinput').focus();
-  },
-  get_domain(src)//'http://jadders.dyndns.org:81' // remote domain
-);
-}
-
-function get_domain(src) {
- return src.replace( /([^:]+:\/\/[^\/]+).*/, '$1' );
-}
-
-function resizeIFrameMsg(msg, frameObject) {
-	var _height = parseInt(msg.replace("!!resize=", ""));
-	$(frameObject).height(_height);
-	return;
-}

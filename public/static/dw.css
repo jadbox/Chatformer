@@ -3,6 +3,7 @@
    Note: Fluid media requires that you remove the media's height and width attributes from the HTML
    http://www.alistapart.com/articles/fluid-images/ 
 */
+
 img, object, embed, video {
 	max-width: 100%;
 }
@@ -34,13 +35,6 @@ img, object, embed, video {
 	width: 95%;
 	padding-left: 1%;
 	padding-right: 4%;
-}
-#ChatSection {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
 }
 #ChatLayout {
 	clear: both;
@@ -79,20 +73,6 @@ img, object, embed, video {
 	width: 95.35%;
 	padding-left: 2.325%;
 	padding-right: 2.325%;
-}
-#LayoutDiv1 {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#ChatSection {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
 }
 #ChatLayout {
 	clear: both;
@@ -133,20 +113,8 @@ img, object, embed, video {
 	padding-left: .5%;
 	padding-right: 1.5%;
 	margin: auto;
-}
-#LayoutDiv1 {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#ChatSection {
-	clear: none;
-	float: left;
-	margin-left: 3.4482%;
-	width: 100%;
-	display: block;
+	
+	/*float: left;display: table;*/
 }
 #ChatLayout {
 	clear: both;
@@ -154,6 +122,8 @@ img, object, embed, video {
 	margin-left: 0;
 	width: 48.2758%;
 	display: block;
+	
+	/*display: table-cell;vertical-align: top;margin: -50px 0px -75px;*/
 }
 #AppSection {
 	clear: none;
@@ -161,6 +131,8 @@ img, object, embed, video {
 	margin-left: 3.4482%;
 	width: 48.2758%;
 	display: block;
+	
+	/*display: table-cell;vertical-align: top;margin: -50px 0px -75px;*/
 }
 #HeaderSection {
 	clear: both;
@@ -176,5 +148,7 @@ img, object, embed, video {
 	margin-left: 0;
 	width: 100%;
 	display: block;
+	/*margin-top: -75px; height: 75px;
+	clear: left; position: relative;*/
 }
 }

@@ -1,5 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
+html, body, .gridContainer {
+	height:100%;
+}
+#AppSection, #ChatLayout {
+	height:50%;
+}
 body {
 	background-color: #0CF;
 	font: normal x-small Verdana, Geneva, sans-serif;
@@ -22,7 +28,7 @@ a img{border:0 none}
 }
 #chatlog {
 	width:98%;
-	min-height: 250px;
+	min-height: 150px;
 }
 #chatinput {
 	width: 80%;
@@ -40,7 +46,10 @@ a img{border:0 none}
 }
 #inner-chatlayout, #inner-applayout {
 	border: thin solid #333;
-	padding: 5px;	
+	padding: 5px;
+	
+	vertical-align: middle;
+	height:100%;
 }
 #inner-applayout iframe {
 	width:100%;
@@ -63,5 +72,5 @@ a img{border:0 none}
 #footer {
 	width:100%;
 	text-align:center;
-	margin-top:34px;
+	margin-top:12px;
 }

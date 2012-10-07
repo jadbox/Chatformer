@@ -1,6 +1,7 @@
 // JavaScript Document
 function isAuth() {
-	return false;
+	var auth_token = $.cookie('auth_token');
+	return auth_token && auth_token.length > 0;
 }
 function temp() {
 	var chatter = [

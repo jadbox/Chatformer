@@ -1,0 +1,3 @@
+#uwsgi --http :3031 --plugins python --wsgi-file app.py
+uwsgi -s 127.0.0.1:3031 --plugins python --wsgi-file app.py
+

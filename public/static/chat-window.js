@@ -1,6 +1,6 @@
 function log(msg) {
 	var control = $('#chatlog');
-	var color = '#'+Math.floor(Math.random()*16777215).toString(16);
+	var color = '#'+Math.floor(Math.random()*16777215-20000).toString(16);
 	var post = $('<div style="color:'+color+'"/>');
 	post.html(msg);
 	control.prepend(post);

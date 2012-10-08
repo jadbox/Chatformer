@@ -1,0 +1,1 @@
+uwsgi -x apu_uwsgi.xml

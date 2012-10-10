@@ -5,6 +5,7 @@
 #import bottle
 from bottle import app, route, run, default_app
 import redis
+from passlib.hash import sha256_crypt
 
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
@@ -12,6 +13,7 @@ r = redis.StrictRedis(host='localhost', port=6379, db=0)
 def save_name(name):
 	r.set(name, 'created value')
 	return 'Saved %s!' % name
+	# sha256_crypt.encrypt("toomanysecrets")
 
 @route('/api/get/<name>')
 def get_name(name):
@@ -19,6 +21,7 @@ def get_name(name):
 	resp = {}
 	resp[name] = val
 	return resp
+	# sha256_crypt.verify("toomanysecrets", hash)
 
 @route('/api')
 def root():

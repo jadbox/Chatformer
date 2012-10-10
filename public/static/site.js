@@ -10,7 +10,7 @@ function authed() {
 }
 function notAuthed() {
 	$('.authed').remove();
-	$('#chatinput').val("Use login form to start chatting!");
+	//$('#chatinput').val("Use login form to start chatting!");
 	addApp("http://jadders.dyndns.org:81/apps/appauth.html");
 	$.getJSON('static/auth/authchat.json', function(data) {
 		delayed_convo(data);

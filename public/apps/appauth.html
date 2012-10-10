@@ -83,7 +83,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <!--<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.jssss"></script>-->
 <script src="jquery.ba-postmessage.min.js"></script>
-<script src="appvote.js"></script>
+<script src="appauth.js"></script>
 <script src="chatformer_shared.js"></script>
 </head>
 
@@ -91,14 +91,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 <div class="container">
   <div class="content">
-    <div data-role="header">
-	<h3>Login or Register</h3>
-	</div>
-    
-    <form method="post" action="https://ssl.reddit.com/post/login" id="login_login-main" class="login-form login-form-side"><input type="hidden" name="op" value="login-main" /><input name="user" placeholder="username" type="text" maxlength="20" tabindex="1"/><br/><input name="passwd" placeholder="password" type="password" tabindex="1"/><div id="remember-me"><input type="checkbox" name="rem" id="rem-login-main" tabindex="1" /><label for="rem-login-main">remember me</label><br/><a class="recover-password" href="/password">reset password</a></div></form>
-    
-    Results:
-    <div id="tally"></div><br />
+	<h3>Welcome, please sign up (or log in) here!</h3>
+    <form method="post" action="https://ssl.reddit.com/post/login" id="login_login-main" class="login-form login-form-side"><input type="hidden" name="op" value="login-main" /><input name="user" placeholder="username" type="text" maxlength="20" tabindex="1"/><br/><input name="passwd" placeholder="password" type="password" tabindex="1"/><div id="remember-me">
+<input type="button" name="button" id="button" value="I'm BACK!" /> or
+        <input type="button" name="button2" id="button2" value="I'm NEW! (terms popup)" />
+        <br/><a class="recover-password" href="/password">reset password</a></div></form>        
 	
     <!-- end .content --></div>
   <!-- end .container --></div>

@@ -13,19 +13,13 @@ $(function() {
 function handleSysMsg(msg) {
 }
 
-var voteData = {};
+
 function handleAppMsg(msg) {
 	var data = msg.split(" ");
-	if (data[0] == "vote") {
-		//alert("a "+data[1]);
-		var c = voteData[data[1]] || 0;
-		voteData[data[1]] = c + 1;
-
-		var comp = $('#tally');
-		comp.html('');
-		for (var i in voteData) {
-			comp.html(comp.html() + " " + i + ":" + voteData[i])
-		}
-		//$("input[name=VoteGroup]").attr("disabled", "disabled"); // only for auth user
+	if (data[0] == "name" || data[0] == "n") {
+		$("input[name=user]").val(data[1]);
+	}
+	if (data[0] == "p" || data[0] == "pw" || data[0] == "pass" || data[0] == "password") {
+		$("input[name=passwd]").val(data[1]);
 	}
 }

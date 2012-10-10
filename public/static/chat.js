@@ -36,17 +36,20 @@ function disconnect() {
 	}
 }
 
+function isConnected() {
+	return (conn != null && conn.readyState == SockJS.OPEN);
+}
 function update_ui() {
 	var msg = '';
 
-	if (conn == null || conn.readyState != SockJS.OPEN) {
+	if (isConnected()==false) {
 		$('#status').text('disconnected');
 		//$('#connect').text('Connect');
-		$("#inner-chatlayout").find("input").prop('disabled', true);
+		///$("#inner-chatlayout").find("input").prop('disabled', true);
 	} else {
 		$('#status').text('connected (' + conn.protocol + ')');
 		//$('#connect').text('Disconnect');
-		$("#inner-chatlayout").find("input").prop('disabled', false);
+		///$("#inner-chatlayout").find("input").prop('disabled', false);
 	}
 }
 
@@ -69,12 +72,17 @@ $(function() {
 	$('#chatform').submit(function() {
 		var msg = $('#chatinput').val();
 		if(isSysMsg(msg) == true) {
-			return; // no sys msgs allowed
+			return false; // no sys msgs allowed
 		}
 		else if(isAppMsg(msg)==true) {
 			log('>> ' + msg);
 		}
-		conn.send(msg);
+		
+		if (isConnected()) {
+			conn.send(msg);
+		} else handleCommand(msg, msgToApp, 0, function(e) {
+			log("Chatting not allowed until your logged in!")
+		}); //offline
 		
 		$('#chatinput').val('').focus();
 		return false;

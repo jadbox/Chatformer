@@ -75,7 +75,8 @@ $(function() {
 			return false; // no sys msgs allowed
 		}
 		else if(isAppMsg(msg)==true) {
-			log('>> ' + msg);
+			var a = msg.split(" ");
+			log('<i>sent to app: '+a[0]+'</i>');
 		}
 		
 		if (isConnected()) {

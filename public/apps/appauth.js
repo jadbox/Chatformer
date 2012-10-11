@@ -36,12 +36,16 @@ function post_reg(name, pwd) {
 	$.post("/api/save/"+name, { "pwd": pwd },
 		function(data){
 			console.log("reg status:"+data.status);
-			cf.resize();
+			
 			
 			if(data.status=="success") {
 				//login(data.name, data.auth_token);
 				post_login(name, pwd);
 			}
+			if(data.status=="exists") {
+				alert("user name already exists");
+			}
+			cf.resize();
  		}, "json");
 }
 

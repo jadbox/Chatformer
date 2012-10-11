@@ -25,9 +25,11 @@ def logout(name):
 def save_name(name):
 	name = string.lower(name)
 	pwd = request.forms.pwd
+	if db.userExists(name)==True:
+		return {'status':'exists'}
 	pwd_crypt = sha256_crypt.encrypt(pwd)
 	data = {"pwd":pwd_crypt, "created":"%s"%date.today()}
-	db.userSave(name)
+	db.userSave(name, data)
 	return {'status':'success'}
 
 @route('/api/get/<name>', method='POST')

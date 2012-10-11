@@ -11,22 +11,43 @@ $(function() {
 		login(user_name.val(), user_pwd.val());
 		return false;
 	});
-
+	$("#reg").click(function() {
+		//var voteval = $("input[name=VoteGroup]:checked").val();
+		reg(user_name.val(), user_pwd.val());
+		return false;
+	});
 
 });
 
 function login(name, pwd) {
 	$.post("/api/get/"+name, { "pwd": pwd },
 		function(data){
-			$(".content").append(data.name+ " "+data.note);
+			console.log("info: "+data.status+data.name+ " "+data.created);
+			if(data.status=="success") {
+				
+			}
 			//console.log(data.name); 
-			cf.resize();
+			//cf.resize();
+			//success()
  		}, "json");
 }
+
 function reg(name, pwd) {
+	$.post("/api/save/"+name, { "pwd": pwd },
+		function(data){
+			console.log("reg status:"+data.status);
+			//console.log(data.name); 
+			cf.resize();
+			if(data.status=="success") {
+				
+			}
+ 		}, "json");
 }
+
 function forgot_pwd() {
+	
 }
+
 function success() {
 	cf.system('reload');
 }

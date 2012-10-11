@@ -12,8 +12,16 @@ function cf_app_startup(appRecieverFunc, sysRecieverFunc, msgFunc) {
 	
 	$.receiveMessage(handleCommandListener(appRecieverFunc, sysRecieverFunc, msgFunc), parent_url);
 	
-	function post(msg) {
+	function action(msg) {
 		$.postMessage(APP_TOKEN+msg, parent_url, parent);
+	}
+	
+	function system(msg) {
+		$.postMessage(SYS_TOKEN+msg, parent_url, parent);
+	}
+	
+	function say(msg) {
+		$.postMessage(msg, parent_url, parent);
 	}
 	
 	function msgResize() {
@@ -24,7 +32,7 @@ function cf_app_startup(appRecieverFunc, sysRecieverFunc, msgFunc) {
 	
 	msgResize();
 	
-	return {post: post};
+	return {action: action, say: say, system:system};
 };
 //====
 function handleCommandListener(appMsg, sysMsg, regMsg) {

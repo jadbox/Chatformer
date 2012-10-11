@@ -3,7 +3,7 @@ $(function() {
 
 	$("input[type='radio']").change(function() {
 		var voteval = $("input[name=VoteGroup]:checked").val();
-		cf.post('vote ' + voteval);
+		cf.action('vote ' + voteval);
 		return false;
 	});
 

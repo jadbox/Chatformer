@@ -1,6 +1,6 @@
 // JavaScript Document
 function isAuth() {
-	var auth_token = $.cookie('auth_token');
+	var auth_token = $.cookie('auth_token') || '';
 	return auth_token && auth_token.length > 0;
 }
 function temp() {

@@ -1,9 +1,9 @@
 $(function() {
 	var cf = cf_app_startup(handleAppMsg, handleSysMsg, 0);
 
-	$("input[type='radio']").change(function() {
-		var voteval = $("input[name=VoteGroup]:checked").val();
-		cf.post('vote ' + voteval);
+	$("#login").click(function() {
+		//var voteval = $("input[name=VoteGroup]:checked").val();
+		cf.system('reload');
 		return false;
 	});
 

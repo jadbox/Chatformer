@@ -8,48 +8,48 @@ $(function() {
 
 	$("#login").click(function() {
 		//var voteval = $("input[name=VoteGroup]:checked").val();
-		login(user_name.val(), user_pwd.val());
+		post_login(user_name.val(), user_pwd.val());
 		return false;
 	});
 	$("#reg").click(function() {
 		//var voteval = $("input[name=VoteGroup]:checked").val();
-		reg(user_name.val(), user_pwd.val());
+		post_reg(user_name.val(), user_pwd.val());
 		return false;
 	});
 
 });
 
-function login(name, pwd) {
+function post_login(name, pwd) {
 	$.post("/api/get/"+name, { "pwd": pwd },
 		function(data){
 			console.log("info: "+data.status+data.name+ " "+data.created);
 			if(data.status=="success") {
-				
+				login(name);
 			}
 			//console.log(data.name); 
 			//cf.resize();
-			//success()
+			
  		}, "json");
 }
 
-function reg(name, pwd) {
+function post_reg(name, pwd) {
 	$.post("/api/save/"+name, { "pwd": pwd },
 		function(data){
 			console.log("reg status:"+data.status);
 			//console.log(data.name); 
 			cf.resize();
 			if(data.status=="success") {
-				
+				login(name);
 			}
  		}, "json");
 }
 
+function login(name) {
+	//$.cookie('auth_token', name, { expires: 1, path: '/' });
+	cf.system('reload '+name+' '+'mytoken');
+}
 function forgot_pwd() {
 	
-}
-
-function success() {
-	cf.system('reload');
 }
 
 function handleSysMsg(msg) {

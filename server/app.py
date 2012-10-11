@@ -8,11 +8,12 @@ import redis
 import json
 from passlib.hash import sha256_crypt
 from datetime import date
-
+import string
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 @route('/api/save/<name>', method='POST')
 def save_name(name):
+	name = string.lower(name)
 	pwd = request.forms.pwd
 	pwd_crypt = sha256_crypt.encrypt(pwd)
 	data = {"pwd":pwd_crypt, "created":"%s"%date.today()}
@@ -24,6 +25,7 @@ def save_name(name):
 
 @route('/api/get/<name>', method='POST') #, method='POST'
 def get_name(name):
+	name = string.lower(name)
 	pwd = request.forms.pwd
 	if r.exists(name)==False: return {"status":"invalid"}
 	#rdata = r.get(name)

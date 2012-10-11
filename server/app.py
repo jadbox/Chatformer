@@ -3,7 +3,7 @@
 #    return ["Hello World!"]
 
 #import bottle
-from bottle import app, route, run, default_app
+from bottle import app, route, run, default_app, request
 import redis
 from passlib.hash import sha256_crypt
 
@@ -15,13 +15,20 @@ def save_name(name):
 	return 'Saved %s!' % name
 	# sha256_crypt.encrypt("toomanysecrets")
 
-@route('/api/get/<name>')
+@route('/api/get/<name>', method='POST') #, method='POST'
 def get_name(name):
+	pwd = request.forms.pwd
+	correct = pwd=="test"
 	val = r.get(name)
-	resp = {}
-	resp[name] = val
+	resp = {"name":name, "note":val, "pwdIsCorrect":correct}
 	return resp
 	# sha256_crypt.verify("toomanysecrets", hash)
+
+@route('/api/gettt/<name>')
+def get_name(name):
+	val = r.get(name)
+	resp = {"name":name, "note":val}
+	return resp
 
 @route('/api')
 def root():

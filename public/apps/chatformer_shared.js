@@ -7,7 +7,7 @@ function cf_app_startup(appRecieverFunc, sysRecieverFunc, msgFunc) {
 	if(parent_url.lastIndexOf("/")==parent_url.length-1) parent_url = parent_url.slice(0,parent_url.length-1); // fix
 	
 	$(window).resize(function(e) {
-		msgResize();
+		resize();
 	});
 	
 	$.receiveMessage(handleCommandListener(appRecieverFunc, sysRecieverFunc, msgFunc), parent_url);
@@ -24,15 +24,15 @@ function cf_app_startup(appRecieverFunc, sysRecieverFunc, msgFunc) {
 		$.postMessage(msg, parent_url, parent);
 	}
 	
-	function msgResize() {
+	function resize() {
 		var msg = SYS_TOKEN+'resize '+$('body').outerHeight( true );
 		//msg[SYS_TOKEN+'resize'] = $('body').outerHeight( true );
 		$.postMessage(msg, parent_url, parent);
 	}
 	
-	msgResize();
+	resize();
 	
-	return {action: action, say: say, system:system};
+	return {action: action, say: say, system:system, resize:resize};
 };
 //====
 function handleCommandListener(appMsg, sysMsg, regMsg) {

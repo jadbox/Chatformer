@@ -2,28 +2,40 @@
 """
     Simple sockjs-tornado chat application. By default will listen on port 8080.
 """
-import tornado.ioloop
-import tornado.web
-
+from tornado import web, ioloop
+from CFdatabase import CFdatabase
+from CFsession import CFsession
 import sockjs.tornado
+from sockjs.tornado import SockJSRouter, SockJSConnection
 
+r = CFdatabase()
+sessions = CFsession(r)
 
-class IndexHandler(tornado.web.RequestHandler):
-    """Regular HTTP handler to serve the chatroom page"""
-    def get(self):
-        self.render('index.html')
+class CloseConnection(SockJSConnection):
+    def on_open(self, info):
+        self.close()
 
+    def on_message(self, msg):
+        pass
 
-class ChatConnection(sockjs.tornado.SockJSConnection):
-    """Chat connection implementation"""
+class ChatConnection(SockJSConnection):
+    #"""Chat connection implementation"""
     # Class level variable
     participants = set()
 
     def on_open(self, info):
         # Send that someone joined
-        self.broadcast(self.participants, "Someone joined.")
-
+       
+        #logging.getLogger().debug(info.cookies)
+        auth_token = info.cookies["auth_token"].value #.replace("Set-Cookie: ", "")
+        name = info.cookies["name"].value
+        if sessions.verify(name, auth_token)==False:
+            logging.getLogger().debug("Invalid Token, closing connection for: %s" % name)
+            self.close()
+            return
+        logging.getLogger().debug("Authed user:%s token:%s" % (name, auth_token))
         # Add client to the clients list
+        self.broadcast(self.participants, "Someone joined.")
         self.participants.add(self)
 
     def on_message(self, message):
@@ -41,15 +53,14 @@ if __name__ == "__main__":
     logging.getLogger().setLevel(logging.DEBUG)
 
     # 1. Create chat router
-    ChatRouter = sockjs.tornado.SockJSRouter(ChatConnection, '/chat')
+    ChatRouter = SockJSRouter(ChatConnection, '/chat') #, user_settigns={'verify_ip': True}
+    CloseRouter = SockJSRouter(CloseConnection, '/close')
 
     # 2. Create Tornado application
-    app = tornado.web.Application(
-            [(r"/", IndexHandler)] + ChatRouter.urls
-    )
+    app = web.Application(ChatRouter.urls + CloseRouter.urls)
 
     # 3. Make Tornado app listen on port 8080
     app.listen(8080)
 
     # 4. Start IOLoop
-    tornado.ioloop.IOLoop.instance().start()
+    ioloop.IOLoop.instance().start()

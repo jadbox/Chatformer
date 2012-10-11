@@ -20,6 +20,7 @@ function connect() {
 
 	conn.onclose = function() {
 		log('Disconnected.');
+		auth_logout()
 		conn = null;
 		update_ui();
 	};

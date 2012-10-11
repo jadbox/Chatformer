@@ -4,12 +4,22 @@
 
 #import bottle
 from bottle import app, route, run, default_app, request
-import redis
 import json
+from CFdatabase import CFdatabase
+from CFsession import CFsession
 from passlib.hash import sha256_crypt
 from datetime import date
 import string
-r = redis.StrictRedis(host='localhost', port=6379, db=0)
+import logging
+
+db = CFdatabase()
+sessions = CFsession(db)
+
+@route('/api/logout/<name>', method='POST')
+def logout(name):
+	token = request.forms.auth_token
+	if sessions.verify(name, token): sessions.delete(name)
+	return {'status':'success'}
 
 @route('/api/save/<name>', method='POST')
 def save_name(name):
@@ -17,35 +27,26 @@ def save_name(name):
 	pwd = request.forms.pwd
 	pwd_crypt = sha256_crypt.encrypt(pwd)
 	data = {"pwd":pwd_crypt, "created":"%s"%date.today()}
-	r.delete(name)
-	r.hmset(name, data)
-	#r.pipeline().hmset(name, data).execute()
-	#r.set(name, json.dumps(data))
+	db.userSave(name)
 	return {'status':'success'}
 
-@route('/api/get/<name>', method='POST') #, method='POST'
+@route('/api/get/<name>', method='POST')
 def get_name(name):
 	name = string.lower(name)
 	pwd = request.forms.pwd
-	if r.exists(name)==False: return {"status":"invalid"}
-	#rdata = r.get(name)
+	if db.userExists(name)==False: return {"status":"invalid"}
 
-	data = r.hgetall(name)
-	#json.loads()
+	data = db.userGet(name)
 	correct = sha256_crypt.verify(pwd, data["pwd"])
 	if correct==False: return {"status":"invalid"}
-	resp = {"status":"success", "name":name, "created":data["created"]}
-	return resp
-	# sha256_crypt.verify("toomanysecrets", hash)
+	resp = {"status":"success", "name":name, "created":data["created"], "auth_token":sessions.make(name)}
 
-@route('/api/gettt/<name>')
-def get_name(name):
-	val = r.get(name)
-	resp = {"name":name, "note":val}
+	#logging.getLogger().debug("Fetched user: %s" % name)
 	return resp
 
 @route('/api')
 def root():
-    return "Hello World at root!"
+    return "sup"
 
 application = app()
+logging.getLogger().setLevel(logging.DEBUG)

@@ -24,7 +24,7 @@ function post_login(name, pwd) {
 		function(data){
 			console.log("info: "+data.status+data.name+ " "+data.created);
 			if(data.status=="success") {
-				login(name);
+				login(data.name, data.auth_token);
 			}
 			//console.log(data.name); 
 			//cf.resize();
@@ -36,17 +36,18 @@ function post_reg(name, pwd) {
 	$.post("/api/save/"+name, { "pwd": pwd },
 		function(data){
 			console.log("reg status:"+data.status);
-			//console.log(data.name); 
 			cf.resize();
+			
 			if(data.status=="success") {
-				login(name);
+				//login(data.name, data.auth_token);
+				post_login(name, pwd);
 			}
  		}, "json");
 }
 
-function login(name) {
+function login(name, auth_token) {
 	//$.cookie('auth_token', name, { expires: 1, path: '/' });
-	cf.system('reload '+name+' '+'mytoken');
+	cf.system('reload '+name+' '+auth_token);
 }
 function forgot_pwd() {
 	

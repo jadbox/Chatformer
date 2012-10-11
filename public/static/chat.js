@@ -71,6 +71,7 @@ $(function() {
 	*/
 	$('#chatform').submit(function() {
 		var msg = $('#chatinput').val();
+		msg = msg.replace(/<(?:.|\n)*?>/gm, '');
 		if(isSysMsg(msg) == true) {
 			return false; // no sys msgs allowed
 		}

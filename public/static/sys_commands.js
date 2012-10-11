@@ -1,5 +1,8 @@
 function handleCoreCommand(msg, frameObject) {
 	if(msg.indexOf("resize") == 0) { resizeIFrameMsg(msg, frameObject); } 	
+	if(msg.indexOf("reload") == 0 && isAuth()==false) { 
+		window.location.reload();
+	} 	
 }
 
 function resizeIFrameMsg(msg, frameObject) {

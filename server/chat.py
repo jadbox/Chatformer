@@ -33,7 +33,7 @@ class ChatConnection(SockJSConnection):
             logging.getLogger().debug("Invalid Token, closing connection for: %s" % name)
             self.close()
             return
-        logging.getLogger().debug("Authed user:%s token:%s" % (name, auth_token))
+        logging.getLogger().debug("Authed user:%s" % (name))
         # Add client to the clients list
         self.broadcast(self.participants, "Someone joined.")
         self.participants.add(self)
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     logging.getLogger().setLevel(logging.DEBUG)
 
     # 1. Create chat router
-    ChatRouter = SockJSRouter(ChatConnection, '/chat') #, user_settigns={'verify_ip': True}
+    ChatRouter = SockJSRouter(ChatConnection, '/chat', user_settings={'verify_ip': True}) #
     CloseRouter = SockJSRouter(CloseConnection, '/close')
 
     # 2. Create Tornado application

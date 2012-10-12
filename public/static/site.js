@@ -1,3 +1,5 @@
+window['onLoad'] = onLoad;
+
 function onLoad() {
 	flog_navStart("html");
 	if(isAuth()) authed(); 

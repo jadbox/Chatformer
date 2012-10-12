@@ -25,49 +25,51 @@ Do the following if you're using your customized build of modernizr (http://www.
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
-
+<link rel="stylesheet" href="static/themes/mint-choc/jquery-ui.css" />
+<link rel="stylesheet" href="static/themes/mint-choc/jquery-ui.theme.css" />
 <script src="static/respond.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
-<script src="static/jquery.ba-postmessage.min.js"></script>
-<script src="static/jquery.cookie.js"></script>
-<script src="static/auth/auth.js"></script>
-<script src="static/site.js"></script>
 <script src="apps/chatformer_shared.js"></script>
+
+<script src="apps/jquery.ba-postmessage.min.js"></script>
+<script src="apps/jquery.cookie.js"></script>
+
+<script src="static/auth.js"></script>
+<script src="static/site.js"></script>
 <script src="static/chat-window.js"></script>
 <script src="static/chat.js"></script>
 <script src="static/apps.js"></script>
 <script src="static/sys_commands.js"></script>
+
+<!--<script src="static/compiled/cf111012.js"></script>-->
 </head>
 <body onload="onLoad()">
-
 <div class="gridContainer">
-<div id="header-links">
-<div id="HeaderSection"><img src="imgs/phlogo.jpg"> <a href="/">Chatformer</a><span class="authed"> | <a href="/">science</a> | <a href="/">politics</a> | <a href="/">WTF</a><div id="apProfile"><a href="/profile" alt="profile" id="profile">my profile</a></div></span></div></div>
-<div id="ChatLayout">
-  <div id="inner-chatlayout">
-	Welcome to &lt;SCIENCE&gt;
-    <div class="authed">
-    Status: <span id="status">disconnected</span>
-	| <a id="reset" href="#">reset chat</a></div>
-    <form name="unused" method="get" action="#" id="chatform">
-     
-    <input name="chatinput" type="text" id="chatinput" size="56" maxlength="244">
-    <input name="ChatSubmitBtn" type="submit" id="chat-submit-btn" value="Say">
-</form>
-    <div id="chatlog"></div>
-
-  
-</div></div>
-<div id="AppSection"><div id="inner-applayout">
-  
-</div></div>
-<div id="footer-layout"><div id="footer">Use of this site constitutes acceptance of our User Agreement and Privacy Policy. © 2012 chatformer inc. All rights reserved.
-    <br>CHATFORMER Logo are registered trademarks of chatformer inc.</div></div>
+  <div id="header-links">
+    <div id="HeaderSection"><img src="imgs/phlogo.jpg"> <a href="/">Chatformer</a><span class="authed"> | <a href="/">science</a> | <a href="/">politics</a> | <a href="/">WTF</a>
+      <div id="apProfile"><a href="/profile" alt="profile" id="profile">my profile</a></div>
+      </span></div>
+  </div>
+  <div id="ChatLayout">
+    <div id="inner-chatlayout"><h4>Welcome to &lt;SCIENCE&gt;</h4>
+      <span class="authed"> Status: <span id="status">disconnected</span> | <a id="reset" href="#">reset chat</a></span>
+      <form name="unused" method="get" action="#" id="chatform">
+        <input name="chatinput" type="text" id="chatinput" size="56" maxlength="244">
+        <button>Say</button>
+        <input name="ChatSubmitBtn" type="submit" id="chat-submit-btn" value="Say">
+      </form>
+      <p id="chatlog"></p>
+    </div>
+  </div>
+  <div id="AppSection">
+    <div id="inner-applayout"> </div>
+  </div>
+  <div id="footer-layout">
+    <div id="footer">Use of this site constitutes acceptance of our User Agreement and Privacy Policy. © 2012 chatformer inc. All rights reserved. <br>
+      CHATFORMER Logo are registered trademarks of chatformer inc.</div>
+  </div>
 </div>
 </body>
 </html>

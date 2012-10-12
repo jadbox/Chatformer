@@ -7,7 +7,6 @@
 <!--
 body {
 	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	background-color: #4E5869;
 	margin: 0;
 	padding: 0;
 	color: #000;
@@ -43,7 +42,6 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
 .container {
 	width: 100%;
-	background-color: #FFF;
 	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
 }
 
@@ -79,20 +77,23 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 -->
 </style>
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <!--<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.jssss"></script>-->
 <script src="jquery.ba-postmessage.min.js"></script>
 <script src="appauth.js"></script>
 <script src="chatformer_shared.js"></script>
 <script src="../static/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 </head>
 
 <body>
 
 <div class="container">
   <div class="content">
-	<h3>Welcome, please sign up (or log in) here!</h3>
+	<h3>Please sign up (or log in) here!</h3>
     <form method="post" action="#" id="login_login-main" class="login-form login-form-side"><input type="hidden" name="op" value="login-main" /><input name="user" placeholder="username" type="text" maxlength="20" tabindex="1"/><br/><input name="passwd" placeholder="password" type="password" tabindex="1"/><div id="remember-me">
 <input type="button" name="login" id="login" value="I'm BACK!" /> or
 <input type="button" name="reg" id="reg" value="I'm NEW! (terms popup)" />
@@ -100,5 +101,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	
     <!-- end .content --></div>
   <!-- end .container --></div>
+  
+<div id="human_check"></div>
 </body>
 </html>

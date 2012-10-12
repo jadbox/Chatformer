@@ -1,9 +1,14 @@
 var cf;
 var user_name;
 var user_pwd;
+var recaptcha_challenge_field;
+var recaptcha_response_field;
 $(function() {
 	user_name = $("input[name=user]");
 	user_pwd = $("input[name=passwd]");
+	recaptcha_challenge_field = $("input[name=recaptcha_challenge_field]");
+	recaptcha_response_field = $("input[name=recaptcha_response_field]");
+	
 	cf = cf_app_startup(handleAppMsg, handleSysMsg, 0);
 
 	$("#login").click(function() {
@@ -13,12 +18,23 @@ $(function() {
 	});
 	$("#reg").click(function() {
 		//var voteval = $("input[name=VoteGroup]:checked").val();
-		post_reg(user_name.val(), user_pwd.val());
+		
+        Recaptcha.create("6LfFiNcSAAAAAJuUjMLQ0vY_C1mBD2KCQJswy1LF",
+    		"human_check",
+    		{
+      		theme: "red",
+     		 callback: function() {Recaptcha.focus_response_field();cf.resize();}
+    		}
+ 		 );
+		 cf.resize();
+		//post_reg(user_name.val(), user_pwd.val());
 		return false;
 	});
-
+	
+	$("#captcha_form").submit(function() {
+		alert(recaptcha_challenge_field+"   "+recaptcha_response_field);
+	});
 });
-
 function post_login(name, pwd) {
 	$.post("/api/get/"+name, { "pwd": pwd },
 		function(data){
@@ -33,6 +49,8 @@ function post_login(name, pwd) {
 }
 
 function post_reg(name, pwd) {
+	
+	
 	$.post("/api/save/"+name, { "pwd": pwd },
 		function(data){
 			console.log("reg status:"+data.status);

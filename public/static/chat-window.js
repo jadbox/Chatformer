@@ -3,6 +3,7 @@ function log(msg) {
 	var color = '#'+Math.floor(Math.random()*16777215-20000).toString(16);
 	var post = $('<div style="color:'+color+'"/>');
 	post.html(msg);
+	$(post).fadeIn('slow');
 	control.prepend(post);
 
 	return post;

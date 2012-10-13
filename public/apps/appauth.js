@@ -43,7 +43,7 @@ function addCaptcha() {
 }*/
 function addCaptcha() {
 	$('<input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="5"/><label for="pwdc"></label>').appendTo("#human_check").focus();
-	$('<br/><input name="email" id="email" placeholder="email (optional)" type="text" tabindex="6"/><br/><label for="email" style="font-size:x-small">* email is used for premium features and EPIC updates only!</label>').appendTo("#human_check");
+	$('<br/><input name="email" id="email" placeholder="email address" type="text" tabindex="6"/><br/><label for="email" style="font-size:x-small">* email is used for premium features and EPIC updates only!</label>').appendTo("#human_check");
 }
 function moveRegBtn() {
 	var reg = $("#reg");//.remove();
@@ -67,13 +67,15 @@ function post_login(name, pwd) {
 }
 
 function post_reg(name, pwd) {
+	var email = $("#email").val();
 	var pwdc = $("#pwdc").val();
 	if(name=="") { alert("Name field empty"); return; }
+	if(email=="") { alert("Email field empty"); return; }
 	if(pwd=="") { alert("Password field empty"); return; }
 	if(pwdc=="") { alert("Password confirmation field empty"); return; }
 	if(pwdc!=pwd) { alert("Password doesn't match!"); return; }
 	
-	var data = { "pwd": pwd, "pwdc": pwdc }
+	var data = { "pwd": pwd, "pwdc": pwdc, "email":email}
 	//"recaptcha_challenge_field":challenge_field.val(), 
 	//"recaptcha_response_field":response_field.val()};
 	//alert(response_field.val()+ "  "+challenge_field.val());
@@ -85,7 +87,7 @@ function post_reg(name, pwd) {
 				//login(data.name, data.auth_token);
 				post_login(name, pwd);
 			} else {
-				Recaptcha.reload();
+				//Recaptcha.reload();
 				alert("Form error: "+data.status);
 			}
 			//if(data.status=="exists") {

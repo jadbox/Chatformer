@@ -29,7 +29,7 @@ def save_name(name):
 #		return {'status':'captcha '+ cap_validate}
 	name = string.lower(name)
 	pwd = request.forms.pwd or ''
-	if pwd.__len__() > 24 or pwd.__len__() < 7:
+	if pwd.__len__() > 24 or pwd.__len__() < 6:
 		return {'status':'Password size error.'}
 	if name.__len__() > 24 or name.__len__() < 1:
 		return {'status':'Name size error.'}
@@ -40,8 +40,12 @@ def save_name(name):
 	pwd_crypt = sha256_crypt.encrypt(pwd)
 	data = {"pwd":pwd_crypt, "created":"%s"%date.today()}
 	data["ip"] = request['REMOTE_ADDR']
-	if "@" in request.forms.email and "." in request.forms.email:
+
+
+	if "@" in request.forms.email and "." in request.forms.email and request.forms.email.__len__() > 6:
 		data["email"] = request.forms.email
+	else:
+		return {'statis':'invalid email address'}
 	db.userSave(name, data)
 	return {'status':'success'}
 

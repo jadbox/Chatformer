@@ -42,11 +42,12 @@ function addCaptcha() {
  	 );
 }*/
 function addCaptcha() {
-	$('<label for="pwdc"></label><input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="1"/>').appendTo("#human_check");
-	$('<br/><input name="email" id="email" placeholder="email (optional)" type="text" tabindex="1"/><br/><label for="email" style="font-size:x-small">* email is used for EPIC updates only!</label>').appendTo("#human_check");
+	$('<label for="pwdc"></label><input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="5"/>').appendTo("#human_check").focus();
+	$('<br/><input name="email" id="email" placeholder="email (optional)" type="text" tabindex="6"/><br/><label for="email" style="font-size:x-small">* email is used for EPIC updates only!</label>').appendTo("#human_check");
 }
 function moveRegBtn() {
 	var reg = $("#reg");//.remove();
+	reg.attr("tabindex", "7");
 	reg.appendTo("#login_login-main");
 	reg.val("I've confirmed my password!");
 }

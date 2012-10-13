@@ -9,6 +9,7 @@ from CFdatabase import CFdatabase
 from CFsession import CFsession
 from passlib.hash import sha256_crypt
 from datetime import date
+
 import string
 import logging
 
@@ -23,12 +24,22 @@ def logout(name):
 
 @route('/api/save/<name>', method='POST')
 def save_name(name):
+	#cap_validate = validate(request)
+	#if cap_validate!=-1: 
+#		return {'status':'captcha '+ cap_validate}
 	name = string.lower(name)
-	pwd = request.forms.pwd
+	pwd = request.forms.pwd or ''
+	if pwd.__len__() > 24 or pwd.__len__() < 1:
+		return {'status':'Password size error.'}
+	if name.__len__() > 24 or name.__len__() < 1:
+		return {'status':'Name size error.'}
+	if request.forms.pwdc != pwd:
+		return {'status':'password confirmation does not match.'}
 	if db.userExists(name)==True:
 		return {'status':'exists'}
 	pwd_crypt = sha256_crypt.encrypt(pwd)
 	data = {"pwd":pwd_crypt, "created":"%s"%date.today()}
+	data["ip"] = request['REMOTE_ADDR']
 	db.userSave(name, data)
 	return {'status':'success'}
 

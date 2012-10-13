@@ -102,6 +102,9 @@ img, object, embed, video {
 	width: 100%;
 	display: block;
 }
+#AppSection, #ChatLayout {
+	height:100%;
+}
 }
 
 /* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
@@ -150,5 +153,8 @@ img, object, embed, video {
 	display: block;
 	/*margin-top: -75px; height: 75px;
 	clear: left; position: relative;*/
+}
+#AppSection, #ChatLayout {
+	height:100%;
 }
 }

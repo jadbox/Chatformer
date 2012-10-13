@@ -3,9 +3,7 @@
 html, body, .gridContainer {
 	height:100%;
 }
-#AppSection, #ChatLayout {
-	height:100%;
-}
+
 body {
 	background:url(themes/mushroom/bg.jpg) #242424;
 	background-position:bottom right;

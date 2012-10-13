@@ -43,6 +43,7 @@ function addCaptcha() {
 }*/
 function addCaptcha() {
 	$('<label for="pwdc"></label><input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="1"/>').appendTo("#human_check");
+	$('<br/><input name="email" id="email" placeholder="email (optional)" type="text" tabindex="1"/><br/><label for="email" style="font-size:x-small">* email is used for EPIC updates only!</label>').appendTo("#human_check");
 }
 function moveRegBtn() {
 	var reg = $("#reg");//.remove();

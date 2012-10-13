@@ -40,6 +40,8 @@ def save_name(name):
 	pwd_crypt = sha256_crypt.encrypt(pwd)
 	data = {"pwd":pwd_crypt, "created":"%s"%date.today()}
 	data["ip"] = request['REMOTE_ADDR']
+	if "@" in request.forms.email and "." in request.forms.email:
+		data["email"] = request.forms.email
 	db.userSave(name, data)
 	return {'status':'success'}
 

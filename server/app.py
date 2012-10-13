@@ -29,7 +29,7 @@ def save_name(name):
 #		return {'status':'captcha '+ cap_validate}
 	name = string.lower(name)
 	pwd = request.forms.pwd or ''
-	if pwd.__len__() > 24 or pwd.__len__() < 1:
+	if pwd.__len__() > 24 or pwd.__len__() < 7:
 		return {'status':'Password size error.'}
 	if name.__len__() > 24 or name.__len__() < 1:
 		return {'status':'Name size error.'}

@@ -74,6 +74,9 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 	font-size: 1px;
 	line-height: 0px;
 }
+label {
+	font-size:x-small;
+}
 -->
 </style>
 
@@ -92,9 +95,10 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 <div class="container">
   <div class="content">
-	<h3>Please sign up (or log in) here!</h3>
-    <form method="post" action="#" id="login_login-main" class="login-form login-form-side"><input type="hidden" name="op" value="login-main" /><input name="user" placeholder="username" type="text" maxlength="20" tabindex="1"/><br/><input name="pwd" type="password" id="pwd" placeholder="password" tabindex="2" maxlength="24"/>
-      <br/>
+	<h3>Tell me about youself!</h3>
+    <form method="post" action="#" id="login_login-main" class="login-form login-form-side"><input type="hidden" name="op" value="login-main" />
+    <label for="user">Display name and login:</label><br/><input name="user" id="user" placeholder="username" type="text" maxlength="20" tabindex="1"/><br/>
+    <label for="pwd">Your password, ideally 12 characters upper and lowercase:</label><br/><input name="pwd" type="password" id="pwd" placeholder="password" tabindex="2" maxlength="24"/><br/>
 <input type="button" name="login" id="login" value="I'm BACK!" tabindex="3"/> or
 <input type="button" name="reg" id="reg" value="I'm NEW! (terms popup)" tabindex="4"/>
     <div id="human_check"></div></form>        

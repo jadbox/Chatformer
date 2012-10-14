@@ -4,7 +4,14 @@ var user_pwd;
 var challenge_field;
 var response_field;
 var captcha_loaded;
+var local;
 $(function() {
+	$.getJSON('../static/lang/eng.json', function(data) {
+		local = data;
+		start();
+	});
+});
+function start() {
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val($.cookie('name'));
@@ -27,7 +34,7 @@ $(function() {
 		cf.resize();
 		return false;
 	});
-});
+}
 /*
 function addCaptcha() {
 	Recaptcha.create("6LfFiNcSAAAAAJuUjMLQ0vY_C1mBD2KCQJswy1LF",
@@ -55,10 +62,10 @@ function post_login(name, pwd) {
 	$.post("/api/get/"+name, { "pwd": pwd },
 		function(data){
 			console.log("info: "+data.status+data.name+ " "+data.created);
-			if(data.status=="success") {
+			if(data.status=="0") {
 				login(data.name, data.auth_token);
 			} else {
-				alert("Login error: "+data.status);
+				alert("Login error: "+local.auth_status[data.status]);
 			}
 			//console.log(data.name); 
 			//cf.resize();
@@ -83,12 +90,12 @@ function post_reg(name, pwd) {
 		function(data){
 			console.log("reg status:"+data.status);
 					
-			if(data.status=="success") {
+			if(data.status=="0") {
 				//login(data.name, data.auth_token);
 				post_login(name, pwd);
 			} else {
 				//Recaptcha.reload();
-				alert("Form error: "+data.status);
+				alert("Registration error: "+local.auth_status[data.status]);
 			}
 			//if(data.status=="exists") {
 			//	alert("user name already exists");

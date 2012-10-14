@@ -1,10 +1,13 @@
 window['onLoad'] = onLoad;
-
+var local;
 function onLoad() {
-	flog_navStart("html");
-	if(isAuth()) authed(); 
-	else notAuthed();
-	update_ui();
+	$.getJSON('static/lang/eng.json', function(data) {
+		local=data;
+		flog_navStart("html");
+		if(isAuth()) authed(); 
+		else notAuthed();
+		update_ui();
+	});
 }
 function authed() {
 	connect();
@@ -14,9 +17,8 @@ function notAuthed() {
 	$('.authed').remove();
 	//$('#chatinput').val("Use login form to start chatting!");
 	addApp("http://jadders.dyndns.org:81/apps/appauth.html");
-	$.getJSON('static/auth/authchat.json', function(data) {
-		delayed_convo(data);
-	});
+	
+	delayed_convo(local.introchat);
 }
 
 function flog(msg) {

@@ -33,11 +33,3 @@ function getName() {
 function getAuthToken() {
 	return $.cookie('auth_token');
 }
-function temp() {
-	var chatter = [
-	"hello there",
-	"so welcome!"
-	];
-	delayed_convo(chatter);
-	//delayed_stream("So welcome!");
-}

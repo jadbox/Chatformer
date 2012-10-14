@@ -8,6 +8,10 @@ var local;
 $(function() {
 	$.getJSON('../static/lang/eng.json', function(data) {
 		local = data;
+		$("#title").html(local.auth.title);
+		$("#reset_label").html(local.auth.reset_label);
+		$("#login").val(local.auth.login);
+		$("#reg").val(local.auth.reg);
 		start();
 	});
 });

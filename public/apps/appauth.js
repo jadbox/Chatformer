@@ -21,7 +21,7 @@ function start() {
 	user_name.val($.cookie('name'));
 	cf = cf_app_startup(handleAppMsg, handleSysMsg, 0);
 
-	$("#login").click(function() {
+	$("#login_login-main").submit(function() {
 		post_login(user_name.val(), user_pwd.val());
 		return false;
 	});

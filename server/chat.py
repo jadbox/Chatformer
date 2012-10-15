@@ -3,20 +3,14 @@
     Simple sockjs-tornado chat application. By default will listen on port 8080.
 """
 from tornado import web, ioloop
-from CFdatabase import CFdatabase
-from CFsession import CFsession
+from shared.CFdatabase import CFdatabase
+from shared.CFsession import CFsession
 import sockjs.tornado
-from sockjs.tornado import SockJSRouter, SockJSConnection
+from sockjs.tornado import SockJSRouter, SockJSConnection, conn, session
+from sockjs.tornado.transports import base
 
 r = CFdatabase()
 sessions = CFsession(r)
-
-class CloseConnection(SockJSConnection):
-    def on_open(self, info):
-        self.close()
-
-    def on_message(self, msg):
-        pass
 
 class ChatConnection(SockJSConnection):
     #"""Chat connection implementation"""
@@ -54,10 +48,10 @@ if __name__ == "__main__":
 
     # 1. Create chat router
     ChatRouter = SockJSRouter(ChatConnection, '/chat', user_settings={'verify_ip': True}) #
-    CloseRouter = SockJSRouter(CloseConnection, '/close')
+    #CloseRouter = SockJSRouter(CloseConnection, '/close')
 
     # 2. Create Tornado application
-    app = web.Application(ChatRouter.urls + CloseRouter.urls)
+    app = web.Application(ChatRouter.urls)
 
     # 3. Make Tornado app listen on port 8080
     app.listen(8080)

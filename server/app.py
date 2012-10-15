@@ -1,15 +1,9 @@
-#def application(environ, start_response):
-#    start_response("200 OK", [("Content-Type", "text/plain")])
-#    return ["Hello World!"]
-
-#import bottle
 from bottle import app, route, run, default_app, request
 import json
-from CFdatabase import CFdatabase
-from CFsession import CFsession
+from shared.CFdatabase import CFdatabase
+from shared.CFsession import CFsession
 from passlib.hash import sha256_crypt
 from datetime import date
-
 import string
 import logging
 
@@ -27,7 +21,7 @@ def save_name(name):
 	#cap_validate = validate(request)
 	#if cap_validate!=-1: 
 #		return {'status':'captcha '+ cap_validate}
-	name = string.lower(name)
+	name = string.lower(name) or ''
 	pwd = request.forms.pwd or ''
 	if pwd.__len__() > 24 or pwd.__len__() < 6:
 		return {'status':'err1'}

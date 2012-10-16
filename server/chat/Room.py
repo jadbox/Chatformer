@@ -5,12 +5,15 @@ class Room():
 		self.conn = conn
 
 	def add(self, person):
-		self.broadcast("Someone joined.")
+		self.broadcast("%s joined." % person.user)
 		self.ppl.add(person)
 
 	def remove(self, person):
 		self.ppl.remove(person)
-		self.broadcast("Someone left.")
+		self.broadcast("%s left." % person.user)
+
+	def say(self, person, msg):
+		self.conn.broadcast(self.ppl, "%s: %s" % (person.user, msg))
 
 	def broadcast(self, msg):
 		self.conn.broadcast(self.ppl, msg)

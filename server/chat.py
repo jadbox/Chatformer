@@ -21,6 +21,7 @@ class ChatConnection(SockJSConnection):
 
     def __init__(self, session):
         self.room = ""
+        self.user = ""
         super(ChatConnection, self).__init__(session)
 
     def on_open(self, info):
@@ -32,6 +33,7 @@ class ChatConnection(SockJSConnection):
             logging.getLogger().debug("Invalid Token, closing connection for: %s" % name)
             self.close()
             return
+        self.user = name
         logging.getLogger().debug("Authed user:%s" % (name))
         # Add client to the clients list
         self.join_room("root") #default root
@@ -41,7 +43,7 @@ class ChatConnection(SockJSConnection):
         if op=="#room ":
             self.current().remove(self)
             self.join_room(message[6:])
-        else: self.current().broadcast(message)
+        else: self.current().say(self, message)
        #parts = message.split(",", 1)
         #logging.getLogger().debug("%s %s" % (parts, len(parts)))
         #if len(parts) < 2: return

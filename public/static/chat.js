@@ -82,7 +82,7 @@ $(function() {
 		}
 		
 		if (isConnected()) {
-			conn.send(getName() + ": " + msg);
+			conn.send(msg);
 		} else handleCommand(msg, msgToApp, 0, function(e) {
 			log("Chatting not allowed until your logged in!")
 		}); //offline

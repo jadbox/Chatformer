@@ -81,9 +81,10 @@ $(function() {
 			log('<i>sent to app: '+a[0]+'</i>');
 		}
 		
-		if (isConnected()) {
+		if (isConnected()) { // logged in
 			conn.send(msg);
-		} else handleCommand(msg, msgToApp, 0, function(e) {
+		} 
+		else handleCommand(msg, msgToApp, 0, function(e) { // not logged in
 			log("Chatting not allowed until your logged in!")
 		}); //offline
 		

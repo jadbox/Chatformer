@@ -55,6 +55,13 @@ function handleCommand(msg, appMsg, sysMsg, regMsg) {
 	}
 }
 
+function parseMsgObject(blob) {
+	
+}
+function makeMsgObject(user, msg) {
+	return {'user':user, 'msg':msg}
+}
+
 function isAppMsg(msg){
 	if(msg.indexOf(BAD_TOKEN) == 0) return false;
 	return msg.indexOf(APP_TOKEN)== 0 && msg.indexOf(SYS_TOKEN) != 0 && msg.length > APP_TOKEN.length;

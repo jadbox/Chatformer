@@ -1,10 +1,4 @@
 // JavaScript Document
-$(function() {
-	$('#profile').click(function() {
-		auth_logout();
-		return false;
-	});
-})
 function auth_logout() {
 	var cmd = function(data) {
 		if(data.status!=="success") alert("ERROR with status");

@@ -53,8 +53,10 @@ function addCaptcha() {
  	 );
 }*/
 function addCaptcha() {
-	$('<input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="5"/><label for="pwdc"></label>').appendTo("#human_check").focus();
-	$('<br/><input name="email" id="email" placeholder="email address" type="text" tabindex="6"/><br/><label for="email" style="font-size:x-small">* email is used for premium features and EPIC updates only!</label>').appendTo("#human_check");
+	$("#human_check").hide();
+	$('<label for="pwdc">Password confirmation:</label><input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="5"/>').appendTo("#human_check").focus();
+	$('<label for="email">Email:</label><input name="email" id="email" placeholder="email address" type="text" tabindex="6"/><br/><span style="font-size:x-small">* email is used for premium features and EPIC updates only!</span>').appendTo("#human_check");
+	$("#human_check").fadeIn(300);
 }
 function moveRegBtn() {
 	var reg = $("#reg");//.remove();

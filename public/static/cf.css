@@ -46,7 +46,7 @@ a img{border:0 none}
 	
 }
 #inner-chatlayout, #inner-applayout {
-	padding: 5px;
+	padding: 8px;
 	vertical-align: middle;
 	
 	background-color:rgba(255,255,255,0.85);
@@ -65,8 +65,5 @@ a img{border:0 none}
 	width: 15%;
 }
 #footer {
-	text-align:center;
-	margin:0 0 0 0;
-	padding: 0px;
-	z-index:0;
+	color:#999999;
 }

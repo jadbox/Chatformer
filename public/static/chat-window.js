@@ -21,7 +21,7 @@ function delayed_stream(msg, onComplete) {
 		}
 		var c = arr.shift();
 		control.append(c);
-		var delay = 25+c.charCodeAt(0)*.42+Math.random()*25;
+		var delay = 10+c.charCodeAt(0)*.32+Math.random()*10;
 		if(lastChar=="." || lastChar=="!" || lastChar=="?") delay+=200;
 		
 		setTimeout(function() {func(c)},delay);
@@ -35,7 +35,7 @@ function delayed_convo(msgs, onComplete) {
 			return;
 		}
 		var msg = msgs.shift();
-		setTimeout(function() {delayed_stream(msg, func);}, 800);
+		setTimeout(function() {delayed_stream(msg, func);}, 700);
 	}
 	func();
 }

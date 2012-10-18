@@ -21,6 +21,14 @@ function notAuthed() {
 	delayed_convo(local.introchat);
 }
 
+$(function() {
+	$("#room-search").typeahead({
+		source:[{id:1, name:"root"}, {id:2,name:"chill"}, {id:3,name:"tech"}],
+		//complete:function() {alert("done");}
+		//,itemSelected:function() {alert($("#room-search").val());}
+	});
+})
+
 function flog(msg) {
   var ft = $('#footer');
   ft.html(ft.html() + msg);

@@ -28,10 +28,14 @@ Do the following if you're using your customized build of modernizr (http://www.
 <link rel="stylesheet" href="static/themes/bs/bootstrap.css" />
 <!--<script src="static/respond.min.js"></script>-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script><script src="static/themes/bs/bootstrap.min.js"></script>
-<!--<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>-->
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 
+<script src="static/themes/bs/bootstrap.min.js"></script>
+<script src="static/themes/bs/bootstrap-typeahead.js"></script>
+<!--<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+
 <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
 <script src="apps/chatformer_shared.js"></script>
 <script src="apps/jquery.ba-postmessage.min.js"></script>
@@ -54,8 +58,8 @@ Do the following if you're using your customized build of modernizr (http://www.
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Help</a></li>
+              <li><a href="#">Apps</a></li>
+              
               <li class="authed dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rooms <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
@@ -66,10 +70,11 @@ Do the following if you're using your customized build of modernizr (http://www.
                 </ul>
               </li>
             </ul>
-            <form class="navbar-search pull-left" action="">
-              <input type="text" class="authed search-query span2" placeholder="Search Rooms">
+            <form class="navbar-search pull-left" action="#">
+              <input type="text" class="authed search-query span2" placeholder="Search Rooms" id="room-search" data-items="8" data-provide="typeahead"/>
             </form>
             <ul class="nav pull-right">
+			  <li><a href="#">Help</a></li>
               <li class="dropdown"> <a href="#" class="authed dropdown-toggle" data-toggle="dropdown">Profile <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">View</a></li>

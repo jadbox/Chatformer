@@ -23,7 +23,7 @@ function notAuthed() {
 
 $(function() {
 	$("#chatinput").typeahead({
-		source:[{id:1, name:".vote "}, {id:2,name:"#room chill"}, {id:3,name:".name "}]
+		source:[{id:1, name:".vote borderlands2"}, {id:4, name:".vote firefall"},{id:5, name:".vote diablo3"}, {id:2,name:"#room chill"}, {id:3,name:".name "}]
 	});
 	$("#room-search").typeahead({
 		source:[{id:1, name:"root"}, {id:2,name:"chill"}, {id:3,name:"tech"}]

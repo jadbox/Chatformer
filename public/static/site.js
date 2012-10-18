@@ -22,9 +22,12 @@ function notAuthed() {
 }
 
 $(function() {
+	$("#chatinput").typeahead({
+		source:[{id:1, name:".vote "}, {id:2,name:"#room chill"}, {id:3,name:".name "}]
+	});
 	$("#room-search").typeahead({
-		source:[{id:1, name:"root"}, {id:2,name:"chill"}, {id:3,name:"tech"}],
-		//complete:function() {alert("done");}
+		source:[{id:1, name:"root"}, {id:2,name:"chill"}, {id:3,name:"tech"}]
+		//,complete:function() {alert("done");}
 		//,itemSelected:function() {alert($("#room-search").val());}
 	});
 })

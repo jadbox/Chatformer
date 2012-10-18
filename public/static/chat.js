@@ -76,9 +76,9 @@ $(function() {
 		if(isSysMsg(msg) == true) {
 			return false; // no sys msgs allowed
 		}
-		else if(isAppMsg(msg)==true) {
+		else if(isAppMsg(msg)==true && isConnected()) {
 			var a = msg.split(" ");
-			log('<i>sent to app: '+a[0]+'</i>');
+			log('<span class="label label-inverse">'+a.shift()+'</span> '+a.join(""));
 		}
 		
 		if (isConnected()) { // logged in

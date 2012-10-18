@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Close",
+				"CloseRouter"
+			],
+			[
 				"createServer",
 				"http.createServer(requestListener);"
 			]
@@ -12,10 +16,18 @@
 	"buffers":
 	[
 		{
-			"file": "server/app.py",
+			"file": "server/chat.py",
 			"settings":
 			{
-				"buffer_size": 1392,
+				"buffer_size": 2780,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server/chat/Room.py",
+			"settings":
+			{
+				"buffer_size": 451,
 				"line_ending": "Windows"
 			}
 		}
@@ -60,8 +72,21 @@
 	},
 	"file_history":
 	[
-		"/Z/chatformer/server/api_uwsgi.xml",
+		"/Z/chatformer/server/chat/CoreConnection.py",
+		"/Z/chatformer/server/chat/MultiplexConnection.py",
+		"/Z/chatformer/server/chat/ChannelSession.py",
+		"/Z/chatformer/server/chat.py",
 		"/Z/chatformer/server/app.py",
+		"/Z/chatformer/server/chat/CFChannelSession.py",
+		"/Z/chatformer/server/chat/CFChannelSession",
+		"/Z/chatformer/server/chat/CFMultiplex.py",
+		"/Z/chatformer/server/CFcaptcha.py",
+		"/Z/chatformer/server/CFdatabase.py",
+		"/Z/chatformer/server/CFsession.py",
+		"/Z/chatformer/server/chat/__init__.py",
+		"/Z/chatformer/server/CFcaptcha",
+		"/Z/chatformer/build/cf111012.js",
+		"/Z/chatformer/server/api_uwsgi.xml",
 		"/Z/pychatformer/app.py",
 		"/Z/chatformer/main.js",
 		"/Z/chatformer/routes/index.js",
@@ -83,7 +108,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
@@ -93,6 +118,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"request",
+			"	\n",
+			" \n",
+			"name",
+			"serv",
 			"r",
 			"StrictRedis",
 			"redis",
@@ -104,6 +134,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"db"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -119,18 +150,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "server/app.py",
+					"file": "server/chat.py",
 					"settings":
 					{
-						"buffer_size": 1392,
+						"buffer_size": 2780,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								311,
-								311
+								1147,
+								1147
 							]
 						],
 						"settings":
@@ -222,10 +253,38 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "server/chat/Room.py",
+					"settings":
+					{
+						"buffer_size": 451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								374,
+								374
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 110.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -274,7 +333,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -28,28 +28,33 @@ Do the following if you're using your customized build of modernizr (http://www.
 <link rel="stylesheet" href="static/themes/bs/bootstrap.css" />
 <!--<script src="static/respond.min.js"></script>-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script><script src="apps/jquery.ba-postmessage.min.js"></script>
 
 <script src="static/themes/bs/bootstrap.min.js"></script>
 <script src="static/themes/bs/bootstrap-typeahead.js"></script>
+
 <!--<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>-->
+<!--<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
 
-<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+-->
+<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie.js"></script>-->
+
 <script src="apps/chatformer_shared.js"></script>
-<script src="apps/jquery.ba-postmessage.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie.js"></script>
+<!--
 <script src="static/auth.js"></script>
 <script src="static/site.js"></script>
-<script src="static/chat-window.js"></script>
+<script src="static/chatlog.js"></script>
 <script src="static/chat.js"></script>
 <script src="static/apps.js"></script>
 <script src="static/sys_commands.js"></script>
 
+<script src="static/i18n.js"></script>-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.0.6/require.min.js" data-main="static/js/main.js"></script>
 <!--<div id="HeaderSection"><script src="static/compiled/cf111012.js"></script>-->
 </head>
-<body onload="onLoad()">
+<body>
 <div class="gridContainer">
   <div id="header-links">
     <div class="navbar navbar-inverse">
@@ -70,8 +75,8 @@ Do the following if you're using your customized build of modernizr (http://www.
                 </ul>
               </li>
             </ul>
-            <form class="navbar-search pull-left" action="#">
-              <input type="text" class="authed search-query span2" placeholder="Search Rooms" id="room-search" data-items="8" data-provide="typeahead" autocomplete="off"/>
+            <form class="navbar-search pull-left" action="#" id="room-search">
+              <input type="text" class="authed search-query span2" placeholder="Search Rooms" data-items="8" data-provide="typeahead" autocomplete="off"/>
             </form>
             <ul class="nav pull-right">
 			  <li><a href="#">Help</a></li>

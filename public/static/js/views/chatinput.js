@@ -1,14 +1,19 @@
 define(["auth", "underscore", "backbone"], function(Auth) {
 	return Backbone.View.extend({
 		el: $("#chatform"),
+		input: $("#chatinput"),
 		events: {
 			"submit": "submit"
 		},
 		submit: function() {
-			alert("submit");
+			var msg = _.escape(this.input.val());
+			
+			
+			this.input.val('').focus();
+			return false;
 			/*
-			var msg = $('#chatinput').val();
-			msg = msg.replace(/<(?:.|\n)*?>/gm, '');
+			
+			
 			if(isSysMsg(msg) == true) {
 				return false; // no sys msgs allowed
 			} else if(isAppMsg(msg) == true && isConnected()) {
@@ -22,7 +27,7 @@ define(["auth", "underscore", "backbone"], function(Auth) {
 			} else handleCommand(msg, msgToApp, 0, function(e) { // not logged in
 				log("Chatting not allowed until your logged in!")
 			}); //offline
-			$('#chatinput').val('').focus();
+			
 			return false;*/
 		},
 		ldata: {
@@ -47,8 +52,8 @@ define(["auth", "underscore", "backbone"], function(Auth) {
 			}]
 		},
 		initialize: function() {
-			if(Auth.isLoggedIn()) this.$el.find("input").typeahead(this.ldata);
-			else this.$el.find("input").typeahead(this.rdata);
+			if(Auth.isLoggedIn()) this.input.typeahead(this.ldata);
+			else this.input.typeahead(this.rdata);
 		}
 	});
 })

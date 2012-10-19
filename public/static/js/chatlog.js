@@ -20,7 +20,7 @@ define(['underscore', 'backbone'], function() {
 		var arr = msg.split("");
 		var func = function(lastChar) {
 				if(arr.length == 0) {
-					cb(onComplete);
+					if(_.isFunction(onComplete)) onComplete();
 					return;
 				}
 				var c = arr.shift();
@@ -38,7 +38,7 @@ define(['underscore', 'backbone'], function() {
 	function delayed_convo(msgs, onComplete) {
 		var func = function() {
 				if(msgs.length == 0) {
-					cb(onComplete);
+					if(_.isFunction(onComplete)) onComplete();
 					return;
 				}
 				var msg = msgs.shift();

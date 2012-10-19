@@ -6,6 +6,8 @@ var response_field;
 var captcha_loaded;
 var local;
 $(function() {
+	start();
+	return;
 	$.getJSON('../static/lang/eng.json', function(data) {
 		local = data;
 		$("#title").html(local.auth.title);
@@ -19,7 +21,7 @@ function start() {
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val($.cookie('name'));
-	cf = cf_app_startup(handleAppMsg, handleSysMsg, 0);
+	cf = $.cf_app_startup(handleAppMsg, handleSysMsg, 0);
 
 	$("#login_login-main").submit(function() {
 		post_login(user_name.val(), user_pwd.val());

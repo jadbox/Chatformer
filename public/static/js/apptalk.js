@@ -34,7 +34,7 @@ define(["sys_commands", "underscore", "backbone"], function(SysCmd) {
 		}
 
 		$.receiveMessage(
-			handleCommandListener(handleAppMsg, handleSysMsg, handleMsg), get_domain(src)
+			$.handleCommandListener(handleAppMsg, handleSysMsg, handleMsg), get_domain(src)
 		);
 	}
 

@@ -12,8 +12,8 @@ requirejs.config({
 		underscore: "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min",
 		backbone: "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min",
 		sockjs: "http://cdn.sockjs.org/sockjs-0.3.min",
-		cookie: "http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie",
-		postmsg: "../../apps/jquery.ba-postmessage.min"
+		cookie: "http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie"
+		//postmsg: "../../apps/jquery.ba-postmessage.min"
 	},
 	waitSeconds: 10
 });

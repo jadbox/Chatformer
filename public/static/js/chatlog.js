@@ -1,4 +1,4 @@
-define(['underscore', 'backbone'], function() {
+define(['chat', 'auth', 'underscore', 'backbone'], function(chat, auth) {
 	var control = $('#chatlog');
 
 	function log(msg) {
@@ -63,6 +63,10 @@ define(['underscore', 'backbone'], function() {
 	ret.on("canned", delayed_convo);
 	ret.on("say", delayed_stream);
 	ret.on("reset", reset)
+
+	chat.on("send", function(msg) {
+		if(msg.type=="txt" && !auth.isLoggedIn()) ret.trigger("log", "Chatting not allowed until your logged in!");
+	});
 
 	$('#reset').click(reset);
 	return ret

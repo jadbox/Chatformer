@@ -1,6 +1,9 @@
-define(["sockjs"], function() {
+define(["auth", "sockjs", 'underscore', 'backbone'], function(auth) {
 	var conn = null;
 	var status = $('#status');
+	var ret = {
+		"connected":false
+	}; _.extend(ret, Backbone.Events);
 
 	function connect(SockJS) {
 		if(isAuth() == false) return;
@@ -13,6 +16,7 @@ define(["sockjs"], function() {
 		conn.onopen = function() {
 			//log('Connected.');
 			update_ui();
+			ret.connected = true;
 		};
 
 		conn.onmessage = function(e) {
@@ -23,6 +27,7 @@ define(["sockjs"], function() {
 			log('Disconnected.');
 			auth_logout()
 			conn = null;
+			ret.connected = false;
 			update_ui();
 		};
 	}
@@ -46,6 +51,11 @@ define(["sockjs"], function() {
 		if(isConnected() == false) status.text('disconnected');
 		else status.text('connected (' + conn.protocol + ')');
 	}
-
-	return conn;
+	function send(msg) {
+		if(!auth.isLoggedIn()) return;
+		conn.send(msg.data);
+	}
+	
+	ret.on("send", send);
+	return ret;
 })

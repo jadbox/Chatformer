@@ -45,7 +45,6 @@
 
 
 	$.handleCommandListener = function handleCommandListener(appMsg, sysMsg, regMsg) {
-		alert("hit");
 		return function(e) {
 			$.handleCommand(e.data, appMsg, sysMsg, regMsg);
 		};

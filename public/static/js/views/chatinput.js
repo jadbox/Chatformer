@@ -1,4 +1,4 @@
-define(["auth", "models/msg", "underscore", "backbone"], function(Auth, Msg) {
+define(["auth", "models/msg", "chat", "underscore", "backbone"], function(auth, Msg, chat) {
 	return Backbone.View.extend({
 		el: $("#chatform"),
 		input: $("#chatinput"),
@@ -6,13 +6,18 @@ define(["auth", "models/msg", "underscore", "backbone"], function(Auth, Msg) {
 			"submit": "submit"
 		},
 		submit: function() {
-			if(!this.input.val()) return false;
-			var msg = Msg( _.escape(this.input.val()) );
+			var said = this.input.val();
+			if(!said) return false;
+			said = _.escape(said);
+			var msg = Msg(auth.getName() + ": " + said);
 			//alert(msg.toString());
-			
+			//if(!chat.send(msg)) chatlog.trigger("log", "Chatting not allowed until your logged in!");
+			chat.trigger("send", msg);
+
 			this.input.val('').focus();
 			return false;
-			/*
+		
+		/*
 			
 			
 			if(isSysMsg(msg) == true) {
@@ -30,31 +35,30 @@ define(["auth", "models/msg", "underscore", "backbone"], function(Auth, Msg) {
 			}); //offline
 			
 			return false;*/
-		},
-		ldata: {
-			source: [{
-				id: 1,
-				name: ".vote borderlands2"
-			}, {
-				id: 4,
-				name: ".vote firefall"
-			}, {
-				id: 5,
-				name: ".vote diablo3"
-			}, {
-				id: 2,
-				name: "#room chill"
-			}]
-		},
-		rdata: {
-			source: [{
-				id: 1,
-				name: ".name "
-			}]
-		},
-		initialize: function() {
-			if(Auth.isLoggedIn()) this.input.typeahead(this.ldata);
-			else this.input.typeahead(this.rdata);
-		}
+	}, ldata: {
+		source: [{
+			id: 1,
+			name: ".vote borderlands2"
+		}, {
+			id: 4,
+			name: ".vote firefall"
+		}, {
+			id: 5,
+			name: ".vote diablo3"
+		}, {
+			id: 2,
+			name: "#room chill"
+		}]
+	},
+	rdata: {
+		source: [{
+			id: 1,
+			name: ".name "
+		}]
+	},
+	initialize: function() {
+		if(auth.isLoggedIn()) this.input.typeahead(this.ldata);
+		else this.input.typeahead(this.rdata);
+	}
 	});
 })

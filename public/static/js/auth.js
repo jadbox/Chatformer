@@ -36,7 +36,7 @@ define(["cookie"], {
 	},
 
 	"getName": function () {
-		return $.cookie('name');
+		return $.cookie('name') || 'guest';
 	},
 
 	"getAuthToken": function () {

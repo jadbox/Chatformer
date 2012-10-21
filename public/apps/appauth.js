@@ -21,7 +21,7 @@ function start() {
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val($.cookie('name'));
-	cf = cf_app_startup(handleMsg);
+	cf = cf_app_api(handleMsg);
 
 	$("#login_login-main").submit(function() {
 		post_login(user_name.val(), user_pwd.val());
@@ -122,6 +122,8 @@ function forgot_pwd() {
 
 function handleMsg(msg) {
 	var data = msg.cmd;
+	alert(data);
+	
 	data = data.toLowerCase();
 
 	if (data == "name" || data == "n") {

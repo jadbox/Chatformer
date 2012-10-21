@@ -1,4 +1,4 @@
-define(["auth", "underscore", "backbone"], function(Auth) {
+define(["auth", "models/msg", "underscore", "backbone"], function(Auth, Msg) {
 	return Backbone.View.extend({
 		el: $("#chatform"),
 		input: $("#chatinput"),
@@ -6,8 +6,9 @@ define(["auth", "underscore", "backbone"], function(Auth) {
 			"submit": "submit"
 		},
 		submit: function() {
-			var msg = _.escape(this.input.val());
-			
+			if(!this.input.val()) return false;
+			var msg = Msg( _.escape(this.input.val()) );
+			//alert(msg.toString());
 			
 			this.input.val('').focus();
 			return false;

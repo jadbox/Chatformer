@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, .gridContainer {
+	height:100%;
+}
+
+body {
+	background:url(themes/mushroom/bg.jpg) #242424;
+	background-position:bottom right;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	font: normal x-small Verdana, Geneva, sans-serif;
+}
+a{
+	text-decoration:none;
+	color:#369;
+}
+a img{border:0 none}
+#apProfile {
+	position: absolute;
+	top: 4px;
+	width: 56px;
+	height: 24px;
+	z-index: 1;
+	right: 10px;
+}
+#chatlog, #chatinput {
+	font-size: 11pt;
+}
+#chatlog {
+	width:98%;
+	min-height: 150px;
+}
+#chatinput {
+	width: 80%;
+}
+#header-links {
+	text-transform: uppercase;
+	white-space: nowrap;
+	line-height: 20px;
+	position: relative;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	
+}
+#inner-chatlayout, #inner-applayout {
+	padding: 8px;
+	vertical-align: middle;
+	
+	background-color:rgba(255,255,255,0.85);
+	/*
+	background-color: #FFF;
+	min-height:50%;
+	opacity:0.5;*/
+	filter:alpha(opacity=50); /*IE*/
+}
+#inner-applayout iframe {
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+#chat-submit-btn {
+	width: 15%;
+}
+#footer {
+	color:#999999;
+}

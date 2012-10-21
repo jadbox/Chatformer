@@ -1,15 +1,15 @@
-define(["sys_commands", "underscore", "backbone"], function(SysCmd) {
+define(["sys_commands", "models/msg", "underscore", "backbone"], function(sysCmd, Msg) {
 	var numApps = 0;
 	var activeIFrames = [];
 
 	function msgToApp(msg) {
-		msg = APP_TOKEN + msg;
+		//msg = APP_TOKEN + msg;
 		if(activeIFrames.length == 0) return;
 		for(i in activeIFrames) {
 			var _iwin = activeIFrames[i].get(0).contentWindow;
 			var _isrc = activeIFrames[i].attr('src');
 			//log("sending msg to iframe: #"+_iwin); // can only be used on same domain
-			$.postMessage(msg, get_domain(_isrc), _iwin);
+			$.postMessage(msg.raw, get_domain(_isrc), _iwin);
 		}
 	}
 
@@ -20,21 +20,21 @@ define(["sys_commands", "underscore", "backbone"], function(SysCmd) {
 	function addAppListener(src, frameObject) {
 		src = get_domain(src);
 
-		function handleAppMsg(msg) {
-			handleMsg(APP_TOKEN + msg);
-		}
-
 		function handleMsg(msg) {
-			$('#chatinput').val('' + msg);
+			$('#chatinput').val('' + msg.data);
 			$('#chatinput').focus();
 		}
 
 		function handleSysMsg(msg) {
-			SysCmd.handleCoreCommand(msg, frameObject);
+			sysCmd(msg, frameObject);
 		}
 
-		$.receiveMessage(
-			$.handleCommandListener(handleAppMsg, handleSysMsg, handleMsg), get_domain(src)
+		$.receiveMessage(function(e) {
+				m = Msg(e.data);
+				if(m.type!="sys") handleMsg(m);
+				if(m.type=="sys") handleSysMsg(m);
+			}
+			//$.handleCommandListener(handleAppMsg, handleSysMsg, handleMsg), get_domain(src)
 		);
 	}
 

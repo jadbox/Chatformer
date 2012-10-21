@@ -10,8 +10,6 @@ define(["auth", "models/msg", "chat", "underscore", "backbone"], function(auth, 
 			if(!said) return false;
 			said = _.escape(said);
 			var msg = Msg(auth.getName() + ": " + said);
-			//alert(msg.toString());
-			//if(!chat.send(msg)) chatlog.trigger("log", "Chatting not allowed until your logged in!");
 			chat.trigger("send", msg);
 
 			this.input.val('').focus();

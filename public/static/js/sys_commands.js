@@ -1,16 +1,16 @@
 define(["auth"], function(Auth) {
 	function resizeIFrameMsg(msg, frameObject) {
-		var _height = parseInt(msg.replace("resize ", ""));
-		$(frameObject).height(_height);
+		$(frameObject).height(msg);
 		return;
 	}
 
 	return function handleCoreCommand(msg, frameObject) {
-		if(msg.indexOf("resize") == 0) {
-			resizeIFrameMsg(msg, frameObject);
+		var cmd = msg.cmd;
+		if(cmd.indexOf("resize") == 0) {
+			resizeIFrameMsg(msg.msg, frameObject);
 		}
-		if(msg.indexOf("reload") == 0 && isAuth() == false) {
-			var args = msg.split(" ");
+		if(cmd.indexOf("reload") == 0 && isAuth() == false) {
+			var args = msg.msg.split(" ");
 			Auth.login(args[1], args[2]);
 		}
 	}

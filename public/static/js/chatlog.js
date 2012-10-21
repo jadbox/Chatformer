@@ -53,10 +53,7 @@ define(['chat', 'auth', 'underscore', 'backbone'], function(chat, auth) {
 		control.html('');
 	}
 
-	var ret = {
-		//"delayed_stream": delayed_stream,
-		//"delayed_convo": delayed_convo
-	};
+	var ret = {};
 	_.extend(ret, Backbone.Events);
 
 	ret.on("log", log);

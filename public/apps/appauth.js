@@ -21,7 +21,7 @@ function start() {
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val($.cookie('name'));
-	cf = $.cf_app_startup(handleAppMsg, handleSysMsg, 0);
+	cf = cf_app_startup(handleMsg);
 
 	$("#login_login-main").submit(function() {
 		post_login(user_name.val(), user_pwd.val());
@@ -120,23 +120,20 @@ function forgot_pwd() {
 	
 }
 
-function handleSysMsg(msg) {
-}
+function handleMsg(msg) {
+	var data = msg.cmd;
+	data = data.toLowerCase();
 
-
-function handleAppMsg(msg) {
-	var data = msg.split(" ");
-	data[0] = data[0].toLowerCase();
-	if (data[0] == "name" || data[0] == "n") {
-		user_name.val(data[1]);
+	if (data == "name" || data == "n") {
+		user_name.val(data);
 	}
-	if (data[0] == "p" || data[0] == "pw" || data[0].indexOf("pass")!=-1) {
-		user_pwd.val(data[1]);
+	if (data == "p" || data == "pw" || data.indexOf("pass")!=-1) {
+		user_pwd.val(data);
 	}
-	if (data[0].indexOf("reg")!=-1 || data[0] == "r" || data[0].indexOf("new")!=-1) {
+	if (data.indexOf("reg")!=-1 || data == "r" || data.indexOf("new")!=-1) {
 		$("#login").click();
 	}
-	if (data[0].indexOf("back")!=-1 || data[0] == "l" || data[0].indexOf("log")!=-1) {
+	if (data.indexOf("back")!=-1 || data == "l" || data.indexOf("log")!=-1) {
 		$("#reg").click();
 	}
 }

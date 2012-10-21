@@ -33,6 +33,7 @@ function authed() {
 		new Search();
 		Chat.connect();
 		Apps.trigger("add", "/apps/appvote.html");
+		doLocale(Locale);
 	})
 }
 
@@ -42,5 +43,11 @@ function notAuthed() {
 		new Chatinput();
 		Apps.trigger("add", "/apps/appauth.html");
 		ChatLog.trigger("canned", Locale.introchat);
+		doLocale(Locale);
 	})
+}
+
+function doLocale(locale) {
+	var context = locale.site;
+	for(var key in context) if(key.indexOf("#")==0) {$(key).html(context[key]);$(key).val(context[key])}
 }

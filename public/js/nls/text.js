@@ -10,12 +10,15 @@ define({
 			"err6": "invalid login information"
 		},
 		"auth": {
-			"title": "Tell me about youself!",
-			"reset_label": "reset password",
-			"name_label": "Display name and login:",
-			"login": "I'm BACK!",
-			"reg": "I'm NEW!"
+			"#title": "Tell me about youself!",
+			"#reset_label": "reset password",
+			"#name_label": "Display name and login:",
+			"#login": "I'm BACK!",
+			"#reg": "I'm NEW!"
 		},
-		"say": "say"
+		"site": {
+			"#chat-submit-btn": "say"
+		}
+		
 	}
 });

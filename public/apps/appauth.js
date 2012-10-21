@@ -15,12 +15,8 @@ $(function() {
 	//start();
 	//return;
 	require(["i18n!nls/text"], function(Locale) {
-	//$.getJSON('../static/lang/eng.json', function(data) {
 		locale = Locale;
-		$("#title").html(locale.auth.title);
-		$("#reset_label").html(locale.auth.reset_label);
-		$("#login").val(locale.auth.login);
-		$("#reg").val(locale.auth.reg);
+		for(var key in locale.auth) if(key.indexOf("#")==0) {$(key).html(locale.auth[key]);$(key).val(locale.auth[key])}
 		start();
 	});
 });

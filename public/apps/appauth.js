@@ -16,7 +16,13 @@ $(function() {
 	//return;
 	require(["i18n!nls/text"], function(Locale) {
 		locale = Locale;
-		for(var key in locale.auth) if(key.indexOf("#")==0) {$(key).html(locale.auth[key]);$(key).val(locale.auth[key])}
+		for(var key in locale.auth) if(key.indexOf("#")==0) {
+			if(key.indexOf("placeholder")!=-1) {
+				var id = key.replace("_placeholder", "");
+				$(id).attr("placeholder", locale.auth[key]);
+			}
+			else {$(key).html(locale.auth[key]);$(key).val(locale.auth[key]);}
+		}
 		start();
 	});
 });

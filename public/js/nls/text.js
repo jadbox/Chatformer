@@ -12,12 +12,17 @@ define({
 		"auth": {
 			"#title": "Tell me about youself!",
 			"#reset_label": "reset password",
-			"#name_label": "Display name and login:",
+			"#user_label": "Display name and login:",
+			"#user_placeholder": "username",
+			"#pwd_placeholder": "password",
+			"#pw_label":"Your password, ideally 12 characters upper and lowercase:",
 			"#login": "I'm BACK!",
-			"#reg": "I'm NEW!"
+			"#reg": "I'm NEW!",
+			"#or": "or"
 		},
 		"site": {
-			"#chat-submit-btn": "say"
+			"#chat-submit-btn": "say",
+			"#nav-help": "help"
 		}
 		
 	}

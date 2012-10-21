@@ -28,7 +28,7 @@ $(function() {
 //$(window).load(function() { });
 
 function authed() {
-	require(["./apptalk", "./views/chatinput", "./views/search", 'Chat'], function(Apps, Chatinput, Search, Chat) {
+	require(["./apptalk", "./views/chatinput", "./views/search", 'Chat', "i18n!nls/text"], function(Apps, Chatinput, Search, Chat, Locale) {
 		new Chatinput();
 		new Search();
 		Chat.connect();

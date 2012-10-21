@@ -1,19 +1,26 @@
+requirejs.config({
+	baseUrl: '../js',
+	paths: {},
+	waitSeconds: 10
+});
+
 var cf;
 var user_name;
 var user_pwd;
 var challenge_field;
 var response_field;
 var captcha_loaded;
-var local;
+var locale;
 $(function() {
-	start();
-	return;
-	$.getJSON('../static/lang/eng.json', function(data) {
-		local = data;
-		$("#title").html(local.auth.title);
-		$("#reset_label").html(local.auth.reset_label);
-		$("#login").val(local.auth.login);
-		$("#reg").val(local.auth.reg);
+	//start();
+	//return;
+	require(["i18n!nls/text"], function(Locale) {
+	//$.getJSON('../static/lang/eng.json', function(data) {
+		locale = Locale;
+		$("#title").html(locale.auth.title);
+		$("#reset_label").html(locale.auth.reset_label);
+		$("#login").val(locale.auth.login);
+		$("#reg").val(locale.auth.reg);
 		start();
 	});
 });
@@ -73,7 +80,7 @@ function post_login(name, pwd) {
 			if(data.status=="0") {
 				login(data.name, data.auth_token);
 			} else {
-				alert("Login error: "+local.auth_status[data.status]);
+				alert("Login error: "+locale.auth_status[data.status]);
 			}
 			//console.log(data.name); 
 			//cf.resize();
@@ -103,7 +110,7 @@ function post_reg(name, pwd) {
 				post_login(name, pwd);
 			} else {
 				//Recaptcha.reload();
-				alert("Registration error: "+local.auth_status[data.status]);
+				alert("Registration error: "+locale.auth_status[data.status]);
 			}
 			//if(data.status=="exists") {
 			//	alert("user name already exists");

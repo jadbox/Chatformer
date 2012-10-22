@@ -133,7 +133,10 @@ Desktop.ini
 ## Python
 #############
 
-*.py[co]
+#*.py[co]
+*.pyc
+*.pyco
+*.pyo
 
 # Packages
 *.egg

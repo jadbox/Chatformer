@@ -14,7 +14,7 @@ define(["cookie"], {
 	},
 
 	"login": function(name, token) {
-		//alert("name" + name + " token" + token);
+		console.log("name" + name + " token" + token);
 		$.cookie('name', name, {
 			expires: 3,
 			path: '/'

@@ -1,14 +1,16 @@
+var cf;
 $(function() {
-	var cf = cf_app_api(handleMsg);
+	cf = cf_app_api(onRdy, handleMsg);
+});
 
+function onRdy() {
+	//alert("name " + cf.user.name);
 	$("input[type='radio']").change(function() {
 		var voteval = $("input[name=VoteGroup]:checked").val();
 		cf.action('vote ' + voteval);
 		return false;
 	});
-
-
-});
+}
 
 var voteData = {};
 function handleMsg(msg) {

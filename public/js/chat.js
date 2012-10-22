@@ -28,7 +28,7 @@ define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone
 		};
 
 		conn.onclose = function() {
-			auth.logout()
+			//auth.logout()
 			conn = null;
 			ret.connected = false;
 			update_ui();
@@ -37,8 +37,6 @@ define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone
 
 	function disconnect() {
 		if(conn != null) {
-			log('Disconnecting...');
-
 			conn.close();
 			conn = null;
 

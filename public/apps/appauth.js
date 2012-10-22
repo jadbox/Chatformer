@@ -21,14 +21,15 @@ $(function() {
 			}
 			else {$(key).html(locale.auth[key]);$(key).val(locale.auth[key]);}
 		}
+		cf = cf_app_api(start, handleMsg);
 		start();
 	});
 });
+
 function start() {
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
-	user_name.val($.cookie('name'));
-	cf = cf_app_api(handleMsg);
+	user_name.val(cf.user.name);
 
 	$("#login_login-main").submit(function() {
 		post_login(user_name.val(), user_pwd.val());
@@ -77,7 +78,7 @@ function moveRegBtn() {
 function post_login(name, pwd) {
 	$.post("/api/get/"+name, { "pwd": pwd },
 		function(data){
-			console.log("info: "+data.status+" "+data.name+ " "+data.created);
+			console.log("info: "+data.status+" "+data.name+ " "+data.created+" "+data.auth_token);
 			if(data.status=="0") {
 				login(data.name, data.auth_token);
 			} else {

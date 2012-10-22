@@ -7,13 +7,12 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	}
 
 	function msgToApp(msg) {
-		//msg = APP_TOKEN + msg;
+		if(_.isString(msg)) msg = Msg(msg);
 		if(activeIFrames.length == 0) return;
 		for(i in activeIFrames) {
 			var _iwin = activeIFrames[i].get(0).contentWindow;
 			var _isrc = activeIFrames[i].attr('src');
 			//log("sending msg to iframe: #"+_iwin); // can only be used on same domain
-			//alert( encodeURIComponent(msg.raw) + "  domain: " + get_domain(_isrc));
 			$.postMessage( encodeURIComponent(msg.raw), get_domain(_isrc), _iwin );
 		}
 	}

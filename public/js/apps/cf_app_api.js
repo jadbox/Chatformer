@@ -1,6 +1,7 @@
-function cf_app_api(msgFunc) {
+function cf_app_api(onRdy, msgFunc) {
 	var APP_TOKEN = ".";
 	var SYS_TOKEN = APP_TOKEN + APP_TOKEN;
+	var user={};
 
 	var parent_url = decodeURIComponent(document.location.hash.replace(/^#/, ''));
 	if(parent_url.lastIndexOf("/") == parent_url.length - 1) parent_url = parent_url.slice(0, parent_url.length - 1); // fix
@@ -11,6 +12,11 @@ function cf_app_api(msgFunc) {
 	$.receiveMessage(function(e) {
 		var raw = decodeURIComponent( e.data );
 		var msg = Msg(raw);
+		if(msg.type=="sys" && msg.cmd=="userinfo") {
+			user.name = msg.msg;
+			onRdy();
+		}
+
 		msgFunc(msg);
 	});
 
@@ -34,11 +40,13 @@ function cf_app_api(msgFunc) {
 	}
 
 	resize();
+	system("userinfo");
 
 	return {
-		action: action,
-		say: say,
-		system: system,
-		resize: resize
+		"user": user,
+		"action": action,
+		"say": say,
+		"system": system,
+		"resize": resize
 	};
 };

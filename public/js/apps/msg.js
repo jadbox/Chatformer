@@ -30,23 +30,29 @@ Msg = function() {
 			msg = data = uspl[1];
 		}
 
+		function parseCmd(data) {
+			var cmd = data.cmd;
+			var msg = data.msg;
+			var index = msg.indexOf(" ");
+			if(index==-1) {
+				data.cmd = msg;
+				data.msg = "";
+			} else {
+				data.cmd = msg.slice(0, index); 
+				data.msg = msg.slice(index+1);
+			}
+			return data;
+		}
+
 		if(msg.indexOf(BAD_TOKEN)==0) {}
 		else if(msg.indexOf(SYS_TOKEN)==0 && msg.length > SYS_TOKEN.length) {
 			msg = msg.slice(SYS_TOKEN.length); 
-
-			var index = msg.indexOf(" ");
-			cmd = msg.slice(0, index); 
-			msg = msg.slice(index+1);
-
+			p = parseCmd({msg:msg, cmd:cmd}); msg = p.msg; cmd = p.cmd;
 			type = TYPE_SYS;
 		}
 		else if(msg.indexOf(APP_TOKEN)==0 && msg.length > APP_TOKEN.length) {
 			msg = msg.slice(APP_TOKEN.length); 
-
-			var index = msg.indexOf(" ");
-			cmd = msg.slice(0, index); 
-			msg = msg.slice(index+1);
-
+			p = parseCmd({msg:msg, cmd:cmd}); msg = p.msg; cmd = p.cmd;
 			type = TYPE_APP;
 		}
 

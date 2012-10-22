@@ -1,18 +1,19 @@
 define(["underscore", "backbone"], function() {
-	return Backbone.View.extend({
+	var Logger = Backbone.View.extend({
 		el: $("#footer"),
 		events: {
-			"log": "flog"
+			"log": "log"
 		},
-		flog: function (msg) {
-			this.$el.append(msg);
-		},
-		initialize: function() {
+		log: function(msg) {
 			if(window.performance == undefined || performance.timing == undefined || performance.timing.navigationStart == undefined) return;
 
 			var now = new Date().getTime();
 			var page_load_time = now - performance.timing.navigationStart;
-			this.flog(" html:" + (page_load_time / 1000));
+			this.$el.append(" "+msg+":" + (page_load_time / 1000));
+		},
+		initialize: function() {
+			
 		}
 	});
+	return new Logger();
 })

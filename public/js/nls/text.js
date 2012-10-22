@@ -22,7 +22,8 @@ define({
 		},
 		"site": {
 			"#chat-submit-btn": "say",
-			"#nav-help": "help"
+			"#nav-help": "help",
+			"#logout-btn": "Log Out"
 		}
 		
 	}

@@ -1,36 +1,34 @@
-define(["auth", "apps/msg", "sockjs", 'underscore', 'backbone'], function(auth) {
+define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone'], function(auth, flog) {
 	var conn = null;
 	var status = $('#status');
 	var ret = {
 		"connected":false
 	}; _.extend(ret, Backbone.Events);
 
-	function connect(SockJS) {
-		if(isAuth() == false) return;
+	function connect() {
+		if(auth.isLoggedIn() == false) return;
 		disconnect();
-		flog_navStart("socket");
 		var transports = ['websocket', 'xhr-streaming', 'xhr-polling', 'jsonp-polling', 'xdr-streaming', 'xdr-polling', 'iframe-eventsource', 'iframe-htmlfile'];
 
 		conn = new SockJS('http://' + window.location.hostname + ':8080/chat', transports);
-		//log('Connecting...');
+		
 		conn.onopen = function() {
-			//log('Connected.');
+			flog.log('socket');
 			update_ui();
 			ret.connected = true;
 		};
 
 		conn.onmessage = function(e) {
-			var data = Msg(e.data);
-			ret.trigger("recieve", data); // global
-			if(data.type=="app") ret.trigger("onApp", data);
-			else if(data.type=="txt") ret.trigger("onTxt", data);
-			else if(data.type=="sys") ret.trigger("onSys", data);
-			//handleCommand(e.data, msgToApp, 0, delayed_stream)
+			var msg = Msg(e.data);
+			//alert(msg.toString());
+			ret.trigger("recieve", msg); // global
+			if(msg.type=="app") ret.trigger("onApp", msg);
+			else if(msg.type=="txt") ret.trigger("onTxt", msg);
+			else if(msg.type=="sys") ret.trigger("onSys", msg);
 		};
 
 		conn.onclose = function() {
-			log('Disconnected.');
-			auth_logout()
+			auth.logout()
 			conn = null;
 			ret.connected = false;
 			update_ui();
@@ -63,7 +61,8 @@ define(["auth", "apps/msg", "sockjs", 'underscore', 'backbone'], function(auth) 
 		}
 		conn.send(msg.data);
 	}
-	
+
+	ret["connect"] = connect;
 	ret.on("send", send);
 	return ret;
 })

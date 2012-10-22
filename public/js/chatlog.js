@@ -62,7 +62,14 @@ define(['chat', 'auth', 'underscore', 'backbone'], function(chat, auth) {
 	ret.on("reset", reset)
 
 	chat.on("send", function(msg) {
-		if(msg.type=="txt" && !auth.isLoggedIn()) ret.trigger("log", "Chatting not allowed until your logged in!");
+		if(msg.type=="txt" && !auth.isLoggedIn()) ret.trigger("log", "<span class='label label-important'>!</span> Chatting not allowed until your logged in!");
+		else if(msg.type=="app") ret.trigger("log", "<span class='label label-inverse'>"+msg.cmd+"</span> "+msg.msg);
+		// && !auth.isLoggedIn()
+	});
+
+	chat.on("onTxt", function(msg) {
+		//alert("sad"+msg.msg);
+		ret.trigger("say", msg.raw);
 	});
 
 	$('#reset').click(reset);

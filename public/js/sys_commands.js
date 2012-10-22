@@ -9,9 +9,9 @@ define(["auth"], function(Auth) {
 		if(cmd.indexOf("resize") == 0) {
 			resizeIFrameMsg(msg.msg, frameObject);
 		}
-		if(cmd.indexOf("reload") == 0 && isAuth() == false) {
+		if(cmd.indexOf("reload") == 0 && !Auth.isLoggedIn()) {
 			var args = msg.msg.split(" ");
-			Auth.login(args[1], args[2]);
+			Auth.login(args[0], args[1]);
 		}
 	}
 });

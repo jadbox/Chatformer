@@ -12,8 +12,6 @@ var response_field;
 var captcha_loaded;
 var locale;
 $(function() {
-	//start();
-	//return;
 	require(["i18n!nls/text"], function(Locale) {
 		locale = Locale;
 		for(var key in locale.auth) if(key.indexOf("#")==0) {
@@ -75,10 +73,11 @@ function moveRegBtn() {
 	reg.appendTo("#login_login-main");
 	reg.val("I've confirmed my password!");
 }
+
 function post_login(name, pwd) {
 	$.post("/api/get/"+name, { "pwd": pwd },
 		function(data){
-			console.log("info: "+data.status+data.name+ " "+data.created);
+			console.log("info: "+data.status+" "+data.name+ " "+data.created);
 			if(data.status=="0") {
 				login(data.name, data.auth_token);
 			} else {
@@ -122,24 +121,23 @@ function post_reg(name, pwd) {
 }
 
 function login(name, auth_token) {
-	//$.cookie('auth_token', name, { expires: 1, path: '/' });
 	cf.system('reload '+name+' '+auth_token);
 }
+
 function forgot_pwd() {
 	
 }
 
 function handleMsg(msg) {
 	var data = msg.cmd;
-	alert(data);
 	
 	data = data.toLowerCase();
 
 	if (data == "name" || data == "n") {
-		user_name.val(data);
+		user_name.val(msg.msg);
 	}
 	if (data == "p" || data == "pw" || data.indexOf("pass")!=-1) {
-		user_pwd.val(data);
+		user_pwd.val(msg.msg);
 	}
 	if (data.indexOf("reg")!=-1 || data == "r" || data.indexOf("new")!=-1) {
 		$("#login").click();

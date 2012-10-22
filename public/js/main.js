@@ -18,22 +18,25 @@ requirejs.config({
 	waitSeconds: 10
 });
 
-$(function() {
-	require(["auth", "./views/footerlog"], function(Auth, FLogger) {
+//$(function() {	})
+$(window).load(function() { 
+	require(["auth", "./views/footerlog"], function(Auth, flogger) {
 		if(Auth.isLoggedIn()) authed();
 		else notAuthed();
-		new FLogger();
+		flogger.log("html");
 	});
-})
-//$(window).load(function() { });
+});
 
 function authed() {
-	require(["./apptalk", "./views/chatinput", "./views/search", 'Chat', "i18n!nls/text"], function(Apps, Chatinput, Search, Chat, Locale) {
+	require(["./apptalk", "./views/chatinput", "./views/search", 'chat', "i18n!nls/text", "./chatlog"], function(Apps, Chatinput, Search, Chat, Locale, ChatLog) {
 		new Chatinput();
 		new Search();
 		Chat.connect();
-		Apps.trigger("add", "/apps/appvote.html");
+		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/appvote.html");
 		doLocale(Locale);
+		$("#logout-btn").click(function(){
+			require(["auth"], function(Auth) { Auth.logout(); return false;});
+		});
 	})
 }
 
@@ -41,7 +44,7 @@ function notAuthed() {
 	$('.authed').remove();
 	require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput"], function(Apps, ChatLog, Locale, Chatinput) {
 		new Chatinput();
-		Apps.trigger("add", "/apps/appauth.html");
+		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/appauth.html");
 		ChatLog.trigger("canned", Locale.introchat);
 		doLocale(Locale);
 	})

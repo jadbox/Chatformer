@@ -1,6 +1,6 @@
 // JavaScript Document
 define(["cookie"], {
-	"logout": function () {
+	"logout": function() {
 		var cmd = function(data) {
 				if(data.status !== "success") alert("ERROR with status");
 				$.removeCookie('auth_token', {
@@ -8,38 +8,42 @@ define(["cookie"], {
 				});
 				window.location.reload();
 			}
-		$.post("/api/logout/" + getName(), {
-			"auth_token": getAuthToken()
+		$.post("/api/logout/" + this.getName(), {
+			"auth_token": this.getAuthToken()
 		}, cmd, "json");
 	},
 
-	"login": function (name, token) {
-		$.cookie('auth_token', token, {
-			expires: 1,
+	"login": function(name, token) {
+		//alert("name" + name + " token" + token);
+		$.cookie('name', name, {
+			expires: 3,
 			path: '/'
 		});
-		$.cookie('name', name, {
-			expires: 1,
+		$.cookie('auth_token', token, {
+			expires: 3,
 			path: '/'
 		});
 		window.location.reload();
 	},
 
-	"isLoggedIn": function () {
+	"isLoggedIn": function() {
 		var auth_token = this.getAuthToken() || '';
 		return auth_token && auth_token.length > 0;
 	},
 
 
 	"user": function() {
-		return {"name": this.getName(), "token": this.getAuthToken()}
+		return {
+			"name": this.getName(),
+			"token": this.getAuthToken()
+		}
 	},
 
-	"getName": function () {
+	"getName": function() {
 		return $.cookie('name') || 'guest';
 	},
 
-	"getAuthToken": function () {
+	"getAuthToken": function() {
 		return $.cookie('auth_token');
 	}
 })

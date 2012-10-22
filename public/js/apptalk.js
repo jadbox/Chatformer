@@ -2,6 +2,10 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	var numApps = 0;
 	var activeIFrames = [];
 
+	function get_domain(src) {
+		return src.replace(/([^:]+:\/\/[^\/]+).*/, '$1');
+	}
+
 	function msgToApp(msg) {
 		//msg = APP_TOKEN + msg;
 		if(activeIFrames.length == 0) return;
@@ -9,13 +13,9 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 			var _iwin = activeIFrames[i].get(0).contentWindow;
 			var _isrc = activeIFrames[i].attr('src');
 			//log("sending msg to iframe: #"+_iwin); // can only be used on same domain
-			//alert( encodeURIComponent(msg.raw) + "  " + get_domain(_isrc));
+			//alert( encodeURIComponent(msg.raw) + "  domain: " + get_domain(_isrc));
 			$.postMessage( encodeURIComponent(msg.raw), get_domain(_isrc), _iwin );
 		}
-	}
-
-	function get_domain(src) {
-		return src.replace(/([^:]+:\/\/[^\/]+).*/, '$1');
 	}
 
 	function addAppListener(src, frameObject) {

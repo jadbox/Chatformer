@@ -1,5 +1,5 @@
 $(function() {
-	var cf = cf_app_startup(handleAppMsg, handleSysMsg, 0);
+	var cf = cf_app_api(handleMsg);
 
 	$("input[type='radio']").change(function() {
 		var voteval = $("input[name=VoteGroup]:checked").val();
@@ -10,16 +10,15 @@ $(function() {
 
 });
 
-function handleSysMsg(msg) {
-}
-
 var voteData = {};
-function handleAppMsg(msg) {
-	var data = msg.split(" ");
-	if (data[0] == "vote") {
+function handleMsg(msg) {
+	if(msg.type!="app") return;
+	var cmd = msg.cmd;
+	var data = msg.msg;
+	if (cmd == "vote") {
 		//alert("a "+data[1]);
-		var c = voteData[data[1]] || 0;
-		voteData[data[1]] = c + 1;
+		var c = voteData[data] || 0;
+		voteData[data] = c + 1;
 
 		var comp = $('#tally');
 		comp.html('');

@@ -11,7 +11,6 @@ function cf_app_api(msgFunc) {
 	$.receiveMessage(function(e) {
 		var raw = decodeURIComponent( e.data );
 		var msg = Msg(raw);
-		alert("app "+ msg.toString());
 		msgFunc(msg);
 	});
 

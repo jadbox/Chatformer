@@ -13,7 +13,7 @@ Msg = function() {
 		else if(typeof(onSys) == typeof(Function) && this.type==TYPE_SYS) onSys(msg);
 	}
 	var toString = function() {
-		return this.user+"=said="+this.type+":"+this.cmd+":"+this.msg+ " data "+this.data;
+		return this.user+"=said="+this.type+":"+this.cmd+":"+this.msg;
 	}
 
 	return function(raw) {
@@ -34,16 +34,18 @@ Msg = function() {
 		else if(msg.indexOf(SYS_TOKEN)==0 && msg.length > SYS_TOKEN.length) {
 			msg = msg.slice(SYS_TOKEN.length); 
 
-			var spl = msg.split(" ", 2);
-			cmd = spl[0]; msg = spl[1];
+			var index = msg.indexOf(" ");
+			cmd = msg.slice(0, index); 
+			msg = msg.slice(index+1);
 
 			type = TYPE_SYS;
 		}
-		else if(msg.indexOf(APP_TOKEN)==0 && msg.length > APP_TOKEN.length) {_
+		else if(msg.indexOf(APP_TOKEN)==0 && msg.length > APP_TOKEN.length) {
 			msg = msg.slice(APP_TOKEN.length); 
 
-			var spl = msg.split(" ", 2);
-			cmd = spl[0]; msg = spl[1];
+			var index = msg.indexOf(" ");
+			cmd = msg.slice(0, index); 
+			msg = msg.slice(index+1);
 
 			type = TYPE_APP;
 		}

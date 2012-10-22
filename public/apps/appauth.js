@@ -22,7 +22,6 @@ $(function() {
 			else {$(key).html(locale.auth[key]);$(key).val(locale.auth[key]);}
 		}
 		cf = cf_app_api(start, handleMsg);
-		start();
 	});
 });
 

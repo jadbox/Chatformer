@@ -13,6 +13,6 @@ class CFsession():
 		self.db.deleteSession(name)
 
 	def	make(self, name):
-		token = uuid.uuid4();
+		token = str(uuid.uuid4());
 		self.db.saveSession(name, token)
 		return token

@@ -4,16 +4,20 @@ class CFdatabase():
 		self.db = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 	def userSave(self, name, data):
-		self.db.hmset("users", name, data)
+		if name=="sessions": return false
+		self.db.hmset(name, data)
+		self.db.save()
+		return true
 
 	def userGet(self, name):
-		return self.db.hmget("users", name)
+		return self.db.hgetall(name)
 
 	def userExists(self, name):
-		return self.db.hexists("users", name)
+		return self.db.exists(name)
 
 	def deleteUser(self, name):
-		self.db.hdel("users", name)
+		if name=="sessions": return false
+		self.db.delete(name)
 
 	def saveSession(self, name, key):
 		self.db.hset("sessions", name, key)

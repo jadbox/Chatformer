@@ -15,13 +15,22 @@ define(["underscore", "backbone"], function() {
 			this.getRooms();
 			this.rooms_list.click(this.getRooms);
 		},
+		selectRoom: function(room){
+			require(["views/chatinput"], function(chatinput){
+				chatinput.setInput("#room "+room);
+			});
+			return false;
+		},
 		onJSON: function(data) {
 				var source = [];
 				//alert(this.rooms_list);
 				this.rooms_list.empty();
 				for(var key in data) {
 					var val = data[key];
-					this.rooms_list.append('<li><a href="#">'+key+'</a></li>')
+					var node = $('<li><a>'+key+'</a></li>');
+					node.click(_.bind(this.selectRoom, this, key));
+
+					this.rooms_list.append(node)
 					source.push({name: key, id: 1});
 				}
 				this.input.typeahead({

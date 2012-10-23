@@ -14,7 +14,7 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 
 			if(msg.type != "sys") chat.trigger("send", msg);
 
-			this.input.val('').focus();
+			this.setInput('');
 			return false;
 
 			/*
@@ -38,6 +38,9 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 		},
 		initialize: function() {
 			
+		},
+		setInput:function(val) {
+			this.input.val(val).focus();
 		},
 		setTypeahead:function(category, dataArray) {
 			this.typeaheads[category] = dataArray;

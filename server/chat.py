@@ -10,14 +10,14 @@ import sockjs.tornado
 from sockjs.tornado import SockJSRouter, SockJSConnection, conn, session
 from sockjs.tornado.transports import base
 
-r = CFdatabase()
-sessions = CFsession(r)
+db = CFdatabase()
+sessions = CFsession(db)
 
 class ChatConnection(SockJSConnection):
     import logging
     #"""Chat connection implementation"""
     # Class level variable
-    participants = dict()
+    rooms = dict()
 
     def __init__(self, session):
         self.room = ""
@@ -53,17 +53,17 @@ class ChatConnection(SockJSConnection):
     def join_room(self, data):
         if not data or data == self.room: return
         self.room = data
-        if not self.room in self.participants: self.participants[self.room] = Room(data, self)
+        if not self.room in self.rooms: self.rooms[self.room] = Room(data, self)
         self.current().add(self)
         logging.getLogger().debug("joinging room:%s" % self.room)
 
     def on_close(self):
-        if not self.room in self.participants: return
+        if not self.room in self.rooms: return
         # Remove client from the clients list and broadcast leave message
         self.current().remove(self)
 
     def current(self):
-        return self.participants[self.room]
+        return self.rooms[self.room]
 
 if __name__ == "__main__":
     import logging

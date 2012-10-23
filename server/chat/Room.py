@@ -4,6 +4,9 @@ class Room():
 		self.ppl = set()
 		self.conn = conn
 
+	def numUsers(self):
+		return len(self.ppl)
+
 	def add(self, person):
 		self.broadcast("%s joined." % person.user)
 		self.ppl.add(person)

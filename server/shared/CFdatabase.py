@@ -4,10 +4,10 @@ class CFdatabase():
 		self.db = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 	def userSave(self, name, data):
-		if name=="sessions": return false
+		if name=="sessions": return False
 		self.db.hmset(name, data)
 		self.db.save()
-		return true
+		return True
 
 	def userGet(self, name):
 		return self.db.hgetall(name)
@@ -27,3 +27,5 @@ class CFdatabase():
 
 	def deleteSession(self, name):
 		self.db.hdel("sessions", name)
+
+	#def makeRoom(self, room):

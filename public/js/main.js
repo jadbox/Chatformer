@@ -30,7 +30,7 @@ $(window).load(function() {
 function authed() {
 	require(["./apptalk", "./views/chatinput", "./views/search", 'chat', "i18n!nls/text", "./chatlog"], function(Apps, Chatinput, Search, Chat, Locale, ChatLog) {
 		new Chatinput();
-		new Search();
+		//new Search(); not needed
 		Chat.connect();
 		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/appvote.html");
 		doLocale(Locale);

@@ -52,13 +52,19 @@ class ChatConnection(SockJSConnection):
 
     def join_room(self, data):
         if not data or data == self.room: return
+        self.leave_room();
         self.room = data
         if not self.room in self.rooms: self.rooms[self.room] = Room(data, self)
         self.current().add(self)
         logging.getLogger().debug("joinging room:%s" % self.room)
+        db.roomInc(self.room)
+
+    def leave_room(self):
+        if self.room != "": db.roomDec(self.room)
 
     def on_close(self):
         if not self.room in self.rooms: return
+        self.leave_room();
         # Remove client from the clients list and broadcast leave message
         self.current().remove(self)
 

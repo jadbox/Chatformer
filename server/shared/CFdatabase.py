@@ -1,7 +1,10 @@
 import redis
+import logging
+
 class CFdatabase():
 	def __init__(self):
 		self.db = redis.StrictRedis(host='localhost', port=6379, db=0)
+		self.resetRooms()
 
 	def userSave(self, name, data):
 		if name=="sessions": return False
@@ -28,4 +31,19 @@ class CFdatabase():
 	def deleteSession(self, name):
 		self.db.hdel("sessions", name)
 
-	#def makeRoom(self, room):
+
+	def resetRooms(self):
+		self.db.delete("rooms")
+		#self.db.hdel("rooms", "root")
+
+	def getRooms(self):
+		return self.db.hgetall("rooms")
+
+	def roomInc(self, room):
+		self.db.hincrby("rooms", room, 1)
+
+	def roomDec(self, room):
+		val = int(self.db.hget("rooms", room) or 0)
+		#logging.getLogger().debug(repr((val, room)))
+		if room!="root" and val < 2: self.db.hdel("rooms", room) #delete rooms that have zero users
+		else: self.db.hincrby("rooms", room, -1)

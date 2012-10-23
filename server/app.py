@@ -57,6 +57,10 @@ def get_name(name):
 	#logging.getLogger().debug("Fetched user: %s" % name)
 	return resp
 
+@route('/api/rooms')
+def get_rooms():
+	return db.getRooms()
+
 @route('/api')
 def root():
     return "sup"

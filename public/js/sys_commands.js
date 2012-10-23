@@ -11,10 +11,16 @@ define(["auth"], function(Auth) {
 				App.trigger("msg", "..userinfo "+user);
 			})
 		}
-		if(cmd=="resize") {
+		else if(cmd=="roominfo") {
+			require(["apptalk"], function(App){
+				var user = Auth.user().name;
+				App.trigger("msg", "..roominfo "+user);
+			})
+		}
+		else if(cmd=="resize") {
 			resizeIFrameMsg(msg.msg, frameObject);
 		}
-		if(cmd=="reload" && !Auth.isLoggedIn()) {
+		else if(cmd=="reload" && !Auth.isLoggedIn()) {
 			var args = msg.msg.split(" ");
 			Auth.login(args[0], args[1]);
 		}

@@ -6,7 +6,17 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 		return src.replace(/([^:]+:\/\/[^\/]+).*/, '$1');
 	}
 
-	function msgToApp(msg) {
+	function msgSys(msg) {
+		if(_.isString(msg)) msg = ".." + msg;
+		msgToApp(msg);
+	}
+
+	function msgApp(msg) {
+		if(_.isString(msg)) msg = "." + msg;
+		msgToApp(msg);
+	}
+
+	function msgMsg(msg) {
 		if(_.isString(msg)) msg = Msg(msg);
 		if(activeIFrames.length == 0) return;
 		for(i in activeIFrames) {
@@ -51,7 +61,9 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	var ret = {};
 	_.extend(ret, Backbone.Events);
 	ret.on("add", addApp);
-	ret.on("msg", msgToApp);
+	ret.on("msg", msgMsg);
+	ret.on("sys", msgSys);
+	ret.on("app", msgApp);
 
 	chat.on("onApp", msgToApp)
 	return ret;

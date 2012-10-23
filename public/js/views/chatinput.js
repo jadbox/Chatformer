@@ -10,7 +10,8 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			if(!said) return false;
 			said = _.escape(said);
 			var msg = Msg(auth.getName() + ": " + said);
-			chat.trigger("send", msg);
+
+			if(msg.type!="sys") chat.trigger("send", msg);
 
 			this.input.val('').focus();
 			return false;

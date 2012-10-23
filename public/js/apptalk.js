@@ -8,12 +8,12 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 
 	function msgSys(msg) {
 		if(_.isString(msg)) msg = ".." + msg;
-		msgToApp(msg);
+		msgMsg(msg);
 	}
 
 	function msgApp(msg) {
 		if(_.isString(msg)) msg = "." + msg;
-		msgToApp(msg);
+		msgMsg(msg);
 	}
 
 	function msgMsg(msg) {
@@ -65,6 +65,6 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	ret.on("sys", msgSys);
 	ret.on("app", msgApp);
 
-	chat.on("onApp", msgToApp)
+	chat.on("onApp", msgMsg)
 	return ret;
 })

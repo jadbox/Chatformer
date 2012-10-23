@@ -4,6 +4,7 @@ $(function() {
 });
 
 function onRdy() {
+	//alert(cf.room.id);
 	//alert("name " + cf.user.name);
 	$("input[type='radio']").change(function() {
 		var voteval = $("input[name=VoteGroup]:checked").val();

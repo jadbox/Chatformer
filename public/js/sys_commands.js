@@ -8,13 +8,13 @@ define(["auth"], function(Auth) {
 		if(cmd=="userinfo") {
 			require(["apptalk"], function(App){
 				var user = Auth.user().name;
-				App.trigger("msg", "..userinfo "+user);
+				App.trigger("sys", "userinfo "+user);
 			})
 		}
 		else if(cmd=="roominfo") {
-			require(["apptalk"], function(App){
-				var user = Auth.user().name;
-				App.trigger("msg", "..roominfo "+user);
+			require(["apptalk", "chat"], function(App, Chat){
+				var id = Chat.room.id;
+				App.trigger("sys", "roominfo "+ id);
 			})
 		}
 		else if(cmd=="resize") {

@@ -2,6 +2,7 @@ define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone
 	var conn = null;
 	var status = $('#status');
 	var ret = {
+		"room": {id:"root"},
 		"connected":false
 	}; _.extend(ret, Backbone.Events);
 

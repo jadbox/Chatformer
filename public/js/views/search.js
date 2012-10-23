@@ -19,7 +19,7 @@ define(["underscore", "backbone"], function() {
 			require(["views/chatinput"], function(chatinput){
 				chatinput.setInput("#room "+room);
 			});
-			return false;
+			return true;
 		},
 		onJSON: function(data) {
 				var source = [];
@@ -28,14 +28,19 @@ define(["underscore", "backbone"], function() {
 				for(var key in data) {
 					var val = data[key];
 					var node = $('<li><a>'+key+'</a></li>');
-					node.click(_.bind(this.selectRoom, this, key));
+					node.find('a').click(_.bind(this.selectRoom, this, key));
 
-					this.rooms_list.append(node)
-					source.push({name: key, id: 1});
+					this.rooms_list.append(node);
+					source.push({name: key});
 				}
+
+				this.rooms_list.append('<li class="divider"></li><li><a href="#" id="make-room">Make a Room</a></li>');
+				$("#make-room").click(_.bind(this.selectRoom, this, "MYROOM"));
+
 				this.input.typeahead({
 					"source": source,
-					"val": "name"
+					"val": "name",
+					itemSelected: function(val) { this.selectRoom(val); }
 				});
 				
 				for(var key in source) {

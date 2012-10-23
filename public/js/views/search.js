@@ -8,8 +8,8 @@ define(["underscore", "backbone"], function() {
 			"click input": "getRooms"
 		},
 		submitform: function() {
-			var msg = $('#chatinput').val("#room " + input.val());
-
+			$('#chatinput').val("#room " + input.val());
+			return false;
 		},
 		initialize: function() {
 			this.getRooms();
@@ -22,20 +22,22 @@ define(["underscore", "backbone"], function() {
 				for(var key in data) {
 					var val = data[key];
 					this.rooms_list.append('<li><a href="#">'+key+'</a></li>')
-					source.push({name: key});
+					source.push({name: key, id: 1});
 				}
 				this.input.typeahead({
 					"source": source,
 					"val": "name"
 				});
+				
+				for(var key in source) {
+					source[key].name = "#room "+source[key].name;
+				}
+				require(["views/chatinput"], function(chatinput){
+					chatinput.setTypeahead("rooms", source);
+				});
 		},
 		getRooms: function() {
-			//var _input = this.input;
 			$.getJSON("/api/rooms", _.bind(this.onJSON, this));
-
-			//this.$el.find("input").typeahead({
-			//	source:[{id:1, name:"root"}, {id:2,name:"chill"}, {id:3,name:"tech"}]
-			//});
 		}
 	})
 	return new View();

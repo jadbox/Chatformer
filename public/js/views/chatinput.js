@@ -1,7 +1,8 @@
 define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, chat) {
-	return Backbone.View.extend({
+	var View = Backbone.View.extend({
 		el: $("#chatform"),
 		input: $("#chatinput"),
+		typeaheads: {},
 		events: {
 			"submit": "submit"
 		},
@@ -11,12 +12,12 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			said = _.escape(said);
 			var msg = Msg(auth.getName() + ": " + said);
 
-			if(msg.type!="sys") chat.trigger("send", msg);
+			if(msg.type != "sys") chat.trigger("send", msg);
 
 			this.input.val('').focus();
 			return false;
-		
-		/*
+
+			/*
 			
 			
 			if(isSysMsg(msg) == true) {
@@ -34,30 +35,18 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			}); //offline
 			
 			return false;*/
-	}, ldata: {
-		source: [{
-			id: 1,
-			name: ".vote borderlands2"
-		}, {
-			id: 4,
-			name: ".vote firefall"
-		}, {
-			id: 5,
-			name: ".vote diablo3"
-		}, {
-			id: 2,
-			name: "#room chill"
-		}]
-	},
-	rdata: {
-		source: [{
-			id: 1,
-			name: ".name "
-		}]
-	},
-	initialize: function() {
-		if(auth.isLoggedIn()) this.input.typeahead(this.ldata);
-		else this.input.typeahead(this.rdata);
-	}
+		},
+		initialize: function() {
+			
+		},
+		setTypeahead:function(category, dataArray) {
+			this.typeaheads[category] = dataArray;
+
+			var list = [];
+			for(var cat in this.typeaheads) list = list.concat(this.typeaheads[cat]);
+
+			this.input.typeahead({source:list});
+		}
 	});
+	return new View();
 })

@@ -2,7 +2,7 @@ define(["underscore", "backbone"], function() {
 	var View = Backbone.View.extend({
 		el: $("#room-search"),
 		input: $("#room-search input"),
-		rooms_list: $("#rooms-list"),
+		"rooms_list": $("#rooms-list"),
 		events: {
 			"submit": "submitform",
 			"click input": "getRooms"
@@ -13,14 +13,11 @@ define(["underscore", "backbone"], function() {
 		},
 		initialize: function() {
 			this.getRooms();
-			//rooms_list.click(getRooms);
+			this.rooms_list.click(this.getRooms);
 		},
 		onJSON: function(data) {
 				var source = [];
 				//alert(this.rooms_list);
-				this.input = $("#room-search input");
-				this.rooms_list = $("#rooms-list");
-
 				this.rooms_list.empty();
 				for(var key in data) {
 					var val = data[key];
@@ -34,13 +31,12 @@ define(["underscore", "backbone"], function() {
 		},
 		getRooms: function() {
 			//var _input = this.input;
-			$.getJSON("/api/rooms", this.onJSON);
+			$.getJSON("/api/rooms", _.bind(this.onJSON, this));
 
 			//this.$el.find("input").typeahead({
 			//	source:[{id:1, name:"root"}, {id:2,name:"chill"}, {id:3,name:"tech"}]
 			//});
 		}
 	})
-
 	return new View();
 })

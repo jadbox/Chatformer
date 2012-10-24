@@ -8,16 +8,16 @@ define(["underscore", "backbone"], function() {
 			"click input": "getRooms"
 		},
 		submitform: function() {
-			$('#chatinput').val("#room " + input.val());
+			$('#chatinput').val("..room " + input.val());
 			return false;
 		},
 		initialize: function() {
 			this.getRooms();
-			this.rooms_list.click(this.getRooms);
+			this.rooms_list.click(_.bind(this.getRooms,this));
 		},
 		selectRoom: function(room){
 			require(["views/chatinput"], function(chatinput){
-				chatinput.setInput("#room "+room);
+				chatinput.setInput("..room "+room);
 			});
 			return true;
 		},
@@ -44,7 +44,7 @@ define(["underscore", "backbone"], function() {
 				});
 				
 				for(var key in source) {
-					source[key].name = "#room "+source[key].name;
+					source[key].name = "..room "+source[key].name;
 				}
 				require(["views/chatinput"], function(chatinput){
 					chatinput.setTypeahead("rooms", source);

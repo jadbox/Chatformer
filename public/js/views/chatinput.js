@@ -12,7 +12,8 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			said = _.escape(said);
 			var msg = Msg(auth.getName() + ": " + said);
 
-			if(msg.type != "sys") chat.trigger("send", msg);
+			//if(msg.type != "sys" && msg.cmd!="room") 
+			chat.trigger("send", msg);
 
 			this.setInput('');
 			return false;

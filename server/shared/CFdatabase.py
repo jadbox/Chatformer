@@ -45,5 +45,5 @@ class CFdatabase():
 	def roomDec(self, room):
 		val = int(self.db.hget("rooms", room) or 0)
 		#logging.getLogger().debug(repr((val, room)))
-		if room!="root" and val < 2: self.db.hdel("rooms", room) #delete rooms that have zero users
+		if room!="lobby" and val < 2: self.db.hdel("rooms", room) #delete rooms that have zero users
 		else: self.db.hincrby("rooms", room, -1)

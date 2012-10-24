@@ -7,6 +7,7 @@ from shared.CFdatabase import CFdatabase
 from shared.CFsession import CFsession
 from chat.Room import Room
 import sockjs.tornado
+import string
 from sockjs.tornado import SockJSRouter, SockJSConnection, conn, session
 from sockjs.tornado.transports import base
 
@@ -36,13 +37,15 @@ class ChatConnection(SockJSConnection):
         self.user = name
         logging.getLogger().debug("Authed user:%s" % (name))
         # Add client to the clients list
-        self.join_room("root") #default root
+        self.join_room("lobby") #default root
 
     def on_message(self, message):
-        op = message[:6]
-        if op=="#room ":
+        op = message[:7]
+        if op=="..room ":
             self.current().remove(self)
-            self.join_room(message[6:])
+            room_name = string.lower(message[7:])
+            self.join_room(room_name)
+            self.send("..room %s" % room_name)
         else: self.current().say(self, message)
        #parts = message.split(",", 1)
         #logging.getLogger().debug("%s %s" % (parts, len(parts)))

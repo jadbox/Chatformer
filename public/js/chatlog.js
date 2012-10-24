@@ -1,4 +1,4 @@
-define(['chat', 'auth', 'underscore', 'backbone'], function(chat, auth) {
+define(['chat', 'auth', "views/room", 'underscore', 'backbone'], function(chat, auth, room) {
 	var control = $('#chatlog');
 
 	function log(msg) {
@@ -59,28 +59,22 @@ define(['chat', 'auth', 'underscore', 'backbone'], function(chat, auth) {
 	ret.on("log", log);
 	ret.on("canned", delayed_convo);
 	ret.on("say", delayed_stream);
-	ret.on("reset", reset)
+	ret.on("reset", reset);
 
-	chat.on("send", function(msg) {
-		if(msg.type=="txt" && !auth.isLoggedIn()) ret.trigger("log", "<span class='label label-important'>!</span> Chatting not allowed until your logged in!");
-		else if(msg.type=="app") ret.trigger("log", "<span class='label label-inverse'>"+msg.cmd+"</span> "+msg.msg);
-		// && !auth.isLoggedIn()
+	chat.on("onApp", function(msg) {
+		if(auth.isLoggedIn()) ret.trigger("log", "<span class='label label-inverse'>"+msg.cmd+"</span> "+msg.msg);
 	});
 
 	chat.on("onTxt", function(msg) {
 		//alert("sad"+msg.msg);
-		ret.trigger("say", msg.raw);
+		if(auth.isLoggedIn()) ret.trigger("say", msg.raw);
+		else ret.trigger("log", "<span class='label label-important'>!</span> Chatting not allowed until your logged in!");
+	});
+
+	room.on("roomChange", function(room) {
+		ret.trigger("log", "<span class='label label-important'>!</span> Entering room "+room);
 	});
 
 	$('#reset').click(reset);
 	return ret
 });
-
-/*
-$(function() {
-	var control = $('#chatlog');
-	_.extend(control, Backbone.Events);
-	control.on("log", log);
-	control.trigger("log", "test");
-})
-*/

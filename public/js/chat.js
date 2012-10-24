@@ -2,7 +2,7 @@ define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone
 	var conn = null;
 	var status = $('#status');
 	var ret = {
-		"room": {id:"root"},
+		"room": {id:"lobby"},
 		"connected":false
 	}; _.extend(ret, Backbone.Events);
 
@@ -58,6 +58,11 @@ define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone
 			if(msg.type=="app") ret.trigger("onApp", msg); // to auth app
 			return;
 		}
+		//if(msg.type=="sys") {
+		//	if(msg.cmd=="room") room = msg.msg;
+		//	else return;
+		//}
+
 		conn.send(msg.data);
 	}
 

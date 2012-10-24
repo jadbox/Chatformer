@@ -28,9 +28,11 @@ $(window).load(function() {
 });
 
 function authed() {
-	require(["./apptalk", "./views/chatinput", "./views/search", 'chat', "i18n!nls/text", "./chatlog"], function(Apps, Chatinput, Search, Chat, Locale, ChatLog) {
+	require(["./apptalk", "./views/chatinput", "./views/search", 'chat', "i18n!nls/text", "./chatlog", "./views/room"], 
+		function(Apps, Chatinput, Search, Chat, Locale, ChatLog, Room) {
 		//new Chatinput(); not needed
 		//new Search(); not needed
+		
 		Chat.connect();
 		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/appvote.html");
 		doLocale(Locale);

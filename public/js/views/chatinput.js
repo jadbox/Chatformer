@@ -38,19 +38,23 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			return false;*/
 		},
 		initialize: function() {
-			
+			this["typeahead"] = this.input.typeahead({source:this.tlist, items:8});
 		},
 		setInput:function(val) {
 			this.input.val(val).focus();
 		},
+		tlist: [],
 		setTypeahead:function(category, dataArray) {
 			//if(category!="app") return;
 			this.typeaheads[category] = dataArray;
 
-			var list = [];
-			for(var cat in this.typeaheads) list = list.concat(this.typeaheads[cat]);
+			//var list = this.tlist;
+			this.tlist = [];
+			for(var cat in this.typeaheads) this.tlist = this.tlist.concat(this.typeaheads[cat]);
+			this["typeahead"].data('typeahead').source = this.tlist;
 			//alert(category + " " + list);
-			this.input.typeahead({source:list});
+
+			//this.typeahead.source = list;
 		}
 	});
 	return new View();

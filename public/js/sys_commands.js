@@ -28,10 +28,10 @@ define(["auth"], function(Auth) {
 			if(!msg.msg || msg.msg.length < 2) return;
 			
 			var ta = [];
-			if(msg.msg.indexOf("||")==-1) ta.push({name:msg.msg});
+			if(msg.msg.indexOf("||")==-1) ta.push(msg.msg);
 			else {
 				var arr = msg.msg.split("||")
-				for(var i in arr) ta.push({name:arr[i]});
+				for(var i in arr) ta.push(arr[i]);
 			}
 			//alert(ta[0].name + " "+ta[1].name);
 			require(["views/chatinput"], function(chatinput){

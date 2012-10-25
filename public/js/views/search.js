@@ -12,8 +12,17 @@ define(["underscore", "backbone"], function() {
 			return false;
 		},
 		initialize: function() {
+			this["typeahead"] = this.input.typeahead({"source": []});
+			this.input.change(_.bind(this.onChange, this));
 			this.getRooms();
 			this.rooms_list.click(_.bind(this.getRooms,this));
+		},
+		onChange: function () {
+			var that = this; 
+			require(["views/chatinput"], function(chatinput){
+				chatinput.setInput("..room "+that.input.val());
+			});
+			that.input.val('');
 		},
 		selectRoom: function(room){
 			require(["views/chatinput"], function(chatinput){
@@ -24,6 +33,7 @@ define(["underscore", "backbone"], function() {
 		onJSON: function(data) {
 				var source = [];
 				//alert(this.rooms_list);
+				//========= drop down
 				this.rooms_list.empty();
 				for(var key in data) {
 					var val = data[key];
@@ -31,24 +41,21 @@ define(["underscore", "backbone"], function() {
 					node.find('a').click(_.bind(this.selectRoom, this, key));
 
 					this.rooms_list.append(node);
-					source.push({name: key});
+					source.push(key);
 				}
-
 				this.rooms_list.append('<li class="divider"></li><li><a href="#" id="make-room">Make a Room</a></li>');
 				$("#make-room").click(_.bind(this.selectRoom, this, "MYROOM"));
 
-				this.input.typeahead({
-					"source": source,
-					"val": "name",
-					itemSelected: function(val) { this.selectRoom(val); }
-				});
-				
-				for(var key in source) {
-					source[key].name = "..room "+source[key].name;
-				}
+				//========== search typeahead
+				this["typeahead"].data('typeahead').source = source;
+
+				//========== chat typeahead
+				/*
 				require(["views/chatinput"], function(chatinput){
+					for(var key in source) source[key] = "..room "+source[key];
 					chatinput.setTypeahead("rooms", source);
 				});
+				*/
 		},
 		getRooms: function() {
 			$.getJSON("/api/rooms", _.bind(this.onJSON, this));

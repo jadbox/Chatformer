@@ -17,18 +17,19 @@ function cf_app_api(onRdy, msgFunc) {
 		var msg = Msg(raw);
 		if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
 		if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
-		if(startup_steps==STARTUP_MSGS) onRdy();
 		msgFunc(msg);
 	});
 
 	function onUserInfo(msg) {
 		user.name = msg.msg;
 		startup_steps++;
+		if(startup_steps==STARTUP_MSGS) onRdy();
 	}
 
 	function onRoomInfo(msg) {
 		room.id = msg.msg;
 		startup_steps++;
+		if(startup_steps==STARTUP_MSGS) onRdy();
 	}
 
 	function action(msg) {

@@ -26,7 +26,7 @@ $(function() {
 });
 
 function start() {
-	cf.commands(["name ","password ", "login ", "reg ", "n", "pw"]);
+	cf.commands(["name ","password ", "login", "reg", "pw "]);
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val(cf.user.name);

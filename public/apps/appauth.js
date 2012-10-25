@@ -26,6 +26,7 @@ $(function() {
 });
 
 function start() {
+	cf.commands(["name ","password ", "login ", "reg ", "n", "pw"]);
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val(cf.user.name);
@@ -140,9 +141,9 @@ function handleMsg(msg) {
 		user_pwd.val(msg.msg);
 	}
 	if (data.indexOf("reg")!=-1 || data == "r" || data.indexOf("new")!=-1) {
-		$("#login").click();
-	}
-	if (data.indexOf("back")!=-1 || data == "l" || data.indexOf("log")!=-1) {
 		$("#reg").click();
+	}
+	if (data.indexOf("back")!=-1 || data == "l" || data.indexOf("logi")!=-1) {
+		$("#login").click();
 	}
 }

@@ -45,7 +45,7 @@ function authed() {
 function notAuthed() {
 	$('.authed').remove();
 	require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput"], function(Apps, ChatLog, Locale, Chatinput) {
-		new Chatinput();
+		//new Chatinput();
 		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/appauth.html");
 		ChatLog.trigger("canned", Locale.introchat);
 		doLocale(Locale);

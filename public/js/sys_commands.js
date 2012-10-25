@@ -24,5 +24,19 @@ define(["auth"], function(Auth) {
 			var args = msg.msg.split(" ");
 			Auth.login(args[0], args[1]);
 		}
+		else if(cmd=="commands") {
+			if(!msg.msg || msg.msg.length < 2) return;
+			
+			var ta = [];
+			if(msg.msg.indexOf("||")==-1) ta.push({name:msg.msg});
+			else {
+				var arr = msg.msg.split("||")
+				for(var i in arr) ta.push({name:arr[i]});
+			}
+			//alert(ta[0].name + " "+ta[1].name);
+			require(["views/chatinput"], function(chatinput){
+				chatinput.setTypeahead("app", ta);
+			});
+		}
 	}
 });

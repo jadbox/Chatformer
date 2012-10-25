@@ -6,6 +6,8 @@ $(function() {
 function onRdy() {
 	//alert(cf.room.id);
 	//alert("name " + cf.user.name);
+
+	cf.commands(["vote borderlands3","vote diablo3","vote firefall","vote test"]);
 	$("input[type='radio']").change(function() {
 		var voteval = $("input[name=VoteGroup]:checked").val();
 		cf.action('vote ' + voteval);

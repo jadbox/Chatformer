@@ -44,11 +44,12 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			this.input.val(val).focus();
 		},
 		setTypeahead:function(category, dataArray) {
+			//if(category!="app") return;
 			this.typeaheads[category] = dataArray;
 
 			var list = [];
 			for(var cat in this.typeaheads) list = list.concat(this.typeaheads[cat]);
-
+			//alert(category + " " + list);
 			this.input.typeahead({source:list});
 		}
 	});

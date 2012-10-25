@@ -52,6 +52,7 @@ define(["underscore", "backbone"], function() {
 		},
 		getRooms: function() {
 			$.getJSON("/api/rooms", _.bind(this.onJSON, this));
+			return true;
 		}
 	})
 	return new View();

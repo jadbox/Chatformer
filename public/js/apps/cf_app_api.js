@@ -39,6 +39,10 @@ function cf_app_api(onRdy, msgFunc) {
 		say(SYS_TOKEN + msg)
 	}
 
+	function commands(list) {
+		this.system("commands "+APP_TOKEN+list.join("||"+APP_TOKEN));
+	}
+
 	function say(msg) {
 		msg = encodeURIComponent(msg);
 		$.postMessage(msg, parent_url, parent);
@@ -58,6 +62,7 @@ function cf_app_api(onRdy, msgFunc) {
 		"action": action,
 		"say": say,
 		"system": system,
-		"resize": resize
+		"resize": resize,
+		"commands": commands
 	};
 };

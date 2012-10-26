@@ -18,7 +18,8 @@ define({
 			"#pw_label":"Your password, ideally 12 characters upper and lowercase:",
 			"#login": "I'm BACK!",
 			"#reg": "I'm NEW!",
-			"#or": "or"
+			".or": "or",
+			"#guest-login": "Guest Login"
 		},
 		"site": {
 			"#chat-submit-btn": "say",

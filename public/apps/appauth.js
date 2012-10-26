@@ -14,24 +14,26 @@ var locale;
 $(function() {
 	require(["i18n!nls/text"], function(Locale) {
 		locale = Locale;
-		for(var key in locale.auth) if(key.indexOf("#")==0) {
+		for(var key in locale.auth) if(key.indexOf("#")==0 || key.indexOf(".")==0) {
 			if(key.indexOf("placeholder")!=-1) {
 				var id = key.replace("_placeholder", "");
 				$(id).attr("placeholder", locale.auth[key]);
 			}
 			else {$(key).html(locale.auth[key]);$(key).val(locale.auth[key]);}
 		}
+
 		cf = cf_app_api(start, handleMsg);
 	});
 });
 
 function start() {
-	cf.commands(["name ","password ", "login", "reg", "pw "]);
+	cf.commands(["name ","password ", "login", "reg", "pw ", "guest-login"]);
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val(cf.user.name);
 
-	$("#login_login-main").submit(function() {
+	//$("#login_login-main")
+	$("#login").click(function() {
 		post_login(user_name.val(), user_pwd.val());
 		return false;
 	});
@@ -48,6 +50,7 @@ function start() {
 		cf.resize();
 		return false;
 	});
+	$("#guest-login").click(guest_login);
 }
 /*
 function addCaptcha() {
@@ -121,6 +124,10 @@ function post_reg(name, pwd) {
  		}, "json");
 }
 
+function guest_login() {
+	post_login("guest", "guestguest");
+}
+
 function login(name, auth_token) {
 	cf.system('reload '+name+' '+auth_token);
 }
@@ -143,7 +150,9 @@ function handleMsg(msg) {
 	if (data.indexOf("reg")!=-1 || data == "r" || data.indexOf("new")!=-1) {
 		$("#reg").click();
 	}
-	if (data.indexOf("back")!=-1 || data == "l" || data.indexOf("logi")!=-1) {
+	if (data.indexOf("back")!=-1 || data == "l" || data.indexOf("logi")==0) {
 		$("#login").click();
 	}
+
+	if( data.indexOf("guest-login")==0 ) guest_login();
 }

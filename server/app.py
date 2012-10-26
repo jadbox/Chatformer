@@ -36,10 +36,10 @@ def save_name(name):
 	data["ip"] = request['REMOTE_ADDR']
 
 
-	if "@" in request.forms.email and "." in request.forms.email and request.forms.email.__len__() > 6:
+	if "@" in request.forms.email and "." in request.forms.email and request.forms.email.__len__() > 4:
 		data["email"] = request.forms.email
 	else:
-		return {'statis':'err5'}
+		return {'status':'err5'}
 	db.userSave(name, data)
 	return {'status':'0'}
 

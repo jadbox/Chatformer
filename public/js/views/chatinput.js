@@ -20,6 +20,7 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 		},
 		initialize: function() {
 			this["typeahead"] = this.input.typeahead({source:[], items:8});
+			this.setTypeahead("core", ["..users"]);
 		},
 		setInput:function(val) {
 			this.input.val(val).focus();

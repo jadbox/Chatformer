@@ -3,6 +3,12 @@ class Room():
 		self.name = name
 		self.ppl = set()
 		self.conn = conn
+	
+	def getUsers(self):
+		pplList = []
+		for person in self.ppl:
+			pplList.append("%s " % person.user)
+		return ''.join(pplList)
 
 	def numUsers(self):
 		return len(self.ppl)

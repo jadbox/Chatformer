@@ -22,7 +22,7 @@ define({
 			"#guest-login": "Guest Login"
 		},
 		"site": {
-			"#chat-submit-btn": "say",
+			"#chat-submit-btn": "send",
 			"#nav-help": "help",
 			"#logout-btn": "Log Out"
 		}

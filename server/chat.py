@@ -40,18 +40,23 @@ class ChatConnection(SockJSConnection):
         self.join_room("lobby") #default root
 
     def on_message(self, message):
-        op = message[:7]
-        if op=="..room ":
+        if message[:7]=="..room ":
             self.current().remove(self)
             room_name = string.lower(message[7:])
             self.join_room(room_name)
             self.send("..room %s" % room_name)
+        elif message[:7]=="..users":
+            self.show_users()
+
         else: self.current().say(self, message)
        #parts = message.split(",", 1)
         #logging.getLogger().debug("%s %s" % (parts, len(parts)))
         #if len(parts) < 2: return
         #op, data = parts[0], parts[1]
         # Broadcast message
+
+    def show_users(self):
+        self.send("..users %s" % self.current().getUsers())
 
     def join_room(self, data):
         if not data or data == self.room: return
@@ -61,6 +66,7 @@ class ChatConnection(SockJSConnection):
         self.current().add(self)
         logging.getLogger().debug("joinging room:%s" % self.room)
         db.roomInc(self.room)
+        self.show_users()
 
     def leave_room(self):
         if self.room != "": db.roomDec(self.room)

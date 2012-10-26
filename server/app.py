@@ -25,7 +25,7 @@ def save_name(name):
 	pwd = request.forms.pwd or ''
 	if pwd.__len__() > 24 or pwd.__len__() < 6:
 		return {'status':'err1'}
-	if name.__len__() > 24 or name.__len__() < 1:
+	if name.__len__() > 24 or name.__len__() < 1 or " " in name or "." in name or ":" in name or "!" in name or "#" in name:
 		return {'status':'err2'}
 	if request.forms.pwdc != pwd:
 		return {'status':'err4'}

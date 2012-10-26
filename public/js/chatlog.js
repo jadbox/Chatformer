@@ -62,7 +62,7 @@ define(['chat', 'auth', "views/room", 'underscore', 'backbone'], function(chat, 
 	ret.on("reset", reset);
 
 	chat.on("onSys", function(msg) {
-		if(msg.cmd=="users") ret.trigger("log", "<span class='label label-inverse'>users</span> "+msg.msg);
+		//if(msg.cmd=="users") ret.trigger("log", "<span class='label label-inverse'>users</span> "+msg.msg);
 	});
 
 	chat.on("onApp", function(msg) {

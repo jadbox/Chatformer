@@ -22,8 +22,9 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			this["typeahead"] = this.input.typeahead({source:[], items:8});
 			this.setTypeahead("core", ["..users"]);
 		},
-		setInput:function(val) {
+		setInput:function(val, sendNow) {
 			this.input.val(val).focus();
+			if(sendNow) this.el.submit();
 		},
 		setTypeahead:function(category, dataArray) {
 			//if(category!="app") return;

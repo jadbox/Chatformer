@@ -13,13 +13,18 @@ class Room():
 	def numUsers(self):
 		return len(self.ppl)
 
+	def updateUsers(self):
+		self.broadcast("..users %s" % self.getUsers());
+
 	def add(self, person):
 		self.broadcast("%s joined." % person.user)
 		self.ppl.add(person)
+		self.updateUsers()
 
 	def remove(self, person):
 		self.ppl.remove(person)
 		self.broadcast("%s left." % person.user)
+		self.updateUsers()
 
 	def say(self, person, msg):
 		self.conn.broadcast(self.ppl, "%s: %s" % (person.user, msg))

@@ -65,26 +65,22 @@ Do the following if you're using your customized build of modernizr (http://www.
         <div class="container" style="width: auto;"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">Chatformer</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Apps</a></li>
-              
+              <!--<li class="active"><a href="#">Home</a></li>-->
+              <li class="authed"><a href="#">Apps</a></li>
+              <li class="authed dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <b class="caret"></b></a>
+                <ul class="dropdown-menu" id="users-list"></ul>
+              </li>
+
               <li class="authed dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rooms <b class="caret"></b></a>
-                <ul class="dropdown-menu" id="rooms-list">
-                  
-                 <!-- <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>-->
-                </ul>
+                <ul class="dropdown-menu" id="rooms-list"></ul>
               </li>
             </ul>
             <form class="navbar-search pull-left" action="#" id="room-search">
               <input type="text" class="authed search-query span2" placeholder="Search Rooms" data-items="8" data-provide="typeahead" autocomplete="off"/>
             </form>
             <ul class="nav pull-right">
-			  <li><a href="#" id="nav-help">....</a></li>
-              <li class="dropdown"> <a href="#" class="authed dropdown-toggle" data-toggle="dropdown">Profile <b class="caret"></b></a>
+			  <!-- <li><a href="#" id="nav-help">....</a></li>--> 
+        <li class="dropdown"> <a href="#" class="authed dropdown-toggle" data-toggle="dropdown">Profile <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">View</a></li>
                   <li><a href="#">Edit</a></li>

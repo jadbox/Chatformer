@@ -66,7 +66,7 @@ class ChatConnection(SockJSConnection):
         self.current().add(self)
         logging.getLogger().debug("joinging room:%s" % self.room)
         db.roomInc(self.room)
-        self.show_users()
+        #self.show_users() # not needed now
 
     def leave_room(self):
         if self.room != "": db.roomDec(self.room)

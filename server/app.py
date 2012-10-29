@@ -40,6 +40,8 @@ def save_name(name):
 		data["email"] = request.forms.email
 	else:
 		return {'status':'err5'}
+
+	data["credits"] = 10 # add def credits
 	db.userSave(name, data)
 	return {'status':'0'}
 

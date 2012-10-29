@@ -33,10 +33,29 @@ define(["auth"], function(Auth) {
 				var arr = msg.msg.split("||")
 				for(var i in arr) ta.push(arr[i]);
 			}
-			//alert(ta[0].name + " "+ta[1].name);
 			require(["views/chatinput"], function(chatinput){
 				chatinput.setTypeahead("app", ta);
 			});
+		}
+
+		else if(cmd=="require") {
+			if(msg.msg=="listening") {
+				require(["apptalk", "chat"], function(apptalk, chat) {
+					apptalk.warn("* app is listening on discussion.");
+					chat.on("onTxt", function(msg) {
+						apptalk.trigger("msg", msg);
+					})
+				});
+			}
+			else if(msg.msg=="posting") {
+				require(["apptalk", "chatlog"], function(apptalk, chatlog) {
+					apptalk.warn("* app is allowed to post content to chat and even impersonate.");
+					apptalk.on("onSys", function(msg) {
+						if(msg.cmd=="log") chatlog.trigger("msg", msg.msg);
+						if(msg.cmd=="say") chatlog.trigger("say", msg.msg);
+					})
+				});
+			}
 		}
 	}
 });

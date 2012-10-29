@@ -31,7 +31,6 @@ class CFdatabase():
 	def deleteSession(self, name):
 		self.db.hdel("sessions", name)
 
-
 	def resetRooms(self):
 		self.db.delete("rooms")
 		#self.db.hdel("rooms", "root")
@@ -47,3 +46,9 @@ class CFdatabase():
 		#logging.getLogger().debug(repr((val, room)))
 		if val < 2 and room!="lobby": self.db.hdel("rooms", room) #delete rooms that have zero users
 		else: self.db.hincrby("rooms", room, -1)
+
+	def userCredits(self, user):
+		return self.dg.hget(user, "credits")
+
+	def userIncCredits(self, user, amt):
+		return self.dg.hincrby(user, "credits", amt)

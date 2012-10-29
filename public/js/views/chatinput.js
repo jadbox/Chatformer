@@ -1,4 +1,4 @@
-define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, chat) {
+define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], function(auth, chat, apptalk) {
 	var View = Backbone.View.extend({
 		el: $("#chatform"),
 		input: $("#chatinput"),
@@ -20,9 +20,13 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 		},
 		initialize: function() {
 			this["typeahead"] = this.input.typeahead({source:[], items:8});
-			//this.setTypeahead("core", ["..somecmd"]);
+
+			apptalk.on("onTxt", _.bind(this.setInput, this));
+			apptalk.on("onApp", _.bind(this.setInput, this));
 		},
 		setInput:function(val, sendNow) {
+			if(val && typeof(val)!=typeof(String) && val.data) val = val.data;
+
 			this.input.val(val).focus();
 			if(sendNow) this.el.submit();
 		},
@@ -36,5 +40,6 @@ define(["auth", "chat", "apps/msg", "underscore", "backbone"], function(auth, ch
 			this["typeahead"].data('typeahead').source = tlist;
 		}
 	});
+
 	return new View();
 })

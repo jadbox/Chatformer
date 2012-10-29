@@ -1,6 +1,7 @@
 define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(sysCmd, chat) {
-	var numApps = 0;
 	var activeIFrames = [];
+
+	var ret = {};
 
 	function get_domain(src) {
 		return src.replace(/([^:]+:\/\/[^\/]+).*/, '$1');
@@ -30,27 +31,22 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	function addAppListener(src, frameObject) {
 		src = get_domain(src);
 
-		function handleMsg(msg) {
-			$('#chatinput').val('' + msg.data);
-			$('#chatinput').focus();
-		}
-
-		function handleSysMsg(msg) {
-			sysCmd(msg, frameObject);
-		}
-
 		$.receiveMessage(function(e) {
 				m = Msg( decodeURIComponent(e.data) );
-				if(m.type!="sys") handleMsg(m);
-				if(m.type=="sys") handleSysMsg(m);
+
+				if(m.type=="txt") ret.trigger("onTxt", m);
+				else if(m.type=="sys") {
+					sysCmd(m, frameObject);
+					ret.trigger("onSys", m);
+				}
+				else if(m.type=="app") ret.trigger("onApp", m);
 			}
-			//$.handleCommandListener(handleAppMsg, handleSysMsg, handleMsg), get_domain(src)
 		);
 	}
 
 	function addApp(src) {
-		numApps++;
-		var id = "app" + numApps;
+		if(activeIFrames.length > 0) activeIFrames.pop().remove();
+		var id = "app" + activeIFrames.length;
 		var isrc = src + '#' + encodeURIComponent(document.location.href);
 		var frameCode = '<iframe " src="' + isrc + '" scrolling="no" id="' + id + '" frameborder="0">Loading...<\/iframe>';
 		var _frame = $(frameCode).appendTo('#inner-applayout');
@@ -58,7 +54,15 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 		addAppListener(src, _frame);
 	}
 
-	var ret = {};
+	ret.warn = function (msg, clear) {
+		if( $('#warn-msg').length > 0 ) {
+			if(clear) $('#warn-msg').remove();
+			else $('#warn-msg').append("<br/>"+msg);
+		}
+		else 
+			$('#inner-applayout').prepend('<div class="alert alert-block alert-error fade in" style="margin:0 0 -12px;"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
+	}
+
 	_.extend(ret, Backbone.Events);
 	ret.on("add", addApp);
 	ret.on("msg", msgMsg);

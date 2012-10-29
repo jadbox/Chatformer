@@ -40,12 +40,13 @@ class ChatConnection(SockJSConnection):
         self.join_room("lobby") #default root
 
     def on_message(self, message):
-        if message[:7]=="..room ":
+        op = message[:7]
+        if op=="..room ":
             self.current().remove(self)
             room_name = string.lower(message[7:])
             self.join_room(room_name)
             self.send("..room %s" % room_name)
-        elif message[:7]=="..users":
+        elif op=="..users":
             self.show_users()
 
         else: self.current().say(self, message)

@@ -1,8 +1,11 @@
-function cf_app_api(onRdy, msgFunc) {
+function cf_app_api(onRdy, msgFunc, options) {
+	options = options || {};
+	options.require = options.require || []; // [listening, posting]
+
 	var APP_TOKEN = ".";
 	var SYS_TOKEN = APP_TOKEN + APP_TOKEN;
-	var user={};
-	var room={};
+	var user={}; // String "name" and Bool "guest"
+	var room={}; // String "id"
 	var STARTUP_MSGS = 2;
 	var startup_steps = 0;
 
@@ -17,19 +20,19 @@ function cf_app_api(onRdy, msgFunc) {
 		var msg = Msg(raw);
 		if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
 		if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
+		//if(msg.type=="sys" && msg.cmd=="require") if(++startup_steps==STARTUP_MSGS) onRdy();
 		msgFunc(msg);
 	});
 
 	function onUserInfo(msg) {
 		user.name = msg.msg;
-		startup_steps++;
-		if(startup_steps==STARTUP_MSGS) onRdy();
+		user.guest = user.name=="guest";
+		if(++startup_steps==STARTUP_MSGS) onRdy();
 	}
 
 	function onRoomInfo(msg) {
 		room.id = msg.msg;
-		startup_steps++;
-		if(startup_steps==STARTUP_MSGS) onRdy();
+		if(++startup_steps==STARTUP_MSGS) onRdy();
 	}
 
 	function action(msg) {
@@ -41,10 +44,11 @@ function cf_app_api(onRdy, msgFunc) {
 	}
 
 	function commands(list) {
-		this.system("commands "+APP_TOKEN+list.join("||"+APP_TOKEN));
+		system("commands "+APP_TOKEN+list.join("||"+APP_TOKEN));
 	}
 
 	function say(msg) {
+		if(msg.cmd=="say") alert(msg);
 		msg = encodeURIComponent(msg);
 		$.postMessage(msg, parent_url, parent);
 	}
@@ -52,6 +56,11 @@ function cf_app_api(onRdy, msgFunc) {
 	function resize() {
 		var msg = 'resize ' + $('body').outerHeight(true);
 		system(msg);
+	}
+
+	for(var requiredPriv in options.require) {
+		//startup_steps++;
+		system("require "+options.require[requiredPriv]);
 	}
 
 	resize();

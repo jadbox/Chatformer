@@ -35,7 +35,7 @@ function authed() {
 		//new Search(); not needed
 		
 		Chat.connect();
-		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/appvote.html");
+		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/vote/appvote.html");
 		doLocale(Locale);
 		$("#logout-btn").click(function(){
 			require(["auth"], function(Auth) { Auth.logout(); return false;});
@@ -47,7 +47,7 @@ function notAuthed() {
 	$('.authed').remove();
 	require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput"], function(Apps, ChatLog, Locale, Chatinput) {
 		//new Chatinput();
-		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/appauth.html");
+		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/auth/appauth.html");
 		ChatLog.trigger("canned", Locale.introchat);
 		doLocale(Locale);
 	})

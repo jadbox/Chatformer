@@ -1,6 +1,6 @@
 define({
 	"root": {
-		"introchat": ["Well hello there!", "welcome to the site", "please take a moment to register before we get started"],
+		"introchat": ["WelcomeBot2000: Well hello there!", "DoubleRainbow: welcome to the site", "SecretBaron: please take a moment to register before we get started"],
 		"auth_status": {
 			"err1": "Password size error.",
 			"err2": "Name size error.",

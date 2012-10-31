@@ -60,7 +60,7 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 			else $('#warn-msg').append("<br/>"+msg);
 		}
 		else 
-			$('#inner-applayout').prepend('<div class="alert alert-block alert-error fade in" style="margin:0 0 -12px;"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
+			$('#inner-applayout').prepend('<div class="alert alert-block alert-error fade in"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
 	}
 
 	_.extend(ret, Backbone.Events);

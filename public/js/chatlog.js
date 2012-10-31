@@ -1,4 +1,4 @@
-define(['chat', 'auth', "views/room", 'underscore', 'backbone'], function(chat, auth, room) {
+define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], function(chat, auth, room) {
 	var control = $('#chatlog');
 
 	function log(msg) {
@@ -14,17 +14,22 @@ define(['chat', 'auth', "views/room", 'underscore', 'backbone'], function(chat, 
 		//control.scrollTop(control.scrollTop() + 1000);
 	}
 
-	function delayed_stream(msg, onComplete) {
+	function say(msg, onComplete) {
 		var control = log("");
+		var mediaBody = $('<div class="media-body"><h4 class="media-heading">'+msg.user+'</h4></div>');
+		//var imageBody = $('<a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x42/66ff33"/></a>');
+		var imageBody = $('<a class="pull-left" href="#"><img class="media-object" src="imgs/users/duck64x42.jpg"/></a>');
+		control.append(imageBody);
+		control.append(mediaBody);
 
-		var arr = msg.split("");
+		var arr = msg.data.split("");
 		var func = function(lastChar) {
 				if(arr.length == 0) {
 					if(_.isFunction(onComplete)) onComplete();
 					return;
 				}
 				var c = arr.shift();
-				control.append(c);
+				mediaBody.append(c);
 				var delay = 10 + c.charCodeAt(0) * .32 + Math.random() * 10;
 				if(lastChar == "." || lastChar == "!" || lastChar == "?") delay += 200;
 
@@ -35,15 +40,15 @@ define(['chat', 'auth', "views/room", 'underscore', 'backbone'], function(chat, 
 		func();
 	}
 
-	function delayed_convo(msgs, onComplete) {
+	function canned_convo(msgs, onComplete) {
 		var func = function() {
 				if(msgs.length == 0) {
 					if(_.isFunction(onComplete)) onComplete();
 					return;
 				}
-				var msg = msgs.shift();
+				var msg = Msg(msgs.shift());
 				setTimeout(function() {
-					delayed_stream(msg, func);
+					say(msg, func);
 				}, 700);
 			}
 		func();
@@ -57,8 +62,8 @@ define(['chat', 'auth', "views/room", 'underscore', 'backbone'], function(chat, 
 	_.extend(ret, Backbone.Events);
 
 	ret.on("log", log);
-	ret.on("canned", delayed_convo);
-	ret.on("say", delayed_stream);
+	ret.on("canned", canned_convo);
+	ret.on("say", say);
 	ret.on("reset", reset);
 
 	chat.on("onSys", function(msg) {
@@ -71,7 +76,7 @@ define(['chat', 'auth', "views/room", 'underscore', 'backbone'], function(chat, 
 
 	chat.on("onTxt", function(msg) {
 		//alert("sad"+msg.msg);
-		if(auth.isLoggedIn()) ret.trigger("say", msg.raw);
+		if(auth.isLoggedIn()) ret.trigger("say", msg, "");
 		else ret.trigger("log", "<span class='label label-important'>!</span> Chatting not allowed until your logged in!");
 	});
 

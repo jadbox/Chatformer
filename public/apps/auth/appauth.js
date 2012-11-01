@@ -66,9 +66,8 @@ function addCaptcha() {
  	 );
 }*/
 function addCaptcha() {
+	$("#human_check").css("display", "none")
 	$("#human_check").hide();
-	$('<label for="pwdc">Password confirmation:</label><input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="5"/>').appendTo("#human_check").focus();
-	$('<label for="email">Email:</label><input name="email" id="email" placeholder="email address" type="text" tabindex="6"/><br/><span style="font-size:x-small">* email is used for premium features and EPIC updates only!</span>').appendTo("#human_check");
 	$("#human_check").fadeIn(300);
 }
 function moveRegBtn() {
@@ -77,9 +76,19 @@ function moveRegBtn() {
 	reg.appendTo("#login_login-main");
 	reg.val("I've confirmed my password!");
 }
-
+/*
+$(':file').change(function(){
+    var file = this.files[0];
+    name = file.name;
+    size = file.size;
+    type = file.type;
+    if(size > 1024*7) alert("File size is too large, must be under 7kb.");
+    $("badge").val('');
+    //your validation
+});
+*/
 function post_login(name, pwd) {
-	$.post("/api/get/"+name, { "pwd": pwd },
+	$.post("/api/get/"+name, { "pwd": pwd},
 		function(data){
 			console.log("info: "+data.status+" "+data.name+ " "+data.created+" "+data.auth_token);
 			if(data.status=="0") {

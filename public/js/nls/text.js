@@ -7,7 +7,8 @@ define({
 			"err3": "Name already exists.",
 			"err4": "password confirmation does not match.",
 			"err5": "invalid email address",
-			"err6": "invalid login information"
+			"err6": "invalid login information",
+			"err_badge_size": "Badge file is too large"
 		},
 		"auth": {
 			"#title": "Tell me about youself!",
@@ -19,7 +20,9 @@ define({
 			"#login": "I'm BACK!",
 			"#reg": "I'm NEW!",
 			".or": "or",
-			"#guest-login": "Guest Login"
+			"#guest-login": "Guest Login",
+			"#badge_label": "My badge image (64x32). Optional - reverts to default or last used badge.",
+			"#email_notice": "* email is used for account features and EPIC updates only!"
 		},
 		"site": {
 			"#chat-submit-btn": "send",

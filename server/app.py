@@ -6,6 +6,7 @@ from passlib.hash import sha256_crypt
 from datetime import date
 import string
 import logging
+import os
 
 db = CFdatabase()
 sessions = CFsession(db)
@@ -15,6 +16,28 @@ def logout(name):
 	token = request.forms.auth_token
 	if sessions.verify(name, token): sessions.delete(name)
 	return {'status':'success'}
+
+def saveBadge(request, status):
+	data = request.files.get('badge')
+	if not data or not data.file: return status
+	name = data.filename
+	raw = ""
+	completed = false
+	counter = 0
+	while True:
+		counter+=1
+		if counter == 7: 
+			break
+		datachunk = data.file.read(1024)
+		if not datachunk: 
+			completed = true
+			break
+		raw = raw + datachunk
+	if not completed: return {'status':'err_badge_size'}
+	fout = open("../public/imgs/users/"+name, "wb")
+	fout.write(my_picture)
+	fout.close()
+	return status
 
 @route('/api/save/<name>', method='POST')
 def save_name(name):
@@ -43,7 +66,7 @@ def save_name(name):
 
 	data["credits"] = 10 # add def credits
 	db.userSave(name, data)
-	return {'status':'0'}
+	return {'status':'0'} #saveBadge(request, {'status':'0'})
 
 @route('/api/get/<name>', method='POST')
 def get_name(name):
@@ -57,7 +80,7 @@ def get_name(name):
 	resp = {"status":"0", "name":name, "created":data["created"], "auth_token":sessions.make(name)}
 
 	#logging.getLogger().debug("Fetched user: %s" % name)
-	return resp
+	return resp #saveBadge(request, resp)
 
 @route('/api/rooms')
 def get_rooms():

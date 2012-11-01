@@ -109,7 +109,15 @@ form {
 <input type="button" name="login" id="login" value="" tabindex="3" class="btn btn-info"/> <span class="or">..</span>
 <input type="button" name="reg" id="reg" value="" tabindex="4" class="btn btn-info"/> <span class="or">..</span>
 <input type="button" name="guest-login" id="guest-login" value="" tabindex="4" class="btn btn-info"/>
-    <div id="human_check"></div></form>        
+<br/><br/>
+<!--<label for="badge" id="badge_label">...</label><input type="file" name="badge" id="badge" />-->
+
+    <div id="human_check" style="display:none">
+
+	<label for="pwdc">Password confirmation:</label><input name="pwdc" id="pwdc" placeholder="password confirmation" type="password" tabindex="5"/>
+	<label for="email">Email:</label><input name="email" id="email" placeholder="email address" type="text" tabindex="6"/><br/><span style="font-size:x-small" id="email_notice"></span>
+
+    </div></form>        
 	 	<br/><br/>
         <i style="font-size:x-small"><a id="reset_label" href="/password"></a></i>
     <!-- end .content --></div>

@@ -1,5 +1,6 @@
 define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], function(chat, auth, room) {
 	var control = $('#chatlog');
+	var userBadges = {'guest':'None'};
 
 	function log(msg) {
 		var control = $('#chatlog');
@@ -14,13 +15,34 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 		//control.scrollTop(control.scrollTop() + 1000);
 	}
 
+	function applyUserBadge(username) {
+		var file="";
+		var index = userBadges[username];
+		if(!index) {
+			$.getJSON("/api/badge/"+username, function(data) {
+				userBadges[username] = data.badge?data.badge:"None";
+				applyUserBadge(username);
+			});
+			return;
+		}
+		else if(index=="None") {
+			file="dino64x42.jpg";
+		}
+		else {
+			file=index;
+		}
+		$("."+username).attr("src", "http://jadders.dyndns.org:82/imgs/users/"+file);
+	}
+
 	function say(msg, onComplete) {
 		var control = log("");
 		var mediaBody = $('<div class="media-body"><h4 class="media-heading">'+msg.user+'</h4></div>');
 		//var imageBody = $('<a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x42/66ff33"/></a>');
-		var imageBody = $('<a class="pull-left" href="#"><img class="media-object" src="imgs/users/duck64x42.jpg"/></a>');
+		var imageBody = $('<a class="pull-left" href="#"><img class="media-object '+msg.user+'"/></a>');
+
 		control.append(imageBody);
 		control.append(mediaBody);
+		applyUserBadge(msg.user);
 
 		var arr = msg.data.split("");
 		var func = function(lastChar) {

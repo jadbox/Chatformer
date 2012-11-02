@@ -47,8 +47,13 @@ class CFdatabase():
 		if val < 2 and room!="lobby": self.db.hdel("rooms", room) #delete rooms that have zero users
 		else: self.db.hincrby("rooms", room, -1)
 
-	def userCredits(self, user):
-		return self.dg.hget(user, "credits")
+	def userGetProp(self, user, prop="credits"):
+		return self.db.hget(user, prop) #credits
+
+	def userSaveProp(self, user, prop, val):
+		return self.db.hset(user, prop, val)
 
 	def userIncCredits(self, user, amt):
 		return self.dg.hincrby(user, "credits", amt)
+
+

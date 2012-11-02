@@ -90,5 +90,19 @@ def get_rooms():
 def root():
     return "sup"
 
+@route('/api/badge/<name>', method='POST')
+def save_badge(name):
+	badge = request.forms.badge
+	if not badge: return {'status': 'badge not specified'}
+	if ".." in badge or ":" in badge or "/" in badge or "javascript" in badge or "?" in badge: return {'status': 'badge format incorrect'} 
+	if sessions.verify(name, request.forms.auth_token)==False: return {'status':'invalid token'}
+	db.userSaveProp(name, "badge", badge)
+	return get_badge(name)
+
+@route('/api/badge/<name>', method='GET')
+def get_badge(name):
+	return {'badge':'%s' % db.userGetProp(name, "badge")} #"None" if nothing
+
+
 application = app()
 logging.getLogger().setLevel(logging.DEBUG)

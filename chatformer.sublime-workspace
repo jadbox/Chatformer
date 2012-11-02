@@ -20,51 +20,42 @@
 	"buffers":
 	[
 		{
-			"file": "public/js/nls/text.js",
+			"file": "public/js/apptalk.js",
 			"settings":
 			{
-				"buffer_size": 1153,
+				"buffer_size": 2309,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/chatlog.js",
+			"file": "public/js/sys_commands.js",
 			"settings":
 			{
-				"buffer_size": 2580,
+				"buffer_size": 1832,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/users.js",
+			"file": "public/js/views/chatinput.js",
 			"settings":
 			{
-				"buffer_size": 190,
-				"line_ending": "Windows",
-				"name": "define(['apps/msg', 'underscore', 'backbone'], fun"
-			}
-		},
-		{
-			"file": "public/apps/auth/appauth.html",
-			"settings":
-			{
-				"buffer_size": 6475,
+				"buffer_size": 1388,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/apps/auth/appauth.js",
+			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 4232,
+				"buffer_size": 1991,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "server/app.py",
+			"file": "public/js/chat.js",
 			"settings":
 			{
-				"buffer_size": 2630,
+				"buffer_size": 1729,
 				"line_ending": "Windows"
 			}
 		}
@@ -109,14 +100,17 @@
 	},
 	"file_history":
 	[
-		"/Z/chatformer/public/js/apptalk.js",
 		"/Z/chatformer/public/js/main.js",
-		"/Z/chatformer/public/apps/vote/appvote.html",
-		"/Z/chatformer/public/apps/auth/appauth.html",
-		"/Z/chatformer/public/index.html",
-		"/Z/chatformer/public/js/chatlog.js",
 		"/Z/chatformer/public/js/nls/text.js",
+		"/Z/chatformer/public/js/chatlog.js",
+		"/Z/chatformer/public/js/users.js",
+		"/Z/chatformer/public/apps/auth/appauth.html",
 		"/Z/chatformer/public/apps/auth/appauth.js",
+		"/Z/chatformer/server/app.py",
+		"/Z/chatformer/public/js/apptalk.js",
+		"/Z/chatformer/public/apps/vote/appvote.js",
+		"/Z/chatformer/public/apps/vote/appvote.html",
+		"/Z/chatformer/public/index.html",
 		"/Z/chatformer/public/style/bs/bootstrap.css",
 		"/Z/chatformer/public/style/bs/bootstrap.min.theme.css",
 		"/Z/chatformer/public/apps/appvote.js",
@@ -124,7 +118,6 @@
 		"/Z/chatformer/public/js/sys_commands.js",
 		"/Z/chatformer/server/chat.py",
 		"/Z/chatformer/server/shared/CFdatabase.py",
-		"/Z/chatformer/server/app.py",
 		"/Z/chatformer/public/js/views/chatinput.js",
 		"/Z/chatformer/server/chat/Room.py",
 		"/Z/chatformer/public/js/views/room.js",
@@ -266,23 +259,23 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "public/js/nls/text.js",
+					"file": "public/js/apptalk.js",
 					"settings":
 					{
-						"buffer_size": 1153,
+						"buffer_size": 2309,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								477,
-								477
+								22,
+								8
 							]
 						],
 						"settings":
@@ -386,18 +379,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "public/js/chatlog.js",
+					"file": "public/js/sys_commands.js",
 					"settings":
 					{
-						"buffer_size": 2580,
+						"buffer_size": 1832,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								105,
-								0
+								199,
+								199
 							]
 						],
 						"settings":
@@ -501,247 +494,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "public/js/users.js",
+					"file": "public/js/views/chatinput.js",
 					"settings":
 					{
-						"buffer_size": 190,
+						"buffer_size": 1388,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								97,
-								97
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"auto_name": "define(['apps/msg', 'underscore', 'backbone'], fun",
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/apps/auth/appauth.html",
-					"settings":
-					{
-						"buffer_size": 6475,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5008,
-								4984
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1543.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "public/apps/auth/appauth.js",
-					"settings":
-					{
-						"buffer_size": 4232,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2140,
-								2140
+								525,
+								525
 							]
 						],
 						"settings":
@@ -838,25 +602,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1031.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "server/app.py",
+					"buffer": 3,
+					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 2630,
+						"buffer_size": 1991,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2037,
-								2037
+								1749,
+								1749
 							]
 						],
 						"settings":
@@ -949,11 +713,126 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 778.0,
+						"translation.y": 264.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/js/chat.js",
+					"settings":
+					{
+						"buffer_size": 1729,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1010,6 +889,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"appvote",
+				"public/apps/vote/appvote.js"
+			],
 			[
 				"appauth",
 				"public/apps/auth/appauth.js"

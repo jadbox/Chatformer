@@ -12,8 +12,12 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 			said = _.escape(said);
 			var msg = Msg(auth.getName() + ": " + said);
 
-			//if(msg.type != "sys" && msg.cmd!="room") 
-			chat.trigger("send", msg);
+			if(msg.type == "sys" && msg.cmd=="app") {
+				require(["sys_commands"], function(sys_cmds){
+					sys_cmds(msg);
+				});
+			}
+			else chat.trigger("send", msg);
 
 			this.setInput('');
 			return false;
@@ -23,6 +27,8 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 
 			apptalk.on("onTxt", _.bind(this.setInput, this));
 			apptalk.on("onApp", _.bind(this.setInput, this));
+
+			this.setTypeahead("debug", ["..app ", "..app vote"]);
 		},
 		setInput:function(val, sendNow) {
 			if(val && typeof(val)!=typeof(String) && val.data) val = val.data;

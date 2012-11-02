@@ -1,6 +1,6 @@
 var cf;
 $(function() {
-	cf = cf_app_api(onRdy, handleMsg, {require:["posting", "listening"]});
+	cf = cf_app_api(onRdy, handleMsg); // , {require:["posting", "listening"]}
 });
 
 function onRdy() {

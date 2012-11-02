@@ -60,8 +60,10 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 			else $('#warn-msg').append("<br/>"+msg);
 		}
 		else 
-			$('#inner-applayout').prepend('<div class="alert alert-block alert-error fade in"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
+			$('#inner-applayout').prepend('<div class="alert alert-block alert-error fade in" style="margin-bottom:-18px"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
 	}
+
+	//$('#inner-applayout').prepend('Change app to id: <input type="text" id="debug-app-changer" placeholder="vote"/><button id="debug-app-changer-btn">load</button>');
 
 	_.extend(ret, Backbone.Events);
 	ret.on("add", addApp);

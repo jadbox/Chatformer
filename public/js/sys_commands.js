@@ -5,10 +5,16 @@ define(["auth"], function(Auth) {
 	}
 	return function handleCoreCommand(msg, frameObject) {
 		var cmd = msg.cmd;
+
+		if (cmd=="app" && Auth.isLoggedIn()) {
+			require(["apptalk"], function(App){
+				App.trigger("add", "http://jadders.dyndns.org:82/apps/"+msg.msg+"/app.html");
+			});
+		}
+
 		if(cmd=="userinfo") {
 			require(["apptalk"], function(App){
-				var user = Auth.user().name;
-				App.trigger("sys", "userinfo "+user);
+				App.trigger("sys", "userinfo " + Auth.user().name);
 			})
 		}
 		else if(cmd=="roominfo") {

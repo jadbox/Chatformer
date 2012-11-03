@@ -57,10 +57,12 @@ function start() {
 var userBadges={};
 function applyUserBadge() {
 	var username = $("#user").val();
+	if(!username || username.length == 0 || username==" " || username.indexOf("..")!=-1) return;
 	var index = userBadges[username];
 	var file = "";
 	if(!index) {
 		$.getJSON("/api/badge/" + username, function(data) {
+			if(!data) return;
 			userBadges[username] = data.badge ? data.badge : "None";
 			applyUserBadge(username);
 		});

@@ -31,7 +31,7 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 		else {
 			file=index;
 		}
-		$("."+username).attr("src", "http://jadders.dyndns.org:82/imgs/users/"+file);
+		$("."+username).attr("src", "/imgs/users/"+file);
 	}
 
 	function say(msg, onComplete) {

@@ -4,7 +4,7 @@ $(function() {
 });
 
 function onRdy() {
-	//cf.system("say hello!");
+	//cf.system("say hello!"); //posting
 
 	cf.commands(["vote borderlands3","vote diablo3","vote firefall","vote test"]);
 	$("input[type='radio']").change(function() {
@@ -17,7 +17,7 @@ function onRdy() {
 var voteData = {};
 var usersVoted = {};
 function handleMsg(msg) {
-	/*if(msg.type=="txt") {
+	/*if(msg.type=="txt") { // listening
 		alert(msg.raw);
 	}*/
 	if(msg.type!="app") return;
@@ -41,8 +41,6 @@ function handleMsg(msg) {
 		for (var i in usersVoted) {
 			comp.append(" " + i + " voted " + usersVoted[i])
 		}
-		//comp.append("</p>");
 		cf.resize();
-		//$("input[name=VoteGroup]").attr("disabled", "disabled"); // only for auth user
 	}
 }

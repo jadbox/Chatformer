@@ -66,7 +66,7 @@
 			"file": "public/apps/auth/appauth.js",
 			"settings":
 			{
-				"buffer_size": 4856,
+				"buffer_size": 4971,
 				"line_ending": "Windows"
 			}
 		},
@@ -213,7 +213,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -863,15 +863,15 @@
 					"file": "public/apps/auth/appauth.js",
 					"settings":
 					{
-						"buffer_size": 4856,
+						"buffer_size": 4971,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1891,
-								1891
+								1502,
+								1502
 							]
 						],
 						"settings":
@@ -968,7 +968,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 848.0,
+						"translation.y": 692.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

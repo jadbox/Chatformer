@@ -6,6 +6,7 @@ function cf_app_api(onRdy, msgFunc, options) {
 	var SYS_TOKEN = APP_TOKEN + APP_TOKEN;
 	var user={}; // String "name" and Bool "guest"
 	var room={}; // String "id"
+	var cmdHandlers={};
 	var STARTUP_MSGS = 2;
 	var startup_steps = 0;
 
@@ -21,7 +22,9 @@ function cf_app_api(onRdy, msgFunc, options) {
 		if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
 		if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
 		//if(msg.type=="sys" && msg.cmd=="require") if(++startup_steps==STARTUP_MSGS) onRdy();
-		msgFunc(msg);
+		msg['isClient'] = msg.user == user.name;
+		if(msgFunc) msgFunc(msg);
+		if(msg.cmd && cmdHandlers[msg.cmd]) cmdHandlers[msg.cmd](msg);
 	});
 
 	function onUserInfo(msg) {
@@ -44,6 +47,7 @@ function cf_app_api(onRdy, msgFunc, options) {
 	}
 
 	function commands(list) {
+		//if(ty)
 		system("commands "+APP_TOKEN+list.join("||"+APP_TOKEN));
 	}
 
@@ -73,6 +77,7 @@ function cf_app_api(onRdy, msgFunc, options) {
 		"say": say,
 		"system": system,
 		"resize": resize,
-		"commands": commands
+		"commands": commands,
+		"onAction": cmdHandlers
 	};
 };

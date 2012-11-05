@@ -63,6 +63,11 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 			$('#inner-applayout').prepend('<div class="alert alert-block alert-error fade in" style="margin-bottom:-18px"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
 	}
 
+	chat.on("onSys", function(msg){
+		//if(msg.cmd=="left") alert(msg.cmd + " " + msg.msg)
+		msgMsg(msg);
+	});
+
 	//$('#inner-applayout').prepend('Change app to id: <input type="text" id="debug-app-changer" placeholder="vote"/><button id="debug-app-changer-btn">load</button>');
 
 	_.extend(ret, Backbone.Events);

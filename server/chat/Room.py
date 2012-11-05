@@ -17,13 +17,16 @@ class Room():
 		self.broadcast("..users %s" % self.getUsers());
 
 	def add(self, person):
-		self.broadcast("%s joined." % person.user)
+		self.broadcast("%s joined." % person.user) # take out soon
+		self.broadcast("%s: ..joined %s" % (person.user,person.user)) 
 		self.ppl.add(person)
 		self.updateUsers()
 
 	def remove(self, person):
+		if not person in self.ppl: return
 		self.ppl.remove(person)
-		self.broadcast("%s left." % person.user)
+		self.broadcast("%s left." % person.user) # take out soon
+		self.broadcast("%s: ..left %s" % (person.user,person.user))
 		self.updateUsers()
 
 	def say(self, person, msg):

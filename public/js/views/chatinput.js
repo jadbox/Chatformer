@@ -28,7 +28,7 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 			apptalk.on("onTxt", _.bind(this.setInput, this));
 			apptalk.on("onApp", _.bind(this.setInput, this));
 
-			this.setTypeahead("debug", ["..app ", "..app vote"]);
+			this.setTypeahead("debug", ["..app ", "..app vote", "..app battle", "..app profile"]);
 		},
 		setInput:function(val, sendNow) {
 			if(val && typeof(val)!=typeof(String) && val.data) val = val.data;

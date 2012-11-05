@@ -70,13 +70,13 @@ class ChatConnection(SockJSConnection):
         #self.show_users() # not needed now
 
     def leave_room(self):
-        if self.room != "": db.roomDec(self.room)
+        if not self.room in self.rooms: return
+        db.roomDec(self.room)
+        if self.room and self.current(): self.current().remove(self)
 
     def on_close(self):
-        if not self.room in self.rooms: return
         self.leave_room();
         # Remove client from the clients list and broadcast leave message
-        self.current().remove(self)
 
     def current(self):
         return self.rooms[self.room]

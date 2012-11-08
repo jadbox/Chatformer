@@ -1,4 +1,4 @@
-define(["auth"], function(Auth) {
+define(["auth", "underscore"], function(Auth) {
 	function resizeIFrameMsg(msg, frameObject) {
 		$(frameObject).height(msg);
 		return;
@@ -12,7 +12,14 @@ define(["auth"], function(Auth) {
 			});
 		}
 
-		if(cmd=="userinfo") {
+		if(cmd=="background-css") {
+			//..background-css #33ff99 url('http://3.bp.blogspot.com/-swX1TZBkAko/TzJnbwg6-ZI/AAAAAAAAsLo/cPslKxRTrlE/s1600/Pembroke+Welsh+Corgi.jpg') no-repeat right top
+			$("body").css('background', _.unescape(msg.msg));
+		}
+		else if(cmd=="background-image") {
+			$("body").css('background-image', 'url("'+_.unescape(msg.msg)+'")');
+		}
+		else if(cmd=="userinfo") {
 			require(["apptalk"], function(App){
 				App.trigger("sys", "userinfo " + Auth.user().name);
 			})

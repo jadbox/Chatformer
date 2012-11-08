@@ -12,7 +12,7 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 			said = _.escape(said);
 			var msg = Msg(auth.getName() + ": " + said);
 
-			if(msg.type == "sys" && msg.cmd=="app") {
+			if(msg.type == "sys") { // && msg.cmd=="app" // allow all sys commands
 				require(["sys_commands"], function(sys_cmds){
 					sys_cmds(msg);
 				});
@@ -28,7 +28,7 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 			apptalk.on("onTxt", _.bind(this.setInput, this));
 			apptalk.on("onApp", _.bind(this.setInput, this));
 
-			this.setTypeahead("debug", ["..app ", "..app vote", "..app battle", "..app profile"]);
+			this.setTypeahead("debug", ["..app ", "..app vote", "..app battle", "..app profile", "..background-css ", "..background-image "]);
 		},
 		setInput:function(val, sendNow) {
 			if(val && typeof(val)!=typeof(String) && val.data) val = val.data;

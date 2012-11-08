@@ -8,7 +8,9 @@ define(["auth", "underscore"], function(Auth) {
 
 		if (cmd=="app" && Auth.isLoggedIn()) {
 			require(["apptalk"], function(App){
-				App.trigger("add", "http://jadders.dyndns.org:82/apps/"+msg.msg+"/app.html");
+				var data = _.unescape(msg.msg);
+				if(data.indexOf("://") > 0) App.trigger("add", data);
+				else App.trigger("add", "http://jadders.dyndns.org:82/apps/"+msg.msg+"/app.html");
 			});
 		}
 

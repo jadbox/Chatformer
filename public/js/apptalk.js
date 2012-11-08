@@ -47,6 +47,8 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	function addApp(src) {
 		if(activeIFrames.length > 0) activeIFrames.pop().remove();
 		var id = "app" + activeIFrames.length;
+		var cacheBuster = "?noCache="+Math.random();
+		src = src + cacheBuster;
 		var isrc = src + '#' + encodeURIComponent(document.location.href);
 		var frameCode = '<iframe " src="' + isrc + '" scrolling="no" id="' + id + '" frameborder="0">Loading...<\/iframe>';
 		var _frame = $(frameCode).appendTo('#inner-applayout');

@@ -31,9 +31,20 @@ a img{border:0 none}
 	width:98%;
 	min-height: 150px;
 }
-#chatinput {
-	width: 80%;
+
+#chatform {
+	padding-right:80px;
 }
+#chatinput {
+	width:100%;
+    float:left;
+}
+#chat-submit-btn {
+	width:60px;
+    float:right;
+    margin-right:-80px;
+}
+
 #header-links {
 	text-transform: uppercase;
 	white-space: nowrap;
@@ -61,9 +72,7 @@ a img{border:0 none}
 	margin:0px;
 	padding:0px;
 }
-#chat-submit-btn {
-	width: 15%;
-}
+
 #footer {
 	color:#999999;
 }

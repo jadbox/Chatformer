@@ -61,7 +61,7 @@ img, object, embed, video {
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
-@media only screen and (min-width: 550px) {
+@media only screen and (min-width: 768px) {
 .gridContainer {
 	width: 95.35%;
 	padding-left: 2.325%;
@@ -71,14 +71,14 @@ img, object, embed, video {
 	clear: both;
 	float: left;
 	margin-left: 0;
-	width: 47.3684%;
+	width: 40%;
 	display: block;
 }
 #AppSection {
 	clear: none;
 	float: left;
-	margin-left: 5.2631%;
-	width: 47.3684%;
+	margin-left: 12px;
+	width: 58%;
 	display: block;
 }
 #HeaderSection {
@@ -95,10 +95,10 @@ img, object, embed, video {
 
 /* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1023px) {
 .gridContainer {
 	width: 95%;
-	max-width: 1032px;
+	max-width: 1366px; 
 	padding-left: .5%;
 	padding-right: 1.5%;
 	margin: auto;
@@ -109,16 +109,18 @@ img, object, embed, video {
 	clear: both;
 	float: left;
 	margin-left: 0;
-	width: 48.2758%;
+	width: 35.0%;
 	display: block;
 	
-	/*display: table-cell;vertical-align: top;margin: -50px 0px -75px;*/
+	/*max-width: 520px;
+	min-width: 300px;
+	display: table-cell;vertical-align: top;margin: -50px 0px -75px;*/
 }
 #AppSection {
 	clear: none;
 	float: left;
-	margin-left: 3.4482%;
-	width: 48.2758%;
+	margin-left: 12px;
+	width: 63.2%;
 	display: block;
 	
 	/*display: table-cell;vertical-align: top;margin: -50px 0px -75px;*/

@@ -55,11 +55,5 @@ define(["chat", "views/chatinput", "underscore", "backbone"], function(chat, cha
 	})
 
 	var view = new View();
-	require(["chat"], function(chat) {
-		chat.on("onSys", function(msg) {
-			if(msg.cmd == "joined") view.getRooms();
-			if(msg.cmd == "left") view.getRooms();
-		});
-	});
 	return view;
 })

@@ -35,6 +35,7 @@ define(["underscore", "backbone"], function() {
 				//alert(this.rooms_list);
 				//========= drop down
 				this.rooms_list.empty();
+				
 				for(var key in data) {
 					var val = data[key];
 					var node = $('<li><a>'+key+'</a></li>');
@@ -62,5 +63,8 @@ define(["underscore", "backbone"], function() {
 			return true;
 		}
 	})
-	return new View();
+
+	var view = new View();
+
+	return view;
 })

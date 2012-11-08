@@ -10,33 +10,37 @@ define(["chat", "views/chatinput", "underscore", "backbone"], function(chat, cha
 		},
 		initialize: function() {
 			var that = this;
-			chat.on("onSys", function(msg){
-				if(msg.cmd=="users") that.onUsers(msg.msg);
+			chat.on("onSys", function(msg) {
+				if(msg.cmd == "users") that.onUsers(msg.msg);
 			})
 			//this.rooms_list.click(_.bind(this.getRooms,this));
 		},
-		selectUser: function(user){
-			
+		selectUser: function(user) {
+
 			return true;
 		},
 		users_list: [],
 		onUsers: function(data) {
-				data = data.split(" "); data.pop();
-				
-				//alert(data);
-				//========= drop down
-				this.el = $("#users-list");
-				this.el.empty();
-				for(var key in data) {
-					var val = data[key];
-					var node = $('<li><a>'+val+'</a></li>');
-					node.find('a').click(_.bind(this.selectUser, this, val));
+			data = data.split(" ");
+			data.pop();
 
-					this.el.append(node);
-				}
+			//alert(data);
+			//========= drop down
+			this.el = $("#users-list");
+			this.el.empty();
+			var len = 0;
+			for(var key in data) {
+				len++
+				var val = data[key];
+				var node = $('<li><a>' + val + '</a></li>');
+				node.find('a').click(_.bind(this.selectUser, this, val));
 
-				//========== chat typeahead
-				/*
+				this.el.append(node);
+			}
+			$('.num_users').html(len);
+
+			//========== chat typeahead
+			/*
 				require(["views/chatinput"], function(chatinput){
 					for(var key in source) source[key] = "..room "+source[key];
 					chatinput.setTypeahead("rooms", source);
@@ -49,5 +53,13 @@ define(["chat", "views/chatinput", "underscore", "backbone"], function(chat, cha
 			return true;
 		}
 	})
-	return new View();
+
+	var view = new View();
+	require(["chat"], function(chat) {
+		chat.on("onSys", function(msg) {
+			if(msg.cmd == "joined") view.getRooms();
+			if(msg.cmd == "left") view.getRooms();
+		});
+	});
+	return view;
 })

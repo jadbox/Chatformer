@@ -100,7 +100,7 @@ def get_badges():
 		if files.endswith(".jpg") or files.endswith(".png") or files.endswith(".gif"):
 			blist.append(files)
 	os.chdir(current)
-	return ",".join(blist)
+	return {"badges":blist}
 
 @route('/api/badge/<name>', method='POST')
 def save_badge(name):

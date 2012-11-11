@@ -90,6 +90,18 @@ def get_rooms():
 def root():
     return "sup"
 
+@route('/api/badges')
+def get_badges():
+	import os
+	blist = []
+	current = os.getcwd()
+	os.chdir("../public/imgs/users")
+	for files in os.listdir("."):
+		if files.endswith(".jpg") or files.endswith(".png") or files.endswith(".gif"):
+			blist.append(files)
+	os.chdir(current)
+	return ",".join(blist)
+
 @route('/api/badge/<name>', method='POST')
 def save_badge(name):
 	badge = request.forms.badge

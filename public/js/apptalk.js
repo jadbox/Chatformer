@@ -2,6 +2,7 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	var activeIFrames = [];
 
 	var ret = {};
+	_.extend(ret, Backbone.Events);
 
 	function get_domain(src) {
 		return src.replace(/([^:]+:\/\/[^\/]+).*/, '$1');
@@ -49,7 +50,11 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 			setTimeout(function(){ addApp(src, true); }, 1000); // delay app opening
 			return;
 		}
-		if(activeIFrames.length > 0) activeIFrames.pop().remove();
+		if( $("#warn-box") ) $("#warn-box").remove();
+		if(activeIFrames.length > 0) {
+			activeIFrames.pop().remove();
+			ret.trigger("removed");
+		}
 		var id = "app" + activeIFrames.length;
 		var cacheBuster = "?noCache="+Math.random();
 		src = src + cacheBuster;
@@ -66,7 +71,7 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 			else $('#warn-msg').append("<br/>"+msg);
 		}
 		else 
-			$('#inner-applayout').prepend('<div class="alert alert-block alert-error fade in" style="margin-bottom:-18px"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
+			$('#inner-applayout').prepend('<div id="warn-box" class="alert alert-block alert-error fade in" style="margin-bottom:-18px"><button type="button" class="close" data-dismiss="alert">&times;</button><p id="warn-msg">'+msg+'</p></div>').alert();
 	}
 
 	chat.on("onSys", function(msg){
@@ -76,7 +81,7 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 
 	//$('#inner-applayout').prepend('Change app to id: <input type="text" id="debug-app-changer" placeholder="vote"/><button id="debug-app-changer-btn">load</button>');
 
-	_.extend(ret, Backbone.Events);
+	
 	ret.on("add", addApp);
 	ret.on("msg", msgMsg);
 	ret.on("sys", msgSys);

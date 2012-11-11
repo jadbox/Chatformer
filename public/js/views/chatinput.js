@@ -25,16 +25,20 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 		initialize: function() {
 			this["typeahead"] = this.input.typeahead({source:[], items:8});
 
-			apptalk.on("onTxt", _.bind(this.setInput, this));
+			//apptalk.on("onTxt", _.bind(this.setInput, this));
 			apptalk.on("onApp", _.bind(this.setInput, this));
 
-			this.setTypeahead("debug", ["..app ", "..app vote", "..app battle", "..app profile", "..background-css ", "..background-image "]);
+			this.setTypeahead("debug", ["..app vote", "..app battle", "..app profile"]);
+			//, "..background-css ", "..background-image "
 		},
 		setInput:function(val, sendNow) {
 			if(val && typeof(val)!=typeof(String) && val.data) val = val.data;
 
 			this.input.val(val).focus();
-			if(sendNow) this.el.submit();
+			if(sendNow) {
+				var that = this;
+				setTimeout(function(){ that.input.val(val); that.submit(); that.input.val(''); }, 1100);
+			}
 		},
 		setTypeahead:function(category, dataArray) {
 			//if(category!="app") return;

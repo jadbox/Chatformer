@@ -25,7 +25,15 @@ $(window).load(function() {
 		else notAuthed();
 		flogger.log("html");
 	});
+
+	$("#profile").click(onProfile);
 });
+
+function onProfile() {
+	require(["./views/chatinput"], function(chatinput) {
+		chatinput.setInput("..app profile", true);
+	});
+}
 
 function authed() {
 	require(["./apptalk", "./views/chatinput", "./views/search", 'chat', "i18n!nls/text", "./chatlog", 

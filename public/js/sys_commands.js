@@ -61,18 +61,23 @@ define(["auth", "underscore"], function(Auth) {
 			if(msg.msg=="listening") {
 				require(["apptalk", "chat"], function(apptalk, chat) {
 					apptalk.warn("* app is listening on discussion.");
-					chat.on("onTxt", function(msg) {
+					chat.on("onTxt", function listenTxt(msg) {
 						apptalk.trigger("msg", msg);
+						apptalk.on("removed", function(){ chat.off("onTxt", listenTxt); });
 					})
 				});
 			}
 			else if(msg.msg=="posting") {
 				require(["apptalk", "chatlog"], function(apptalk, chatlog) {
 					apptalk.warn("* app is allowed to post content to chat and even impersonate.");
-					apptalk.on("onSys", function(msg) {
-						if(msg.cmd=="log") chatlog.trigger("msg", msg.msg);
-						if(msg.cmd=="say") chatlog.trigger("say", msg.msg);
-					})
+					apptalk.on("onTxt", function appPost(msg) {
+						chatlog.trigger("say", msg);
+						apptalk.on("removed", function(){ apptalk.off("onTxt", appPost); });
+					});
+					//apptalk.on("onSys", function(msg) {
+					//	if(msg.cmd=="log") chatlog.trigger("msg", msg.msg);
+					//	if(msg.cmd=="say") chatlog.trigger("say", msg.msg);
+					//})
 				});
 			}
 		}

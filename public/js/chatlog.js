@@ -1,11 +1,11 @@
 define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], function(chat, auth, room) {
 	var control = $('#chatlog');
-	var userBadges = {'guest':'None'};
+	var userBadges = {}; //'guest':'None'
 
 	function log(msg) {
 		var control = $('#chatlog');
 		var color = '#760FA6' //'#'+Math.floor(Math.random()*16777215-20000).toString(16);
-		var post = $('<div style="color:' + color + '"/>');
+		var post = $('<div style="clear:both;color:' + color + '"/>');
 		post.html(msg);
 		$(post).fadeIn('slow');
 		control.prepend(post);
@@ -32,6 +32,7 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 			file=index;
 		}
 		$("."+username).attr("src", "/imgs/users/"+file);
+		userBadges[username] = undefined; //TEMP FIX
 	}
 
 	function say(msg, onComplete) {

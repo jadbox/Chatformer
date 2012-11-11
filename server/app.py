@@ -105,7 +105,7 @@ def get_badges():
 @route('/api/badge/<name>', method='POST')
 def save_badge(name):
 	badge = request.forms.badge
-	if not badge: return {'status': 'badge not specified'}
+	if not badge or badge == "undefined": return {'status': 'badge not specified'}
 	if ".." in badge or ":" in badge or "/" in badge or "javascript" in badge or "?" in badge: return {'status': 'badge format incorrect'} 
 	if sessions.verify(name, request.forms.auth_token)==False: return {'status':'invalid token'}
 	db.userSaveProp(name, "badge", badge)

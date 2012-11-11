@@ -60,11 +60,14 @@ function cf_app_api(onRdy, msgFunc, options) {
 		//if(ty)
 		system("commands "+APP_TOKEN+list.join("||"+APP_TOKEN));
 	}
-
-	function say(msg) {
-		if(msg.cmd=="say") alert(msg);
+	
+	//, "..background-css ", "..background-image "
+	function say(msg, excludeUserSource) {
+		//if(msg.cmd=="say") alert(msg);
 		msg = encodeURIComponent(msg);
-		$.postMessage(msg, parent_url, parent);
+		var source = "";
+		if(!excludeUserSource) source = user.name+": ";
+		$.postMessage(source+msg, parent_url, parent);
 	}
 
 	function resize() {

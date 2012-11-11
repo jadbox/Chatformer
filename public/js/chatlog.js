@@ -35,8 +35,7 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 		userBadges[username] = undefined; //TEMP FIX
 	}
 
-	function say(msg, onComplete) {
-		var control = log("");
+	function badgePost(control, msg) { 
 		var mediaBody = $('<div class="media-body"><h4 class="media-heading">'+msg.user+'</h4></div>');
 		//var imageBody = $('<a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x42/66ff33"/></a>');
 		var imageBody = $('<a class="pull-left" href="#"><img class="media-object '+msg.user+'"/></a>');
@@ -44,6 +43,17 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 		control.append(imageBody);
 		control.append(mediaBody);
 		applyUserBadge(msg.user);
+		return mediaBody;
+	}
+
+	function say(msg, onComplete) {
+		var control;
+		if(msg.user) {
+	 		control = log("");
+	 		control = badgePost(control, msg);
+		} else {
+			control = log("");
+		}
 
 		var arr = msg.data.split("");
 		var func = function(lastChar) {
@@ -52,7 +62,7 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 					return;
 				}
 				var c = arr.shift();
-				mediaBody.append(c);
+				control.append(c);
 				var delay = 10 + c.charCodeAt(0) * .32 + Math.random() * 10;
 				if(lastChar == "." || lastChar == "!" || lastChar == "?") delay += 200;
 

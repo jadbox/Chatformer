@@ -29,6 +29,9 @@ function setBadge(img) {
 }
 
 function onRdy() {
+	cf.say("welcome to your profile", true);
+	cf.say("This is my current badge.");
+
 	//cf.system("say hello!");
 
 	//cf.commands(["badge "]);

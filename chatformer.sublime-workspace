@@ -47,7 +47,7 @@
 			"file": "public/apps/profile/appprofile.js",
 			"settings":
 			{
-				"buffer_size": 906,
+				"buffer_size": 987,
 				"line_ending": "Windows"
 			}
 		},
@@ -55,7 +55,7 @@
 			"file": "public/js/chatlog.js",
 			"settings":
 			{
-				"buffer_size": 3094,
+				"buffer_size": 3259,
 				"line_ending": "Windows"
 			}
 		},
@@ -310,7 +310,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -663,15 +663,15 @@
 					"file": "public/apps/profile/appprofile.js",
 					"settings":
 					{
-						"buffer_size": 906,
+						"buffer_size": 987,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								696,
-								696
+								760,
+								760
 							]
 						],
 						"settings":
@@ -778,15 +778,15 @@
 					"file": "public/js/chatlog.js",
 					"settings":
 					{
-						"buffer_size": 3094,
+						"buffer_size": 3259,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1033,
-								1036
+								1648,
+								1648
 							]
 						],
 						"settings":
@@ -883,7 +883,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 230.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

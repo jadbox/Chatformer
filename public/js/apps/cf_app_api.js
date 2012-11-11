@@ -5,9 +5,10 @@ function cf_app_api(onRdy, msgFunc, options) {
 	var APP_TOKEN = ".";
 	var SYS_TOKEN = APP_TOKEN + APP_TOKEN;
 	var user={}; // String "name" and Bool "guest"
+	var users=[];
 	var room={}; // String "id"
 	var cmdHandlers={};
-	var STARTUP_MSGS = 2;
+	var STARTUP_MSGS = 3;
 	var startup_steps = 0;
 
 	var parent_url = decodeURIComponent(document.location.hash.replace(/^#/, ''));
@@ -21,11 +22,20 @@ function cf_app_api(onRdy, msgFunc, options) {
 		var msg = Msg(raw);
 		if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
 		if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
+		if(msg.type=="sys" && msg.cmd=="users") onUsersInfo(msg);
 		//if(msg.type=="sys" && msg.cmd=="require") if(++startup_steps==STARTUP_MSGS) onRdy();
 		msg['isClient'] = msg.user == user.name;
 		if(msgFunc) msgFunc(msg);
 		if(msg.cmd && cmdHandlers[msg.cmd]) cmdHandlers[msg.cmd](msg);
 	});
+
+	function onUsersInfo(msg) {
+		msg = msg.msg;
+		msg = msg.split(" ");
+		users.splice(0, users.length);
+		for(var u in msg) users.push(u);
+		if(++startup_steps==STARTUP_MSGS) onRdy();
+	}
 
 	function onUserInfo(msg) {
 		user.name = msg.msg;
@@ -68,9 +78,10 @@ function cf_app_api(onRdy, msgFunc, options) {
 	}
 
 	resize();
-	system("userinfo"); system("roominfo");
+	system("userinfo"); system("roominfo"); system("users");
 
 	return {
+		"users": users,
 		"room": room, // id
 		"user": user, // name
 		"action": action,

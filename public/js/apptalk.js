@@ -44,7 +44,11 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 		);
 	}
 
-	function addApp(src) {
+	function addApp(src, delayed) {
+		if(!delayed) {
+			setTimeout(function(){ addApp(src, true); }, 1000); // delay app opening
+			return;
+		}
 		if(activeIFrames.length > 0) activeIFrames.pop().remove();
 		var id = "app" + activeIFrames.length;
 		var cacheBuster = "?noCache="+Math.random();

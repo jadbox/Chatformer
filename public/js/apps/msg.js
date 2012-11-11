@@ -41,6 +41,7 @@ Msg = function() {
 				data.cmd = msg.slice(0, index); 
 				data.msg = msg.slice(index+1);
 			}
+			if(!msg) msg = "";
 			return data;
 		}
 

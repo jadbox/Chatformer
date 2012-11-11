@@ -19,7 +19,7 @@ define(["chat", "views/chatinput", "underscore", "backbone"], function(chat, cha
 
 			return true;
 		},
-		users_list: [],
+		users: [],
 		onUsers: function(data) {
 			data = data.split(" ");
 			data.pop();
@@ -29,9 +29,11 @@ define(["chat", "views/chatinput", "underscore", "backbone"], function(chat, cha
 			this.el = $("#users-list");
 			this.el.empty();
 			var len = 0;
+			this.users = [];
 			for(var key in data) {
 				len++
 				var val = data[key];
+				this.users.push(val);
 				var node = $('<li><a>' + val + '</a></li>');
 				node.find('a').click(_.bind(this.selectUser, this, val));
 

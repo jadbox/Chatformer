@@ -52,7 +52,11 @@ define(["auth", "underscore"], function(Auth) {
 				chatinput.setTypeahead("app", ta);
 			});
 		}
-
+		else if(cmd=="users") {
+			require(["apptalk", "views/users"], function(apptalk, users) {
+				apptalk.trigger("sys", "users "+users.users.join(" "));
+			});
+		}
 		else if(cmd=="require") {
 			if(msg.msg=="listening") {
 				require(["apptalk", "chat"], function(apptalk, chat) {

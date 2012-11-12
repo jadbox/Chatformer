@@ -47,7 +47,7 @@
 			"file": "public/apps/profile/appprofile.js",
 			"settings":
 			{
-				"buffer_size": 987,
+				"buffer_size": 988,
 				"line_ending": "Windows"
 			}
 		},
@@ -63,7 +63,7 @@
 			"file": "public/index.html",
 			"settings":
 			{
-				"buffer_size": 5455,
+				"buffer_size": 5462,
 				"line_ending": "Windows"
 			}
 		},
@@ -310,7 +310,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -663,15 +663,15 @@
 					"file": "public/apps/profile/appprofile.js",
 					"settings":
 					{
-						"buffer_size": 987,
+						"buffer_size": 988,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								760,
-								760
+								0,
+								0
 							]
 						],
 						"settings":
@@ -893,15 +893,15 @@
 					"file": "public/index.html",
 					"settings":
 					{
-						"buffer_size": 5455,
+						"buffer_size": 5462,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3994,
-								3994
+								3542,
+								3542
 							]
 						],
 						"settings":
@@ -999,7 +999,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 518.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

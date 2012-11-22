@@ -20,6 +20,7 @@ function cf_app_api(onRdy, msgFunc, options) {
 	$.receiveMessage(function(e) {
 		var raw = decodeURIComponent( e.data );
 		var msg = Msg(raw);
+		if(msg.type=="sys" && msg.cmd=="isOwner") user.isOwner = msg.msg=="1"?true:false;
 		if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
 		if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
 		if(msg.type=="sys" && msg.cmd=="users") onUsersInfo(msg);

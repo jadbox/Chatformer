@@ -37,7 +37,8 @@ class ChatConnection(SockJSConnection):
         self.user = name
         logging.getLogger().debug("Authed user:%s" % (name))
         # Add client to the clients list
-        self.join_room("lobby") #default root
+        self.join_room("lobby")
+        #self.current().appLocked = True #default root
 
     def on_message(self, message):
         op = message[:7]
@@ -45,7 +46,7 @@ class ChatConnection(SockJSConnection):
             self.current().remove(self)
             room_name = string.lower(message[7:])
             self.join_room(room_name)
-            self.send("..room %s" % room_name)
+            
         elif op=="..users":
             self.show_users()
 
@@ -67,7 +68,9 @@ class ChatConnection(SockJSConnection):
         self.current().add(self)
         logging.getLogger().debug("joinging room:%s" % self.room)
         db.roomInc(self.room)
+        self.send("..room %s" % self.current().name)
         #self.show_users() # not needed now
+        return self.current()
 
     def leave_room(self):
         if not self.room in self.rooms: return

@@ -6,6 +6,7 @@ requirejs.config({
 	//config is relative to the baseUrl, and
 	//never includes a ".js" extension since
 	//the paths config could be for a directory.
+	urlArgs: "bust=" + (new Date()).getTime(),
 	paths: {
 		//apps: '../../apps',
 		jquery: "http://code.jquery.com/jquery-1.8.2.min",
@@ -43,7 +44,7 @@ function authed() {
 		//new Search(); not needed
 		
 		Chat.connect();
-		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/vote/app.html");
+		//Apps.trigger("add", "http://jadders.dyndns.org:82/apps/vote/app.html");
 		doLocale(Locale);
 		$("#logout-btn").click(function(){
 			require(["auth"], function(Auth) { Auth.logout(); return false;});

@@ -1,8 +1,8 @@
 define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone'], function(auth, flog) {
 	var conn = null;
 	var status = $('#status');
+	//"room": {id:"lobby", owner:false},
 	var ret = {
-		"room": {id:"lobby"},
 		"connected":false
 	}; _.extend(ret, Backbone.Events);
 
@@ -21,6 +21,7 @@ define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone
 
 		conn.onmessage = function(e) {
 			var msg = Msg(e.data);
+			//console.log("in "+msg.data);
 			//alert(msg.toString());
 			ret.trigger("recieve", msg); // global
 			if(msg.type=="app") ret.trigger("onApp", msg);
@@ -58,11 +59,8 @@ define(["auth", "views/footerlog", "apps/msg", "sockjs", 'underscore', 'backbone
 			if(msg.type=="app") ret.trigger("onApp", msg); // to auth app
 			return;
 		}
-		//if(msg.type=="sys") {
-		//	if(msg.cmd=="room") room = msg.msg;
-		//	else return;
-		//}
-
+		
+		console.log("out " + msg.data);
 		conn.send(msg.data);
 	}
 

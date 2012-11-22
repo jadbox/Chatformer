@@ -1,21 +1,27 @@
 define(["chat", 'underscore', 'backbone'], function(chat) {
 	var View = Backbone.View.extend({
-		room: "",
+		id: "",
+		isOwner: false,
 		changeRoom: function(msg) {
-			if(msg.cmd!="room") return;
 			var new_room = msg.msg;
-			this.room = new_room;
+			if(new_room==this.id) return;
+			this.id = new_room;
+			this.isOwner = false;
 			this.el.empty()
 			this.el.text(new_room.toUpperCase());
 			this.trigger("roomChange", new_room);
-			
 		},
 		initialize: function() {
 			this.el = $("#room-name");
-			chat.on("onSys", _.bind(this.changeRoom, this) );
 		}
 	});
 	var view = new View()
-
+	
+	chat.on("onSys", function(msg){
+		if(msg.cmd=="room") view.changeRoom(msg);
+		else if(msg.cmd=="owner") {
+			view.isOwner = true;
+		}
+	});
 	return view;
 });

@@ -1,5 +1,6 @@
 define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(sysCmd, chat) {
-	var activeIFrames = [];
+	
+	var activeIFrame;
 
 	var ret = {};
 	_.extend(ret, Backbone.Events);
@@ -20,26 +21,21 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 
 	function msgMsg(msg) {
 		if(_.isString(msg)) msg = Msg(msg);
-		if(activeIFrames.length == 0) return;
-		for(i in activeIFrames) {
-			var _iwin = activeIFrames[i].get(0).contentWindow;
-			var _isrc = activeIFrames[i].attr('src');
-			//log("sending msg to iframe: #"+_iwin); // can only be used on same domain
-			$.postMessage( encodeURIComponent(msg.raw), get_domain(_isrc), _iwin );
-		}
+		if(!activeIFrame) return;
+		var _iwin = activeIFrame.get(0).contentWindow;
+		var _isrc = activeIFrame.attr('src');
+		//log("sending msg to iframe: #"+_iwin); // can only be used on same domain
+		$.postMessage( encodeURIComponent(msg.raw), get_domain(_isrc), _iwin );
 	}
 
-	function addAppListener(src, frameObject) {
+	function addAppListener(src) {
 		src = get_domain(src);
 
 		$.receiveMessage(function(e) {
 				m = Msg( decodeURIComponent(e.data) );
 
 				if(m.type=="txt") ret.trigger("onTxt", m);
-				else if(m.type=="sys") {
-					sysCmd(m, frameObject);
-					ret.trigger("onSys", m);
-				}
+				else if(m.type=="sys") ret.trigger("onSys", m);
 				else if(m.type=="app") ret.trigger("onApp", m);
 			}
 		);
@@ -51,18 +47,19 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 			return;
 		}
 		if( $("#warn-box") ) $("#warn-box").remove();
-		if(activeIFrames.length > 0) {
-			activeIFrames.pop().remove();
+		if(activeIFrame) {
+			activeIFrame.remove();
 			ret.trigger("removed");
+			activeIFrame = null;
 		}
-		var id = "app" + activeIFrames.length;
+
 		var cacheBuster = "?noCache="+Math.random();
 		src = src + cacheBuster;
 		var isrc = src + '#' + encodeURIComponent(document.location.href);
-		var frameCode = '<iframe " src="' + isrc + '" scrolling="no" id="' + id + '" frameborder="0">Loading...<\/iframe>';
+		var frameCode = '<iframe " src="' + isrc + '" scrolling="no" frameborder="0">Loading...<\/iframe>';
 		var _frame = $(frameCode).appendTo('#inner-applayout');
-		activeIFrames.push(_frame);
-		addAppListener(src, _frame);
+		ret.activeIFrame = activeIFrame = _frame;
+		addAppListener(src);
 	}
 
 	ret.warn = function (msg, clear) {
@@ -78,6 +75,9 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 		//if(msg.cmd=="left") alert(msg.cmd + " " + msg.msg)
 		msgMsg(msg);
 	});
+	//chat.on("onApp", function(msg){
+	//	msgMsg(msg);
+	//});
 
 	//$('#inner-applayout').prepend('Change app to id: <input type="text" id="debug-app-changer" placeholder="vote"/><button id="debug-app-changer-btn">load</button>');
 
@@ -87,6 +87,7 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(
 	ret.on("sys", msgSys);
 	ret.on("app", msgApp);
 
-	chat.on("onApp", msgMsg)
+	chat.on("onApp", msgMsg);
+	sysCmd(ret); // initialize
 	return ret;
 })

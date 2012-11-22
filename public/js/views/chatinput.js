@@ -12,12 +12,8 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 			said = _.escape(said);
 			var msg = Msg(auth.getName() + ": " + said);
 
-			if(msg.type == "sys") { // && msg.cmd=="app" // allow all sys commands
-				require(["sys_commands"], function(sys_cmds){
-					sys_cmds(msg);
-				});
-			}
-			else chat.trigger("send", msg);
+			if(msg.type != "sys") chat.trigger("send", msg);
+			else apptalk.trigger("onSys", msg); // has to be an app supported msg too
 
 			this.setInput('');
 			return false;
@@ -28,7 +24,7 @@ define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], functi
 			//apptalk.on("onTxt", _.bind(this.setInput, this));
 			apptalk.on("onApp", _.bind(this.setInput, this));
 
-			this.setTypeahead("debug", ["..app vote", "..app battle", "..app profile"]);
+			//this.setTypeahead("debug", ["..app vote", "..app battle", "..app profile"]);
 			//, "..background-css ", "..background-image "
 		},
 		setInput:function(val, sendNow) {

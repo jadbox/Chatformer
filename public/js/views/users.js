@@ -12,8 +12,7 @@ define(["chat", "views/chatinput", "underscore", "backbone"], function(chat, cha
 			var that = this;
 			chat.on("onSys", function(msg) {
 				if(msg.cmd == "users") that.onUsers(msg.msg);
-			})
-			//this.rooms_list.click(_.bind(this.getRooms,this));
+			});
 		},
 		selectUser: function(user) {
 
@@ -31,7 +30,7 @@ define(["chat", "views/chatinput", "underscore", "backbone"], function(chat, cha
 			var len = 0;
 			this.users = [];
 			for(var key in data) {
-				len++
+				len++;
 				var val = data[key];
 				this.users.push(val);
 				var node = $('<li><a>' + val + '</a></li>');

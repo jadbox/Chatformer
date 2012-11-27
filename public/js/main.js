@@ -11,7 +11,7 @@ requirejs.config({
 		//apps: '../../apps',
 		jquery: "http://code.jquery.com/jquery-1.8.2.min",
 		postmessage: "apps/jquery.ba-postmessage.min",
-		underscore: "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min",
+		underscore: "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore",
 		backbone: "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min",
 		sockjs: "http://cdn.sockjs.org/sockjs-0.3.min",
 		cookie: "http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie",

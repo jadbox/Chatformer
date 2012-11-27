@@ -47,6 +47,9 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 	}
 
 	function say(msg, onComplete) {
+		text = _.unescape(msg.msg);
+		text = text.replace("<", "").replace(">", "");
+
 		var control;
 		if(msg.user) {
 	 		control = log("");
@@ -55,7 +58,7 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 			control = log("");
 		}
 
-		var arr = msg.data.split("");
+		var arr = text.split("");
 		var func = function(lastChar) {
 				if(arr.length == 0) {
 					if(_.isFunction(onComplete)) onComplete();

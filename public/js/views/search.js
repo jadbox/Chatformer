@@ -2,67 +2,57 @@ define(["underscore", "backbone", "bootstrap"], function() {
 	var View = Backbone.View.extend({
 		el: $("#room-search"),
 		input: $("#room-search input"),
-		"rooms_list": $("#rooms-list"),
+		rooms_list: $("#rooms-list"),
 		events: {
-			"submit": "submitform",
-			"click input": "getRooms"
+			"submit": "submitform"
 		},
 		submitform: function() {
 			$('#chatinput').val("..room " + input.val());
 			return false;
 		},
 		initialize: function() {
-			this["typeahead"] = this.input.typeahead({"source": []});
-			this.input.change(_.bind(this.onChange, this));
-			this.getRooms();
-			this.rooms_list.click(_.bind(this.getRooms,this));
-		},
-		onChange: function () {
-			var that = this; 
-			require(["views/chatinput"], function(chatinput){
-				chatinput.setInput("..room "+that.input.val());
+			this["typeahead"] = this.input.typeahead({
+				"source": _.bind(this.getRooms, this),
+				"updater": _.bind(this.onChange, this),
 			});
-			that.input.val('');
+			this.getRooms();
+			$('#rooms-dropdown').click( _.bind(this.getRooms, this) );
 		},
-		selectRoom: function(room){
-			require(["views/chatinput"], function(chatinput){
-				chatinput.setInput("..room "+room);
+		onChange: function(item) {
+			var that = this;
+			require(["views/chatinput"], function(chatinput) {
+				chatinput.setInput("..room " + item);
+			});
+			return '';
+		},
+		selectRoom: function(room) {
+			require(["views/chatinput"], function(chatinput) {
+				chatinput.setInput("..room " + room);
 			});
 			return true;
 		},
-		onJSON: function(data) {
+		getRooms: function(query, process) {
+			var rooms_list = this.rooms_list;
+			var that = this;
+			$.getJSON("/api/rooms", function(data) {
 				var source = [];
-				//alert(this.rooms_list);
-				//========= drop down
-				this.rooms_list.empty();
-				
+				rooms_list.empty();
+
 				for(var key in data) {
 					var val = data[key];
-					var node = $('<li><a>'+key+'</a></li>');
-					node.find('a').click(_.bind(this.selectRoom, this, key));
+					var node = $('<li><a>' + key + '</a></li>');
+					node.find('a').click(_.bind(that.selectRoom, that, key));
 
-					this.rooms_list.append(node);
+					rooms_list.append(node);
 					source.push(key);
 				}
-				this.rooms_list.append('<li class="divider"></li><li><a href="#" id="make-room">Make a Room</a></li>');
-				$("#make-room").click(_.bind(this.selectRoom, this, "MYROOM"));
-
+				rooms_list.append('<li class="divider"></li><li><a href="#" id="make-room">Make a Room</a></li>');
+				$("#make-room").click(_.bind(that.selectRoom, that, "MYROOM"));
 				//========== search typeahead
-				this["typeahead"].data('typeahead').source = source;
-
-				//========== chat typeahead
-				/*
-				require(["views/chatinput"], function(chatinput){
-					for(var key in source) source[key] = "..room "+source[key];
-					chatinput.setTypeahead("rooms", source);
-				});
-				*/
-		},
-		getRooms: function() {
-			$.getJSON("/api/rooms", _.bind(this.onJSON, this));
-			return true;
+				if(process) process(source);
+			});
 		}
-	})
+	});
 
 	var view = new View();
 

@@ -23,7 +23,7 @@
 			"file": "server/chat.py",
 			"settings":
 			{
-				"buffer_size": 3312,
+				"buffer_size": 3449,
 				"line_ending": "Unix"
 			}
 		},
@@ -31,7 +31,15 @@
 			"file": "server/chat/Room.py",
 			"settings":
 			{
-				"buffer_size": 1834,
+				"buffer_size": 1923,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/views/search.js",
+			"settings":
+			{
+				"buffer_size": 1616,
 				"line_ending": "Windows"
 			}
 		},
@@ -39,15 +47,15 @@
 			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 2201,
+				"buffer_size": 2700,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/chat.js",
+			"file": "public/apps/profile/appprofile.js",
 			"settings":
 			{
-				"buffer_size": 1722,
+				"buffer_size": 1201,
 				"line_ending": "Windows"
 			}
 		},
@@ -60,18 +68,18 @@
 			}
 		},
 		{
-			"file": "public/js/sys_commands.js",
+			"file": "public/js/views/users.js",
 			"settings":
 			{
-				"buffer_size": 3112,
+				"buffer_size": 1350,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/apptalk.js",
+			"file": "public/js/chatlog.js",
 			"settings":
 			{
-				"buffer_size": 2637,
+				"buffer_size": 3335,
 				"line_ending": "Windows"
 			}
 		},
@@ -79,31 +87,7 @@
 			"file": "public/js/views/chatinput.js",
 			"settings":
 			{
-				"buffer_size": 1534,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/apps/setup/appsetup.js",
-			"settings":
-			{
-				"buffer_size": 1467,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/js/apps/cf_app_api.js",
-			"settings":
-			{
-				"buffer_size": 2611,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/apps/vote/appvote.js",
-			"settings":
-			{
-				"buffer_size": 1342,
+				"buffer_size": 1547,
 				"line_ending": "Windows"
 			}
 		}
@@ -148,31 +132,34 @@
 	},
 	"file_history":
 	[
-		"/Z/chatformer/public/apps/setup/app.html",
+		"/Z/chatformer/public/index.html",
+		"/Z/chatformer/public/apps/profile/appprofile.js",
+		"/Z/chatformer/public/js/views/search.js",
+		"/Z/chatformer/public/js/main.js",
 		"/Z/chatformer/public/js/chat.js",
+		"/Z/chatformer/public/apps/vote/appvote.js",
 		"/Z/chatformer/public/js/sys_commands.js",
 		"/Z/chatformer/public/js/apps/cf_app_api.js",
-		"/Z/chatformer/public/js/apps/msg.js",
-		"/Z/chatformer/public/apps/profile/appprofile.js",
-		"/Z/chatformer/public/js/chatlog.js",
-		"/Z/chatformer/public/index.html",
-		"/Z/chatformer/public/js/main.js",
-		"/Z/chatformer/public/js/views/chatinput.js",
 		"/Z/chatformer/public/js/apptalk.js",
+		"/Z/chatformer/server/chat.py",
+		"/Z/chatformer/server/chat/Room.py",
+		"/Z/chatformer/public/js/views/room.js",
+		"/Z/chatformer/public/js/views/chatinput.js",
+		"/Z/chatformer/public/apps/setup/appsetup.js",
+		"/Z/chatformer/public/js/views/footerlog.js",
+		"/Z/chatformer/public/js/auth.js",
+		"/Z/chatformer/public/apps/setup/app.html",
+		"/Z/chatformer/public/js/apps/msg.js",
+		"/Z/chatformer/public/js/chatlog.js",
 		"/Z/chatformer/public/apps/profile/app.html",
 		"/Z/chatformer/public/apps/auth/appauth.js",
 		"/Z/chatformer/server/app.py",
-		"/Z/chatformer/public/js/auth.js",
 		"/Z/chatformer/server/shared/CFdatabase.py",
 		"/Z/chatformer/public/apps/auth/app.html",
 		"/Z/chatformer/public/style/cf.css",
 		"/Z/chatformer/public/style/dw.css",
 		"/Z/chatformer/public/apps/vote/app.html",
-		"/Z/chatformer/public/js/views/search.js",
 		"/Z/chatformer/public/js/views/users.js",
-		"/Z/chatformer/public/apps/vote/appvote.js",
-		"/Z/chatformer/server/chat/Room.py",
-		"/Z/chatformer/server/chat.py",
 		"/Z/chatformer/public/apps/battle/app.html",
 		"/Z/chatformer/public/js/nls/text.js",
 		"/Z/chatformer/public/js/users.js",
@@ -181,7 +168,6 @@
 		"/Z/chatformer/public/style/bs/bootstrap.css",
 		"/Z/chatformer/public/style/bs/bootstrap.min.theme.css",
 		"/Z/chatformer/public/apps/appvote.js",
-		"/Z/chatformer/public/js/views/room.js",
 		"/Z/chatformer/public/apps/appauth.js",
 		"/Z/chatformer/public/apps/appauth.html",
 		"/Z/chatformer/public/apps/appvote.html",
@@ -190,7 +176,6 @@
 		"/Z/chatformer/server/run_api",
 		"/Z/chatformer/server/shared/BCFsession.pyc",
 		"/Z/chatformer/server/shared/BCFdatabase.pyc",
-		"/Z/chatformer/public/js/views/footerlog.js",
 		"/Z/chatformer/public/apps/cf_app_api.js",
 		"/Z/chatformer/public/static/js/views/chatinput.js",
 		"/Z/chatformer/public/static/js/apptalk.js",
@@ -250,7 +235,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"Z:\\chatformer\\public\\js",
@@ -262,6 +247,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"getRooms",
+			"typeahead",
 			".room =",
 			"ret",
 			"App",
@@ -324,7 +311,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -332,15 +319,15 @@
 					"file": "server/chat.py",
 					"settings":
 					{
-						"buffer_size": 3312,
+						"buffer_size": 3449,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2374,
-								2374
+								1180,
+								1180
 							]
 						],
 						"settings":
@@ -438,7 +425,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 823.0,
+						"translation.y": 124.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -448,15 +435,15 @@
 					"file": "server/chat/Room.py",
 					"settings":
 					{
-						"buffer_size": 1834,
+						"buffer_size": 1923,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								106,
-								106
+								222,
+								222
 							]
 						],
 						"settings":
@@ -553,25 +540,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 302.0,
+						"translation.y": 66.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "public/js/main.js",
+					"file": "public/js/views/search.js",
 					"settings":
 					{
-						"buffer_size": 2201,
+						"buffer_size": 1616,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1967,
-								1967
+								514,
+								514
 							]
 						],
 						"settings":
@@ -668,25 +655,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 298.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "public/js/chat.js",
+					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 1722,
+						"buffer_size": 2700,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1685,
-								1688
+								1317,
+								1318
 							]
 						],
 						"settings":
@@ -783,25 +770,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 382.0,
+						"translation.y": 537.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "public/js/views/room.js",
+					"file": "public/apps/profile/appprofile.js",
 					"settings":
 					{
-						"buffer_size": 615,
+						"buffer_size": 1201,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								427,
-								427
+								513,
+								513
 							]
 						],
 						"settings":
@@ -905,18 +892,18 @@
 				},
 				{
 					"buffer": 5,
-					"file": "public/js/sys_commands.js",
+					"file": "public/js/views/room.js",
 					"settings":
 					{
-						"buffer_size": 3112,
+						"buffer_size": 615,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								627,
-								627
+								509,
+								509
 							]
 						],
 						"settings":
@@ -1013,25 +1000,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 33.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "public/js/apptalk.js",
+					"file": "public/js/views/users.js",
 					"settings":
 					{
-						"buffer_size": 2637,
+						"buffer_size": 1350,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2134,
-								2138
+								735,
+								735
 							]
 						],
 						"settings":
@@ -1128,25 +1115,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 565.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "public/js/views/chatinput.js",
+					"file": "public/js/chatlog.js",
 					"settings":
 					{
-						"buffer_size": 1534,
+						"buffer_size": 3335,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								779,
-								779
+								1380,
+								1380
 							]
 						],
 						"settings":
@@ -1250,248 +1237,18 @@
 				},
 				{
 					"buffer": 8,
-					"file": "public/apps/setup/appsetup.js",
+					"file": "public/js/views/chatinput.js",
 					"settings":
 					{
-						"buffer_size": 1467,
+						"buffer_size": 1547,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								969,
-								969
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 136.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "public/js/apps/cf_app_api.js",
-					"settings":
-					{
-						"buffer_size": 2611,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1275,
-								1275
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "public/apps/vote/appvote.js",
-					"settings":
-					{
-						"buffer_size": 1342,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								380,
-								380
+								351,
+								366
 							]
 						],
 						"settings":
@@ -1646,6 +1403,34 @@
 		"selected_items":
 		[
 			[
+				"index",
+				"public/index.html"
+			],
+			[
+				"inde",
+				"public/index.html"
+			],
+			[
+				"main.",
+				"public/js/main.js"
+			],
+			[
+				"apptalk",
+				"public/js/apptalk.js"
+			],
+			[
+				"search",
+				"public/js/views/search.js"
+			],
+			[
+				"auth",
+				"public/js/auth.js"
+			],
+			[
+				"main.js",
+				"public/js/main.js"
+			],
+			[
 				"index.",
 				"public/index.html"
 			],
@@ -1656,14 +1441,6 @@
 			[
 				"appauth",
 				"public/apps/auth/appauth.js"
-			],
-			[
-				"index",
-				"public/index.html"
-			],
-			[
-				"apptalk",
-				"public/js/apptalk.js"
 			],
 			[
 				"",

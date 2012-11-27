@@ -1,4 +1,4 @@
-define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone"], function(auth, chat, apptalk) {
+define(["auth", "chat", "apptalk", "apps/msg", "underscore", "backbone", "bootstrap"], function(auth, chat, apptalk) {
 	var View = Backbone.View.extend({
 		el: $("#chatform"),
 		input: $("#chatinput"),

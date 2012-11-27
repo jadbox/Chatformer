@@ -1,8 +1,6 @@
 var cf;
 $(function() {
 	cf = cf_app_api(onRdy, handleMsg, {require:["posting"]}); // , {require:["posting", "listening"]}
-
-	$.getJSON('/api/badges', onData);
 });
 
 function onData(data) {
@@ -18,6 +16,7 @@ function onData(data) {
 		//cf.action( "badge " + $(this).attr('id') );
 		return false;
 	});
+	cf.resize();
 }
 
 function setBadge(img) {
@@ -31,18 +30,18 @@ function setBadge(img) {
 function onRdy() {
 	cf.say("welcome to your profile!", true);
 	cf.say("This is my current badge.");
-
+	//cf.system("background-css #33ff99 url('http://3.bp.blogspot.com/-swX1TZBkAko/TzJnbwg6-ZI/AAAAAAAAsLo/cPslKxRTrlE/s1600/Pembroke+Welsh+Corgi.jpg') no-repeat right top");
 	//cf.system("say hello!");
 
 	//cf.commands(["badge "]);
 	
+	$.getJSON('/api/badges', onData);
 }
 
 function handleMsg(msg) {
 	if(msg.type!="app") return;
 	var cmd = msg.cmd;
 	var data = msg.msg;
-	
 		
 	cf.resize();
 }

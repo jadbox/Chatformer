@@ -34,7 +34,7 @@ function cf_app_api(onRdy, msgFunc, options) {
 		msg = msg.msg;
 		msg = msg.split(" ");
 		users.splice(0, users.length);
-		for(var u in msg) users.push(u);
+		for(var u in msg) users.push(msg[u]);
 		if(++startup_steps==STARTUP_MSGS) onRdy();
 	}
 

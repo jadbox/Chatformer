@@ -1,4 +1,4 @@
-define(["underscore", "backbone"], function() {
+define(["underscore", "backbone", "bootstrap"], function() {
 	var View = Backbone.View.extend({
 		el: $("#room-search"),
 		input: $("#room-search input"),

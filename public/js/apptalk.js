@@ -1,4 +1,4 @@
-define(["sys_commands", "chat", "apps/msg", "underscore", "backbone"], function(sysCmd, chat) {
+define(["sys_commands", "chat", "apps/msg", "underscore", "backbone", "postmessage"], function(sysCmd, chat) {
 	
 	var activeIFrame;
 

@@ -49,7 +49,7 @@ require(['jquery', 'bootstrap'], function() {
 
 	function onProfile() {
 		require(["./views/chatinput"], function(chatinput) {
-			chatinput.setInput("..app profile", true);
+			chatinput.setInput("..room profile", true);
 		});
 	}
 

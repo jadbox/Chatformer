@@ -6,7 +6,12 @@ class Room():
 		self.ppl = set()
 		self.conn = conn
 		self.appLocked = False
-	
+
+	def setApp(self, app, locked):
+		self.appLocked = locked
+		self.app = app
+		return self
+
 	def getUsers(self):
 		pplList = []
 		for person in self.ppl:

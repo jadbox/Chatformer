@@ -21,12 +21,12 @@ function cf_app_api(onRdy, msgFunc, options) {
 		var raw = decodeURIComponent( e.data );
 		var msg = Msg(raw);
 		if(msg.type=="sys" && msg.cmd=="isOwner") user.isOwner = msg.msg=="1"?true:false;
-		if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
-		if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
-		if(msg.type=="sys" && msg.cmd=="users") onUsersInfo(msg);
+		else if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
+		else if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
+		else if(msg.type=="sys" && msg.cmd=="users") onUsersInfo(msg);
+		else if(msgFunc) msgFunc(msg);
 		//if(msg.type=="sys" && msg.cmd=="require") if(++startup_steps==STARTUP_MSGS) onRdy();
 		msg['isClient'] = msg.user == user.name;
-		if(msgFunc) msgFunc(msg);
 		if(msg.cmd && cmdHandlers[msg.cmd]) cmdHandlers[msg.cmd](msg);
 	});
 
@@ -50,15 +50,14 @@ function cf_app_api(onRdy, msgFunc, options) {
 	}
 
 	function action(msg) {
-		say(APP_TOKEN + msg)
+		say(APP_TOKEN + msg);
 	}
 
 	function system(msg) {
-		say(SYS_TOKEN + msg)
+		say(SYS_TOKEN + msg);
 	}
 
 	function commands(list) {
-		//if(ty)
 		system("commands "+APP_TOKEN+list.join("||"+APP_TOKEN));
 	}
 	

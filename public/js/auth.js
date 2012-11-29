@@ -3,14 +3,15 @@ define(["cookie"], {
 	"logout": function() {
 		var cmd = function(data) {
 				if(data.status !== "success") alert("ERROR with status");
-				$.removeCookie('auth_token', {
-					path: '/'
-				});
 				window.location.reload();
-			}
+		}
 		$.post("/api/logout/" + this.getName(), {
 			"auth_token": this.getAuthToken()
 		}, cmd, "json");
+
+		$.removeCookie('auth_token', {
+					path: '/'
+		});
 	},
 
 	"login": function(name, token) {
@@ -27,8 +28,8 @@ define(["cookie"], {
 	},
 
 	"isLoggedIn": function() {
-		var auth_token = this.getAuthToken() || '';
-		return auth_token && auth_token.length > 0;
+		var auth_token = this.getAuthToken();
+		return this.getName() && auth_token && auth_token.length > 0;
 	},
 
 
@@ -40,7 +41,7 @@ define(["cookie"], {
 	},
 
 	"getName": function() {
-		return $.cookie('name') || 'guest';
+		return $.cookie('name'); // || 'guest'
 	},
 
 	"getAuthToken": function() {

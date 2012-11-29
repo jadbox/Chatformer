@@ -29,7 +29,7 @@ $(function() {
 });
 
 function start() {
-	cf.commands(["name ", "password ", "login", "reg", "pw ", "guest-login"]);
+	cf.commands(["name ", "password ", "login", "reg", "pw "]); //, "guest-login"
 	user_name = $("input[name=user]");
 	user_pwd = $("#pwd");
 	user_name.val(cf.user.name);
@@ -40,7 +40,6 @@ function start() {
 		return false;
 	});
 	$("#reg").click(function() {
-		//var res = response_field?response_field.val():'';
 		if(!captcha_loaded) {
 			moveRegBtn();
 			addCaptcha();
@@ -169,9 +168,6 @@ function post_reg(name, pwd) {
 			//Recaptcha.reload();
 			alert("Registration error: " + locale.auth_status[data.status]);
 		}
-		//if(data.status=="exists") {
-		//	alert("user name already exists");
-		//}
 		cf.resize();
 	}, "json");
 }
@@ -207,5 +203,5 @@ function handleMsg(msg) {
 		$("#login").click();
 	}
 
-	if(data.indexOf("guest-login") == 0) guest_login();
+	//if(data.indexOf("guest-login") == 0) guest_login();
 }

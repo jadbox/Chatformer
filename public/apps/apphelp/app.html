@@ -52,13 +52,13 @@ a img { /* this selector removes the default blue border displayed in some brows
 	<h4>App Help Beta <small>- under construction</small></h4>
 	<h6 style="color:#9CF">commands: .help x</h6>
 	</div>
-    <br/><h5>Include in the header of your page:</h5>
+    <br/><h5>Include in the header of your HTML page:</h5>
     <pre class="brush: html">
-    	&lt;script src="../../js/apps/jquery.ba-postmessage.min.js">&lt;/script>
-		&lt;script src="../../js/apps/msg.js">&lt;/script>
-		&lt;script src="../../js/apps/cf_app_api.js">&lt;/script>
+    	&lt;script src="http://jadders.dyndns.org:82/js/apps/jquery.ba-postmessage.min.js">&lt;/script>
+		&lt;script src="http://jadders.dyndns.org:82/js/apps/msg.js">&lt;/script>
+		&lt;script src="http://jadders.dyndns.org:82/js/apps/cf_app_api.js">&lt;/script>
     </pre>
-    <br/><h5>To startup the platform integration:</h5>
+    <br/><h5>To startup the platform integration in a Javascript file:</h5>
     <pre class="brush: js">
     	var cf = cf_app_api(onRdy, handleMsg);
         function onRdy() {

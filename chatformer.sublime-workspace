@@ -20,10 +20,10 @@
 	"buffers":
 	[
 		{
-			"file": "public/js/modals/terms.txt",
+			"file": "public/apps/apphelp/app.html",
 			"settings":
 			{
-				"buffer_size": 1434,
+				"buffer_size": 3254,
 				"line_ending": "Windows"
 			}
 		}
@@ -68,6 +68,7 @@
 	},
 	"file_history":
 	[
+		"/Z/chatformer/public/js/modals/terms.txt",
 		"/Z/chatformer/server/chat/Room.py",
 		"/Z/chatformer/server/chat.py",
 		"/Z/chatformer/public/js/main.js",
@@ -77,7 +78,6 @@
 		"/Z/chatformer/public/apps/auth/app.html",
 		"/Z/chatformer/public/apps/setup/appsetup.js",
 		"/Z/chatformer/public/apps/setup/app.html",
-		"/Z/chatformer/public/js/modals/terms.txt",
 		"/Z/chatformer/public/index.html",
 		"/Z/chatformer/public/js/sys_commands.js",
 		"/Z/chatformer/public/js/nls/text.js",
@@ -253,18 +253,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "public/js/modals/terms.txt",
+					"file": "public/apps/apphelp/app.html",
 					"settings":
 					{
-						"buffer_size": 1434,
+						"buffer_size": 3254,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1308,
-								1308
+								2767,
+								2767
 							]
 						],
 						"settings":
@@ -357,12 +357,12 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 493.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

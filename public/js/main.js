@@ -33,9 +33,33 @@ requirejs.config({
 	waitSeconds: 30
 });
 
+function setupTerms($) {
+	$("#terms_button").show();
+	$("#terms_button").click(function() {
+		$("#terms").load("js/modals/terms.txt");
+		$("#terms").modal({show:true});
+	});
+}
+function setupProfile($) {
+	$("#profile").click(function () {
+		require(["./views/chatinput"], function(chatinput) {
+			chatinput.setInput("..room profile", true);
+		});
+	});
+}
+
+function doLocale(locale) {
+	var context = locale.site;
+	for(var key in context) if(key.indexOf("#") == 0) {
+		$(key).html(context[key]);
+		$(key).val(context[key]);
+	}
+}
+
 require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput", 'bootstrap', 'domReady!'], 
 	function(Apps, ChatLog, Locale, Chatinput) {
-
+	setupTerms($);
+	setupProfile($);
 
 	require(["auth", "./views/footerlog"], function(Auth, flogger) {
 		if(Auth.isLoggedIn()) authed();
@@ -43,21 +67,9 @@ require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput", 'bootst
 		flogger.log("html");
 	});
 
-	$("#profile").click(onProfile);
-
-
-	function onProfile() {
-		require(["./views/chatinput"], function(chatinput) {
-			chatinput.setInput("..room profile", true);
-		});
-	}
-
 	function authed() {
 		require(["./views/search", 'chat', "./views/room", "./views/users"], function(Search, Chat, Room) {
-			//new Chatinput(); not needed
-			//new Search(); not needed
 			Chat.connect();
-			//Apps.trigger("add", "http://jadders.dyndns.org:82/apps/vote/app.html");
 			doLocale(Locale);
 			$("#logout-btn").click(function() {
 				require(["auth"], function(Auth) {
@@ -70,20 +82,8 @@ require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput", 'bootst
 
 	function notAuthed() {
 		$('.authed').remove();
-		//require([], function(Apps, ChatLog, Locale, Chatinput) {
-		//new Chatinput();
 		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/auth/app.html");
 		ChatLog.trigger("canned", Locale.introchat);
 		doLocale(Locale);
-		//})
 	}
-
-	function doLocale(locale) {
-		var context = locale.site;
-		for(var key in context) if(key.indexOf("#") == 0) {
-			$(key).html(context[key]);
-			$(key).val(context[key]);
-		}
-	}
-
 });

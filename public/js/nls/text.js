@@ -22,7 +22,8 @@ define({
 			".or": "or",
 			"#guest-login": "Guest Login",
 			"#badge_label": "My badge image (64x32). Optional - reverts to default or last used badge.",
-			"#email_notice": "* email is used for account features and EPIC updates only!"
+			"#email_notice": "* email is used for account features and epic updates only",
+			"#terms":"I agree to the Terms &amp; Privacy"
 		},
 		"site": {
 			"#chat-submit-btn": "send",

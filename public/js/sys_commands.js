@@ -22,6 +22,9 @@ define(["auth", "chat", "views/room", "underscore"], function(Auth, chat, room) 
 		else if(cmd=="room" && Auth.isLoggedIn()) {
 			chat.trigger("send", msg);
 		}
+		else if(cmd == "terms") {
+			$("#terms_button").click();
+		}
 		else if(cmd == "background-css") {
 			//..background-css #33ff99 url('http://3.bp.blogspot.com/-swX1TZBkAko/TzJnbwg6-ZI/AAAAAAAAsLo/cPslKxRTrlE/s1600/Pembroke+Welsh+Corgi.jpg') no-repeat right top
 			$("body").css('background', _.unescape(msg.msg));

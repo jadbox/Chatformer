@@ -50,7 +50,10 @@ function start() {
 		cf.resize();
 		return false;
 	});
-	$("#guest-login").click(guest_login);
+	//$("#guest-login").click(guest_login);
+	$("#terms").click(function() {
+		cf.system("terms");
+	});
 }
 
 var userBadges={};

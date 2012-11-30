@@ -80,7 +80,11 @@ class ChatConnection(SockJSConnection):
     def leave_room(self):
         if not self.room in self.rooms: return
         db.roomDec(self.room)
+        roomName = self.room
         if self.room and self.current(): self.current().remove(self)
+        if len(self.rooms[roomName].ppl) == 0: 
+            self.rooms[roomName] = None
+            del self.rooms[roomName]
 
     def on_close(self):
         self.leave_room();

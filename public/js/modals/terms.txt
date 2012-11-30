@@ -10,6 +10,7 @@
         <li>Do not post adult content.</li>
         <li>Do not spam a room by posting repeatly. No one likes it.</li>
         <li>Do not use bots. In the future, there will be bot allowed rooms.</li>
+        <li>Do not use or copy the following from this site: source code, design, or Chatformer brand without permission.</li>
     </ul>
     <h4>Our Rights/Powers</h4>
     <ul>

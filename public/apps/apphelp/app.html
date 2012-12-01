@@ -52,7 +52,9 @@ a img { /* this selector removes the default blue border displayed in some brows
 	<h4>App Help Beta <small>- under construction</small></h4>
 	<h6 style="color:#9CF">commands: .help x</h6>
 	</div>
-    <br/><h5>Include in the header of your HTML page:</h5>
+    <br/><h5>Getting Started</h5>
+    <p>Chatformer loads your application as an iFrame into the application area to the right of the chat window. By creating a new room (using the ..room X command), you will be prompted an option list of preinstalled apps as well as a way to specify an app URL. This URL will point to your HTML file hosted on your server that contains the app's logic.</p>
+    <br/><h5>Include in the header of your HTML page (in this order):</h5>
     <pre class="brush: html">
     	&lt;script src="http://jadders.dyndns.org:82/js/apps/jquery.ba-postmessage.min.js">&lt;/script>
 		&lt;script src="http://jadders.dyndns.org:82/js/apps/msg.js">&lt;/script>
@@ -63,8 +65,11 @@ a img { /* this selector removes the default blue border displayed in some brows
     	var cf = cf_app_api(onRdy, handleMsg);
         function onRdy() {
         	//plaform is now integrated
+            cf.commands(["vote borderlands3", "vote diablo3"]); // adds autocompletion to chat bar
             alert(cf.user.name); // The user that loaded the app
             alert(cf.users); // All the users in the room
+
+            cf.resize(); // resizes the iframe
         }
         function handleMsg(msg) {
         	// Message arrived 
@@ -73,7 +78,7 @@ a img { /* this selector removes the default blue border displayed in some brows
             }
         }
         function onSomeClick() {
-        	cf.action("vote Diablo3");
+        	cf.action("vote diablo3");
         }
     </pre>
     <br />

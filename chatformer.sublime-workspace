@@ -23,7 +23,7 @@
 			"file": "public/apps/apphelp/app.html",
 			"settings":
 			{
-				"buffer_size": 3254,
+				"buffer_size": 3809,
 				"line_ending": "Windows"
 			}
 		}
@@ -68,6 +68,7 @@
 	},
 	"file_history":
 	[
+		"/Z/chatformer/public/apps/vote/appvote.js",
 		"/Z/chatformer/public/js/modals/terms.txt",
 		"/Z/chatformer/server/chat/Room.py",
 		"/Z/chatformer/server/chat.py",
@@ -87,7 +88,6 @@
 		"/Z/chatformer/public/js/views/users.js",
 		"/Z/chatformer/public/js/chatlog.js",
 		"/Z/chatformer/public/js/views/chatinput.js",
-		"/Z/chatformer/public/apps/vote/appvote.js",
 		"/Z/chatformer/public/js/apps/cf_app_api.js",
 		"/Z/chatformer/public/js/apptalk.js",
 		"/Z/chatformer/public/js/views/footerlog.js",
@@ -256,15 +256,15 @@
 					"file": "public/apps/apphelp/app.html",
 					"settings":
 					{
-						"buffer_size": 3254,
+						"buffer_size": 3809,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2767,
-								2767
+								2656,
+								2656
 							]
 						],
 						"settings":
@@ -419,6 +419,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"vote",
+				"public/apps/vote/appvote.js"
+			],
 			[
 				"index",
 				"public/index.html"

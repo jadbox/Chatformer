@@ -38,6 +38,7 @@ class ChatConnection(SockJSConnection):
         logging.getLogger().debug("Authed user:%s" % (name))
         # Add client to the clients list
         self.getRoom("profile").setApp("profile", True)
+        self.getRoom("apphelp").setApp("apphelp", True)
         self.join_room("lobby")
         #self.current().appLocked = True #default root
 
@@ -82,7 +83,8 @@ class ChatConnection(SockJSConnection):
         db.roomDec(self.room)
         roomName = self.room
         if self.room and self.current(): self.current().remove(self)
-        if len(self.rooms[roomName].ppl) == 0: 
+        room = self.rooms[roomName]
+        if len(room.ppl) == 0 and not room.appLocked: 
             self.rooms[roomName] = None
             del self.rooms[roomName]
 

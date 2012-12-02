@@ -40,6 +40,13 @@ function setupTerms($) {
 		$("#terms").modal({show:true});
 	});
 }
+function setupHelp($) {
+	$("#apphelp").click(function() {
+		require(["./views/chatinput"], function(chatinput) {
+			chatinput.setInput("..room apphelp", true);
+		});
+	});
+}
 function setupProfile($) {
 	$("#profile").click(function () {
 		require(["./views/chatinput"], function(chatinput) {
@@ -59,6 +66,7 @@ function doLocale(locale) {
 require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput", 'bootstrap', 'domReady!'], 
 	function(Apps, ChatLog, Locale, Chatinput) {
 	setupTerms($);
+	setupHelp($);
 	setupProfile($);
 
 	require(["auth", "./views/footerlog"], function(Auth, flogger) {

@@ -40,7 +40,8 @@ function cf_app_api(onRdy, msgFunc, options) {
 
 	function onUserInfo(msg) {
 		user.name = msg.msg;
-		user.guest = user.name=="guest";
+		user.name.replace(/\s+/g, ' ');
+		///user.guest = user.name=="guest";
 		if(++startup_steps==STARTUP_MSGS) onRdy();
 	}
 
@@ -63,10 +64,9 @@ function cf_app_api(onRdy, msgFunc, options) {
 	
 	//, "..background-css ", "..background-image "
 	function say(msg, excludeUserSource) {
-		//if(msg.cmd=="say") alert(msg);
 		msg = encodeURIComponent(msg);
 		var source = "";
-		if(!excludeUserSource) source = user.name+": ";
+		if(!excludeUserSource && user.name) source = user.name+": ";
 		$.postMessage(source+msg, parent_url, parent);
 	}
 

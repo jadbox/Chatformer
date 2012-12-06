@@ -1,5 +1,4 @@
 define(["sys_commands", "chat", "apps/msg", "underscore", "backbone", "postmessage"], function(sysCmd, chat) {
-	
 	var activeIFrame;
 
 	var ret = {};
@@ -33,7 +32,6 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone", "postmessa
 
 		$.receiveMessage(function(e) {
 				m = Msg( decodeURIComponent(e.data) );
-
 				if(m.type=="txt") ret.trigger("onTxt", m);
 				else if(m.type=="sys") ret.trigger("onSys", m);
 				else if(m.type=="app") ret.trigger("onApp", m);

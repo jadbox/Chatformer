@@ -4,7 +4,7 @@ define(["cookie"], {
 		var cmd = function(data) {
 				if(data.status !== "success") alert("ERROR with status");
 				window.location.reload();
-		}
+		};
 		$.post("/api/logout/" + this.getName(), {
 			"auth_token": this.getAuthToken()
 		}, cmd, "json");
@@ -37,11 +37,11 @@ define(["cookie"], {
 		return {
 			"name": this.getName(),
 			"token": this.getAuthToken()
-		}
+		};
 	},
 
 	"getName": function() {
-		return $.cookie('name'); // || 'guest'
+		return $.cookie('name') || ''; // || 'guest'
 	},
 
 	"getAuthToken": function() {

@@ -31,7 +31,6 @@ define(["auth", "chat", "views/room", "underscore"], function(Auth, chat, room) 
 		} else if(cmd == "background-image") {
 			$("body").css('background-image', 'url("' + _.unescape(msg.msg) + '")');
 		} else if(cmd == "userinfo") {
-
 			apptalk.trigger("sys", "userinfo " + Auth.user().name);
 
 		} else if(cmd == "roominfo") {

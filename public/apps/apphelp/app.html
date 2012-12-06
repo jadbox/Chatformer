@@ -81,8 +81,18 @@ a img { /* this selector removes the default blue border displayed in some brows
         	cf.action("vote diablo3");
         }
     </pre>
-    <br />
-	
+    <br/><h5>cf_app_api API</h5>
+    <pre class="brush: js">
+        // initialization
+        var cf = cf_app_api(onRdy, handleMsg);
+	</pre>
+    <br/><h5>cf_app_api .user property</h5>
+    <pre class="brush: js">
+        // initialization
+        var cf = cf_app_api(onRdy, handleMsg);
+        alert( cf.user.name ); // String, active user's name
+        alert( cf.user.isOwner ); // Bool, active user ownes the room
+    </pre>
     <!-- end .content --></div>
   <!-- end .container --></div>
 </body>

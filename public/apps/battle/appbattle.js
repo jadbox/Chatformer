@@ -1,11 +1,12 @@
 var cf;
 $(function() {
+	//alert("hellllooooooo!");
 	cf = cf_app_api(onRdy, handleMsg, {require:["posting", "listening"]}); // , 
 });
 
 function onRdy() {
-	//cf.system("say hello!"); //posting
-
+	cf.system("Prepare for battle!"); //posting
+	//alert("hey hey!");
 	cf.commands(["select girl","select demon"]);
 	$("input[type='radio']").change(function() {
 		var voteval = $("input[name=VoteGroup]:checked").val();
@@ -42,6 +43,7 @@ function player(username, character) {
 }
 
 function handleMsg(msg) {
+	//alert(msg);
 	if(msg.type!="app") return;
 	var cmd = msg.cmd;
 	var data = msg.msg;
@@ -54,7 +56,7 @@ function handleMsg(msg) {
 		+	'<p style="font-family:Tahoma, Geneva, sans-serif">' + curPlayer.username + ' the ' + curPlayer.character + '</p></div>');
 		//$('#player_row').append('<div class="span1 pagination-centered"></div>');
 		//alert("after");
-		if(msg.isClient)
+		if(null != msg)
 		{
 			$('#header').css('display', 'none');
 			$('#battle').css('display', 'block');

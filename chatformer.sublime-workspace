@@ -23,7 +23,15 @@
 			"file": "public/apps/apphelp/app.html",
 			"settings":
 			{
-				"buffer_size": 7891,
+				"buffer_size": 8056,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/apps/cf_app_api.js",
+			"settings":
+			{
+				"buffer_size": 2736,
 				"line_ending": "Windows"
 			}
 		}
@@ -249,7 +257,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -257,15 +265,15 @@
 					"file": "public/apps/apphelp/app.html",
 					"settings":
 					{
-						"buffer_size": 7891,
+						"buffer_size": 8056,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5540,
-								5540
+								7577,
+								7577
 							]
 						],
 						"settings":
@@ -363,7 +371,122 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1174.0,
+						"translation.y": 1949.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/js/apps/cf_app_api.js",
+					"settings":
+					{
+						"buffer_size": 2736,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2212,
+								2212
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 772.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -420,6 +543,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"api",
+				"public/js/apps/cf_app_api.js"
+			],
 			[
 				"apptalk",
 				"public/js/apptalk.js"

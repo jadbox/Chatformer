@@ -172,6 +172,7 @@ li, pre, p {
         function onRdy() {
             // posting permissions
             cf.say("I'm casting a magic missile!"); // Posts to the chatroom as if the user texted a message
+            cf.say("Simple text status message in chatroom (no profile)", true); // Posts to the chatroom as a simple text message (i.e. not as a user sent message)
         }
         function handleMsg(msg) {
             // listening permissions

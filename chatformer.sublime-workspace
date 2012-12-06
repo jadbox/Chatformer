@@ -23,7 +23,7 @@
 			"file": "public/apps/apphelp/app.html",
 			"settings":
 			{
-				"buffer_size": 7538,
+				"buffer_size": 7891,
 				"line_ending": "Windows"
 			}
 		}
@@ -257,15 +257,15 @@
 					"file": "public/apps/apphelp/app.html",
 					"settings":
 					{
-						"buffer_size": 7538,
+						"buffer_size": 7891,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6196,
-								6196
+								5540,
+								5540
 							]
 						],
 						"settings":
@@ -363,7 +363,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1921.0,
+						"translation.y": 1174.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

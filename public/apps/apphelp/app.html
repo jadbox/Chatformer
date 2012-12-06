@@ -113,9 +113,20 @@ li, pre, p {
     <br/><h5>cf_app_api <span>.action(String)</span> method</h5>
     <pre class="brush: js">
         // Sets the user's chatbar to a command for the user to issue.
-        cf.action("cast magic missile");
+        function cast() {
+            cf.action("cast magic missile");
+        }
         // The message won't be sent until the user presses enter or clicks the chat send button.
         // The message will be sent to every user in the room and will fire the handleMsg callback, including on the originating app.
+        //
+        // Message handler for a user casting magic missile
+         function handleMsg(msg) {
+            // Message arrived 
+            if(msg.cmd=="cast") {
+                alert(msg.user + " casted " + msg.msg);
+                // example alert: "JDoe casted magic missle"
+            }
+        }
     </pre>
 
     <br/><h5><span>Example</span> platform integration in a Javascript file:</h5>

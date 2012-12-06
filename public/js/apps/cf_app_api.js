@@ -61,6 +61,10 @@ function cf_app_api(onRdy, msgFunc, options) {
 	function commands(list) {
 		system("commands "+APP_TOKEN+list.join("||"+APP_TOKEN));
 	}
+
+	function setBackground(cmd) {
+		cf.system("background-css "+cmd);
+	}
 	
 	//, "..background-css ", "..background-image "
 	function say(msg, excludeUserSource) {
@@ -92,6 +96,7 @@ function cf_app_api(onRdy, msgFunc, options) {
 		"system": system,
 		"resize": resize,
 		"commands": commands,
-		"onAction": cmdHandlers
+		"onAction": cmdHandlers,
+		"setBackground": setBackground
 	};
 };

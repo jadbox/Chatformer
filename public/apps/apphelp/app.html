@@ -24,6 +24,12 @@ a img { /* this selector removes the default blue border displayed in some brows
 .content {
 	padding: 10px 0;
 }
+h5 span {
+    color: red;
+}
+li, pre, p {
+    font-size:11px;
+}
 -->
 </style>
 
@@ -60,11 +66,63 @@ a img { /* this selector removes the default blue border displayed in some brows
 		&lt;script src="http://jadders.dyndns.org:82/js/apps/msg.js">&lt;/script>
 		&lt;script src="http://jadders.dyndns.org:82/js/apps/cf_app_api.js">&lt;/script>
     </pre>
-    <br/><h5>To startup the platform integration in a Javascript file:</h5>
+    <br/><h5>cf_app_api <span>API startup</span></h5>
     <pre class="brush: js">
-    	var cf = cf_app_api(onRdy, handleMsg);
+        // initialization
+        var cf = cf_app_api(onRdy, handleMsg); 
         function onRdy() {
-        	//plaform is now integrated
+            // var cf is now an object with integration methods and properties
+        }
+        function handleMsg(msg) {
+            // msg is an object with properties
+        }
+	</pre>
+    <br/><h5>cf_app_api <span>.user</span> property</h5>
+    <pre class="brush: js">
+        // after initialization
+        function onRdy() {
+            alert( cf.user.name ); // String, active user's name
+            alert( cf.user.isOwner ); // Bool, active user ownes the room
+        }
+    </pre>
+
+    <br/><h5>cf_app_api <span>.users</span> property</h5>
+    <pre class="brush: js">
+        // after initialization
+        function onRdy() {
+            alert( cf.users.name ); // Array of Strings of usernames
+            // example: ["jdoe", "rainbow2000", "kittens"]
+        }
+    </pre>
+
+    <br/><h5>cf_app_api <span>.resize()</span> method</h5>
+    <pre class="brush: js">
+        // If the content on your app page changes in HEIGHT, you must call the below method:
+        cf.resize();
+        // This will resize your app's iFrame to the correct height. The width is dynamically resized based on the user's screen/window.
+    </pre>
+
+    <br/><h5>cf_app_api <span>.commands(Array)</span> method</h5>
+    <pre class="brush: js">
+       // Add autocompletion to the chat bar for application commands
+       cf.commands(["cast magic missile", "staff attack", "flee"]);
+       // If the user starts typing "cast" or "magic", the ".cast magic missile" command tip will show.
+       // Note that you do not need to include "." token before the commands
+    </pre>
+
+    <br/><h5>cf_app_api <span>.action(String)</span> method</h5>
+    <pre class="brush: js">
+        // Sets the user's chatbar to a command for the user to issue.
+        cf.action("cast magic missile");
+        // The message won't be sent until the user presses enter or clicks the chat send button.
+        // The message will be sent to every user in the room and will fire the handleMsg callback, including on the originating app.
+    </pre>
+
+    <br/><h5><span>Example</span> platform integration in a Javascript file:</h5>
+    <pre class="brush: js">
+        var cf = cf_app_api(onRdy, handleMsg);
+        function onRdy() {
+            //plaform is now integrated
             cf.commands(["vote borderlands3", "vote diablo3"]); // adds autocompletion to chat bar
             alert(cf.user.name); // The user that loaded the app
             alert(cf.users); // All the users in the room
@@ -72,26 +130,42 @@ a img { /* this selector removes the default blue border displayed in some brows
             cf.resize(); // resizes the iframe
         }
         function handleMsg(msg) {
-        	// Message arrived 
-        	if(msg.cmd=="vote") {
-	            alert(msg.user + " voted " + msg.msg);
+            // Message arrived 
+            if(msg.cmd=="vote") {
+                alert(msg.user + " voted " + msg.msg);
             }
         }
         function onSomeClick() {
-        	cf.action("vote diablo3");
+            cf.action("vote diablo3");
         }
     </pre>
-    <br/><h5>cf_app_api API</h5>
+
+    <br/><h5><span>Tips and Tricks</span></h5>
+    <ul>
+        <li>App commands must start with a "." when the user types it in on the chatbar.</li>
+        <li>The app api assumes "." use for commands and makes its usage transparent. <br/>Example: msg.cmd will contain "vote" and not ".vote".</li>
+        <li>Remember your app is running for each user in the room and app state must be predictable. In addition, state changes must be done through the platform "action(msg)" method</li>
+    </ul>
+
+    <br/><h5>Changing the site background using cf_app_api <span>setBackground(CSS)</span> method:</h5>
     <pre class="brush: js">
-        // initialization
-        var cf = cf_app_api(onRdy, handleMsg);
-	</pre>
-    <br/><h5>cf_app_api .user property</h5>
+    function onRdy() {
+        cf.setBackground("#33ff99 url('http://3.bp.blogspot.com/-swX1TZBkAko/TzJnbwg6-ZI/AAAAAAAAsLo/cPslKxRTrlE/s1600/Pembroke+Welsh+Corgi.jpg') no-repeat fixed right top");
+    }
+    </pre>
+
+    <br/><h5><span>Extended permissions</span></h5>
     <pre class="brush: js">
-        // initialization
-        var cf = cf_app_api(onRdy, handleMsg);
-        alert( cf.user.name ); // String, active user's name
-        alert( cf.user.isOwner ); // Bool, active user ownes the room
+        // initialization will add posting and listening permissions to the app (room warning issued)
+        var cf = cf_app_api(onRdy, handleMsg, {require:["posting", "listening"]}); 
+        function onRdy() {
+            // posting permissions
+            cf.say("I'm casting a magic missile!"); // Posts to the chatroom as if the user texted a message
+        }
+        function handleMsg(msg) {
+            // listening permissions
+            if(msg.type=="txt") alert(msg.user + " said " + msg.msg);
+        }
     </pre>
     <!-- end .content --></div>
   <!-- end .container --></div>

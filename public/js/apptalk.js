@@ -1,5 +1,6 @@
 define(["sys_commands", "chat", "apps/msg", "underscore", "backbone", "postmessage"], function(sysCmd, chat) {
 	var activeIFrame;
+	var backgroundCss = $("body").css("background");
 
 	var ret = {};
 	_.extend(ret, Backbone.Events);
@@ -40,6 +41,7 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone", "postmessa
 	}
 
 	function addApp(src, delayed) {
+		$("body").css("background", backgroundCss);
 		if(!delayed) {
 			setTimeout(function(){ addApp(src, true); }, 1000); // delay app opening
 			return;

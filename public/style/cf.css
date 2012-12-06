@@ -5,10 +5,7 @@ html, body, .gridContainer {
 }
 
 body {
-	background:url(themes/mushroom/bg.jpg) #242424;
-	background-position:bottom right;
-	background-repeat:no-repeat;
-	background-attachment:fixed;
+	background:#242424 url(themes/mushroom/bg.jpg) no-repeat fixed bottom right;
 	font: normal x-small Verdana, Geneva, sans-serif;
 }
 a{

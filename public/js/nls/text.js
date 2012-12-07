@@ -11,7 +11,7 @@ define({
 			"err_badge_size": "Badge file is too large"
 		},
 		"auth": {
-			"#title": "Tell me about youself!",
+			"#title": "Tell us a little about you to get started.",
 			"#reset_label": "reset password",
 			"#user_label": "Display name and login:",
 			"#user_placeholder": "username",

@@ -1,4 +1,7 @@
 var cf;
+
+//var replayLog = ["out", "..resize%20255", "out", "..userinfo", "out", "..roominfo", "out", "..users", "in", "..userinfo%20jonathan", "in", "..0", "in", "..roominfo%20lobby", "out", "jonathan: ..resize%20255", "in", "..users%20jonathan", "out", "jonathan: ..commands%20.vote%20borderlands3%7C%7C.vote%20diablo3%7C%7C.vote%20firefall", "out", "jonathan: .vote%20borderlands2", "out", "jonathan: ..resize%20255", "in", "jonathan%3A%20.vote%20borderlands2", "out", "jonathan: ..resize%20335"];
+//, {debug:true, replay:replayLog}
 $(function() {
 	cf = cf_app_api(onRdy, handleMsg); // , {require:["posting", "listening"]}
 	cf.onAction.left = onLeft;
@@ -42,6 +45,7 @@ function handleMsg(msg) {
 		var c = voteData[data] || 0;
 		voteData[data] = c + 1;
 		refresh();
+		//console.log(cf.replayLog);
 	}
 	
 }

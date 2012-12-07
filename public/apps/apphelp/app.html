@@ -179,6 +179,21 @@ li, pre, p {
             if(msg.type=="txt") alert(msg.user + " said " + msg.msg);
         }
     </pre>
+
+     <br/><h5><span>Logging and Replay</span></h5>
+    <pre class="brush: js">
+        // Set debug flag to start logging
+        cf = cf_app_api(onRdy, handleMsg, {debug:true});
+
+        // At any point, call this method to get an array of messages to and from the app
+        alert( cf.replayLog );
+
+        // To replay events (even outside of the platform)
+        var saved_replayLog = ["out", "jonathan: .vote%20borderlands2", "out", "jonathan: ..resize%20255", "in", "jonathan%3A%20.vote%20borderlands2", "out", "jonathan: ..resize%20335"];
+        // Feed the data saved from cf.replayLog and add it as a variable into the cf_app_api replay options:
+        cf = cf_app_api(onRdy, handleMsg, {debug:true, replay: saved_replayLog});
+        // Each action will automatically begin executing at less than a 1sec apart for testing.
+    </pre>
     <!-- end .content --></div>
   <!-- end .container --></div>
 </body>

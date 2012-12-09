@@ -8,13 +8,13 @@ requirejs.config({
 	//the paths config could be for a directory.
 	urlArgs: "bust=" + (new Date()).getTime(),
 	paths: {
-		jquery: "http://code.jquery.com/jquery-1.8.2.min",
+		jquery: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min",
 		postmessage: "apps/jquery.ba-postmessage.min",
 		underscore: "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore",
 		backbone: "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min",
-		sockjs: "http://cdn.sockjs.org/sockjs-0.3.min",
+		sockjs: "http://cdnjs.cloudflare.com/ajax/libs/sockjs-client/0.3.2/sockjs-min",
 		cookie: "http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie",
-		bootstrap: "../style/bs/bootstrap.min"
+		bootstrap: "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min"
 	},
 	shim: {
 		'postmessage': ['jquery'],

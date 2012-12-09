@@ -10,7 +10,7 @@ define(["auth", "chat", "views/room", "underscore"], function(Auth, chat, room) 
 		if(Auth.isLoggedIn()) {
 			var data = _.unescape(msg.msg);
 			if(data.indexOf("://") > 0) apptalk.trigger("add", data);
-			else apptalk.trigger("add", "http://jadders.dyndns.org:82/apps/" + msg.msg + "/app.html");
+			else apptalk.trigger("add", "/apps/" + msg.msg + "/app.html");
 		}
 	}
 	function handleCoreCommand(msg, frameObject) {

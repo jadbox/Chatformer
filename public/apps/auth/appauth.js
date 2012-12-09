@@ -122,7 +122,7 @@ function post_login(name, pwd) {
 		if(data.status == "0") {
 			login(data.name, data.auth_token);
 		} else {
-			alert("Login error: " + locale.auth_status[data.status]);
+			alert("Login error: \n" + locale.auth_status[data.status]);
 		}
 		//console.log(data.name); 
 		//cf.resize();
@@ -169,7 +169,7 @@ function post_reg(name, pwd) {
 			post_login(name, pwd);
 		} else {
 			//Recaptcha.reload();
-			alert("Registration error: " + locale.auth_status[data.status]);
+			alert("Registration error: \n" + locale.auth_status[data.status]);
 		}
 		cf.resize();
 	}, "json");

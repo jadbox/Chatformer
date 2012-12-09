@@ -46,6 +46,10 @@ def save_name(name):
 #		return {'status':'captcha '+ cap_validate}
 	name = string.lower(name) or ''
 	pwd = request.forms.pwd or ''
+
+	if not request.forms.beta == "party":
+		return {'status':'beta_err'}
+
 	if pwd.__len__() > 24 or pwd.__len__() < 6:
 		return {'status':'err1'}
 	if name.__len__() > 24 or name.__len__() < 1 or " " in name or "." in name or ":" in name or "!" in name or "#" in name:

@@ -8,7 +8,8 @@ define({
 			"err4": "password confirmation does not match.",
 			"err5": "invalid email address",
 			"err6": "invalid login information",
-			"err_badge_size": "Badge file is too large"
+			"err_badge_size": "Badge file is too large",
+			"beta_err": "Incorrect beta code! Open beta will be arriving in January."
 		},
 		"auth": {
 			"#title": "Tell us a little about you to get started.",

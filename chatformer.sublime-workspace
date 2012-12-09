@@ -23,15 +23,18 @@
 			"file": "public/js/apps/cf_app_api.js",
 			"settings":
 			{
-				"buffer_size": 3531,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "",
 			"file": "public/apps/vote/appvote.js",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 1901,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
@@ -39,7 +42,7 @@
 			"file": "public/apps/apphelp/app.html",
 			"settings":
 			{
-				"buffer_size": 8905,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		}
@@ -274,15 +277,15 @@
 					"file": "public/js/apps/cf_app_api.js",
 					"settings":
 					{
-						"buffer_size": 3531,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3265,
-								3265
+								0,
+								0
 							]
 						],
 						"settings":
@@ -389,15 +392,15 @@
 					"file": "public/apps/vote/appvote.js",
 					"settings":
 					{
-						"buffer_size": 1901,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								827,
-								828
+								0,
+								0
 							]
 						],
 						"settings":
@@ -504,15 +507,15 @@
 					"file": "public/apps/apphelp/app.html",
 					"settings":
 					{
-						"buffer_size": 8905,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7330,
-								7330
+								0,
+								0
 							]
 						],
 						"settings":

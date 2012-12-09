@@ -47,7 +47,7 @@ def save_name(name):
 	name = string.lower(name) or ''
 	pwd = request.forms.pwd or ''
 
-	if not request.forms.beta == "party":
+	if request.forms.beta != "party":
 		return {'status':'beta_err'}
 
 	if pwd.__len__() > 24 or pwd.__len__() < 6:

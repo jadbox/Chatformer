@@ -90,7 +90,7 @@ require(["./apptalk", "./chatlog", "i18n!nls/text", "./views/chatinput", 'bootst
 
 	function notAuthed() {
 		$('.authed').remove();
-		Apps.trigger("add", "http://jadders.dyndns.org:82/apps/auth/app.html");
+		Apps.trigger("add", "/apps/auth/app.html");
 		ChatLog.trigger("canned", Locale.introchat);
 		doLocale(Locale);
 	}

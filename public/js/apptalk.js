@@ -6,6 +6,8 @@ define(["sys_commands", "chat", "apps/msg", "underscore", "backbone", "postmessa
 	_.extend(ret, Backbone.Events);
 
 	function get_domain(src) {
+		//alert(location.protocol + "//"+location.host);
+		if(src.indexOf(":")==-1) return location.protocol + "//"+location.host;
 		return src.replace(/([^:]+:\/\/[^\/]+).*/, '$1');
 	}
 

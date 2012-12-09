@@ -156,7 +156,8 @@ function post_reg(name, pwd) {
 	var data = {
 		"pwd": pwd,
 		"pwdc": pwdc,
-		"email": email
+		"email": email,
+		"beta": $("#beta").val()
 	}
 	//"recaptcha_challenge_field":challenge_field.val(), 
 	//"recaptcha_response_field":response_field.val()};

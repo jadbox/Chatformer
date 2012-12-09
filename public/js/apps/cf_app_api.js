@@ -14,9 +14,15 @@ function cf_app_api(onRdy, msgFunc, options) {
 	var cmdHandlers={};
 	var STARTUP_MSGS = 3;
 	var startup_steps = 0;
+	var isRdy = false;
 
 	var parent_url = decodeURIComponent(document.location.hash.replace(/^#/, ''));
 	if(parent_url.lastIndexOf("/") == parent_url.length - 1) parent_url = parent_url.slice(0, parent_url.length - 1); // fix
+	
+
+	$(window).load(function() {
+		resize();
+	});
 	$(window).resize(function(e) {
 		resize();
 	});
@@ -36,24 +42,28 @@ function cf_app_api(onRdy, msgFunc, options) {
 	}
 	$.receiveMessage(function(e) { onMsg(e.data); } );
 
+	function rdy() {
+		isRdy = true;
+		onRdy();
+	}
 	function onUsersInfo(msg) {
 		msg = msg.msg;
 		msg = msg.split(" ");
 		users.splice(0, users.length);
 		for(var u in msg) users.push(msg[u]);
-		if(++startup_steps==STARTUP_MSGS) onRdy();
+		if(++startup_steps==STARTUP_MSGS) rdy();
 	}
 
 	function onUserInfo(msg) {
 		user.name = msg.msg;
 		user.name.replace(/\s+/g, ' ');
 		///user.guest = user.name=="guest";
-		if(++startup_steps==STARTUP_MSGS) onRdy();
+		if(++startup_steps==STARTUP_MSGS) rdy();
 	}
 
 	function onRoomInfo(msg) {
 		room.id = msg.msg;
-		if(++startup_steps==STARTUP_MSGS) onRdy();
+		if(++startup_steps==STARTUP_MSGS) rdy();
 	}
 
 	function action(msg) {

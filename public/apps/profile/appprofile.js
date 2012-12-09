@@ -17,7 +17,7 @@ function onData(data) {
 		return false;
 	});
 	cf.resize();
-	setInterval(3000, cf.resize);
+	setInterval(cf.resize, 2000);
 }
 
 function setBadge(img) {

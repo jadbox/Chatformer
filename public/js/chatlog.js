@@ -4,7 +4,7 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 
 	function log(msg) {
 		var control = $('#chatlog');
-		var color = '#760FA6' //'#'+Math.floor(Math.random()*16777215-20000).toString(16);
+		var color = '#760FA6'; //'#'+Math.floor(Math.random()*16777215-20000).toString(16);
 		var post = $('<div style="clear:both;color:' + color + '"/>');
 		post.html(msg);
 		$(post).fadeIn('slow');
@@ -16,8 +16,10 @@ define(['chat', 'auth', "views/room", 'apps/msg', 'underscore', 'backbone'], fun
 	}
 
 	function applyUserBadge(username) {
+		//username = username.toLowerCase();
 		var file="";
 		var index = userBadges[username];
+		//alert(username+" "+index);
 		if(!index) {
 			$.getJSON("/api/badge/"+username, function(data) {
 				userBadges[username] = data.badge?data.badge:"None";

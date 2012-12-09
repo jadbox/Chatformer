@@ -17,6 +17,7 @@
         <li>We will not sell or distribute any personal information.</li>
         <li>We do take full ownership of any content posted.</li>
         <li>We are not liable for any loss of content.</li>
+        <li>We do not take responsibility for any text, images, or badges on the site posted by users. We will comply with reasonable takedown requests: <img src="http://www.txtninja.com/x/c510633b04.gif"/></li>
         <li>We hold the right to delete, lock or alter user accounts and user applications.</li>
     </ul>
   </div>

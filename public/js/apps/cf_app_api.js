@@ -1,7 +1,10 @@
 function cf_app_api(onRdy, msgFunc, options) {
+	if(!onRdy) onRdy = function(msg) {};
+	if(!msgFunc) msgFunc = function(msg) {};
 	options = options || {};
 	options.require = options.require || []; // [listening, posting]
 
+	options.relaySpeed = options.relaySpeed || 600;
 	options.debug = options.debug || false;
 	options.replay = options.replay || [];
 	var replayLog = [];
@@ -31,17 +34,25 @@ function cf_app_api(onRdy, msgFunc, options) {
 		if(options.debug) replayLog.push("in", e);
 		var raw = decodeURIComponent( e );
 		var msg = Msg(raw);
-		if(msg.type=="sys" && msg.cmd=="isOwner") user.isOwner = msg.msg=="1"?true:false;
-		else if(msg.type=="sys" && msg.cmd=="userinfo") onUserInfo(msg);
-		else if(msg.type=="sys" && msg.cmd=="roominfo") onRoomInfo(msg);
-		else if(msg.type=="sys" && msg.cmd=="users") onUsersInfo(msg);
-		else if(msgFunc) msgFunc(msg);
+		if(msg.type=="sys") {
+			if(msg.cmd=="isOwner") user.isOwner = msg.msg=="1"?true:false;
+			else if(msg.cmd=="userinfo") onUserInfo(msg);
+			else if(msg.cmd=="roominfo") onRoomInfo(msg);
+			else if(msg.cmd=="users") onUsersInfo(msg);
+			else msgFunc(msg);
+		} else {
+			if(msg.cmd=="debuglog") debugLog(msg);
+			else msgFunc(msg);
+		}
 		//if(msg.type=="sys" && msg.cmd=="require") if(++startup_steps==STARTUP_MSGS) onRdy();
 		msg['isClient'] = msg.user == user.name;
 		if(msg.cmd && cmdHandlers[msg.cmd]) cmdHandlers[msg.cmd](msg);
 	}
 	$.receiveMessage(function(e) { onMsg(e.data); } );
 
+	function debugLog(msg) {
+		console.log(replayLog);
+	}
 	function rdy() {
 		isRdy = true;
 		onRdy();
@@ -120,7 +131,7 @@ function cf_app_api(onRdy, msgFunc, options) {
 	for (var index = 0; index < options.replay.length; index++) {
 		var item = options.replay[index];
 		var val = options.replay[++index];
-		setTimeout(generator(item, val), index * 600);
+		setTimeout(generator(item, val), index * options.relaySpeed);
 	}
 	// =======
 

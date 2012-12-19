@@ -67,7 +67,7 @@ define(["auth", "chat", "views/room", "underscore"], function(Auth, chat, room) 
 					apptalk.on("removed", function() {
 						chat.off("onTxt", listenTxt);
 					});
-				})
+				});
 
 			} else if(msg.msg == "posting") {
 				require(["chatlog"], function(chatlog) {
@@ -89,6 +89,7 @@ define(["auth", "chat", "views/room", "underscore"], function(Auth, chat, room) 
 
 	return function(_apptalk) {
 		apptalk = _apptalk;
+		//chat.on("on")
 		chat.on("onSys", function(msg) {
 			if(msg.cmd == "app") {
 				changeApp(msg);

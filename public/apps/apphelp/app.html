@@ -62,9 +62,10 @@ li, pre, p {
     <p>Chatformer loads your application as an iFrame into the application area to the right of the chat window. By creating a new room (using the ..room X command), you will be prompted an option list of preinstalled apps as well as a way to specify an app URL. This URL will point to your HTML file hosted on your server that contains the app's logic.</p>
     <br/><h5>Include in the header of your HTML page (in this order):</h5>
     <pre class="brush: html">
-    	&lt;script src="http://jadders.dyndns.org:82/js/apps/jquery.ba-postmessage.min.js">&lt;/script>
-		&lt;script src="http://jadders.dyndns.org:82/js/apps/msg.js">&lt;/script>
-		&lt;script src="http://jadders.dyndns.org:82/js/apps/cf_app_api.js">&lt;/script>
+        &lt;script src="http://code.jquery.com/jquery-1.8.2.min.js">&lt;/script>
+    	&lt;script src="http://chatformer.com/js/apps/jquery.ba-postmessage.min.js">&lt;/script>
+		&lt;script src="http://chatformer.com/js/apps/msg.js">&lt;/script>
+		&lt;script src="http://chatformer.com/js/apps/cf_app_api.js">&lt;/script>
     </pre>
     <br/><h5>cf_app_api <span>API startup</span></h5>
     <pre class="brush: js">
@@ -191,8 +192,9 @@ li, pre, p {
         // To replay events (even outside of the platform)
         var saved_replayLog = ["out", "jonathan: .vote%20borderlands2", "out", "jonathan: ..resize%20255", "in", "jonathan%3A%20.vote%20borderlands2", "out", "jonathan: ..resize%20335"];
         // Feed the data saved from cf.replayLog and add it as a variable into the cf_app_api replay options:
-        cf = cf_app_api(onRdy, handleMsg, {debug:true, replay: saved_replayLog});
+        cf = cf_app_api(onRdy, handleMsg, {debug:true, replay: saved_replayLog, relaySpeed: 600});
         // Each action will automatically begin executing at less than a 1sec apart for testing.
+        // relaySpeed is optional (600ms is default)
     </pre>
     <!-- end .content --></div>
   <!-- end .container --></div>
